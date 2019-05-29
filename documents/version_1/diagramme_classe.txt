@@ -1,0 +1,25 @@
+@startuml
+class Aventurier{
+}
+
+class Labyrinthe{
+}
+
+class Case{
+}
+
+class Chemin{
+}
+
+class Mur{
+}
+
+interface Traversable{
+}
+
+Case <|-- Chemin
+Case <|-- Mur  
+Traversable  <|..  Chemin
+Labyrinthe "1" --> "*" Case : -cases
+Labyrinthe "1" --> "1" Aventurier : -heros
+@enduml
