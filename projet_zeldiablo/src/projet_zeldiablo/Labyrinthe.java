@@ -19,7 +19,7 @@ public class Labyrinthe {
 			}
 		}
 		this.hero.setLabyrinthe(this);
-		this.hero.setPosition(1, 1);
+		this.hero.setPos(1, 1);
 	}
 	
 	public boolean estDisponible(int x, int y) {
