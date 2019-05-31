@@ -1,8 +1,11 @@
 @startuml
 class Aventurier{
++Aventurier(int)
 }
 
 class Labyrinthe{
++Labyrinthe(Aventurier)
++estDisponible(x, y) : boolean
 }
 
 class Case{
@@ -17,9 +20,16 @@ class Mur{
 interface Traversable{
 }
 
+abstract class Entitee{
++Entitee(int)
++seDeplacer(int) : void
+}
+
 Case <|-- Chemin
 Case <|-- Mur  
 Traversable  <|..  Chemin
 Labyrinthe "1" --> "*" Case : -cases
 Labyrinthe "1" --> "1" Aventurier : -heros
+Aventurier "1" --> Labyrinthe : -lab
+Entitee <|-- Aventurier
 @enduml
