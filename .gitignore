@@ -6,4 +6,4 @@
 .project
 Thumbs.db
 .gitignore
-/documents/*.jar
+/documents/version_1/plantuml.jar
