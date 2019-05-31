@@ -1,0 +1,22 @@
+@startuml
+
+main -> hero : seDeplacer(int dir)
+activate hero
+hero -> labyrinthe : estDisponible (x, y)
+activate labyrinthe
+hero <- labyrinthe : rep
+deactivate labyrinthe
+alt (rep==true)
+hero -> x : ++
+activate x
+hero <- x
+deactivate x
+hero -> y : ++
+activate y
+hero <- y
+deactivate y
+end
+main <- hero : rep
+deactivate hero
+
+@enduml

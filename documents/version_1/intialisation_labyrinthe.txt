@@ -1,0 +1,18 @@
+@startuml
+
+main -> labyrinthe : Labyrinthe()
+activate labyrinthe
+loop
+labyrinthe -> cases : add(new Case(x, y))
+activate cases
+labyrinthe <- cases
+deactivate cases
+end
+labyrinthe -> hero : new Aventurier(x, y)
+activate hero
+labyrinthe <- hero
+deactivate hero
+main <- labyrinthe
+deactivate labyrinthe
+
+@enduml
