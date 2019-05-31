@@ -1,11 +1,32 @@
 package projet_zeldiablo;
 
+/**
+ * Classe représentant les entités du labyrinthe. chanque entitée possède des
+ * points de vie et une position dans le labyrnthe.
+ * 
+ * @author CORNETTE Pierre
+ * @version 1.0
+ */
 public abstract class Entitee {
+	/** Les points de vie de l'entitée. */
 	private int pv;
+
+	/** La position en abscisse. */
 	private int posX;
+
+	/** La position en abscisse. */
 	private int posY;
+
+	/** Le labyrinthe dans lequel se trouve l'entitée */
 	private Labyrinthe lab;
 
+	/**
+	 * Constructeur.
+	 * 
+	 * @param vie la vie de départ
+	 * @param px  la position en abscisse de départ
+	 * @param py  la position en ordonnée de départ
+	 */
 	public Entitee(int vie, int px, int py) {
 		if (vie < 0) {
 			this.pv = 0;
@@ -26,15 +47,31 @@ public abstract class Entitee {
 		}
 	}
 
+	/**
+	 * Méthode permettant à l'entitée de se déplacer dans le labyrinthe.
+	 * 
+	 * @param x l'abscisse de la position désirée.
+	 * @param y l'ordonnée de la position désirée.
+	 */
 	public abstract void seDeplacer(int x, int y);
 
+	/**
+	 * Définit la position de l'entité.
+	 * 
+	 * @param px l'abscisse de la nouvelle position.
+	 * @param py l'ordonnée de la nouvelle position.
+	 */
 	public void setPos(int px, int py) {
 		this.posX = px;
 		this.posY = py;
 	}
-	
+
+	/**
+	 * Définit le labyrinthe dans laquelle se trouvera l'entitée.
+	 * 
+	 * @param lb le labyrinthe.
+	 */
 	public void setLabyrinthe(Labyrinthe lb) {
 		this.lab = lb;
 	}
-	
 }
