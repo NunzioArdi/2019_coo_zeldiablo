@@ -1,8 +1,6 @@
 @startuml
 class Aventurier{
 +Aventurier(int)
-+setLabyrinthe(Labyrinthe) : void
-+setPos(int , int) : void
 }
 
 class Labyrinthe{
@@ -26,6 +24,8 @@ interface Traversable{
 abstract class Entitee{
 +Entitee(int)
 +seDeplacer(int) : void
++setLabyrinthe(Labyrinthe) : void
++setPos(int , int) : void
 }
 
 Case <|-- Chemin
