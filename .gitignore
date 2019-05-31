@@ -6,3 +6,4 @@
 .project
 Thumbs.db
 .gitignore
+/documents/*.jar
