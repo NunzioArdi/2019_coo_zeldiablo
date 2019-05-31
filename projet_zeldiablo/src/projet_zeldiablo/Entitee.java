@@ -26,7 +26,7 @@ public abstract class Entitee {
 		}
 	}
 
-	public abstract boolean seDeplacer(int x, int y);
+	public abstract void seDeplacer(int x, int y);
 
 	public void setPos(int px, int py) {
 		this.posX = px;
