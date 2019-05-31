@@ -11,7 +11,7 @@
 
 - fonctionnalite 2 : [Création du Héro]
 - responsable: Pierre
-- diag de sequence: initialisation_labyrinthe.png
+- diag de sequence: deplacement_hero.png
 - initialisation du héro
 - contranite: le hero peut se deplacer, il ne peut pas traverser les murs
 
