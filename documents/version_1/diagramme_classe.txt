@@ -1,6 +1,8 @@
 @startuml
 class Aventurier{
 +Aventurier(int)
++setLabyrinthe(Labyrinthe) : void
++setPos(int , int) : void
 }
 
 class Labyrinthe{
@@ -9,6 +11,7 @@ class Labyrinthe{
 }
 
 class Case{
++Case(int, int)
 }
 
 class Chemin{
