@@ -28,9 +28,9 @@ public abstract class Entitee {
 
 	public abstract boolean seDeplacer(int x, int y);
 
-	public void setPos(int posX) {
-		this.posX = posX;
-		this.posY = posY;
+	public void setPos(int px, int py) {
+		this.posX = px;
+		this.posY = py;
 	}
 	
 	public void setLabyrinthe(Labyrinthe lb) {
