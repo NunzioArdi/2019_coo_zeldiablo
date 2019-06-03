@@ -9,9 +9,6 @@ class Labyrinthe{
 +Labyrinthe(a: Aventurier)
 +estDisponible(x int, y: int): boolean
 +getCase(x: int, y: int)
-+getCase():ArrayList<Case>
-+getMonstres():ArrayList<Monstre>
-+getHero(): Aventurier
 }
 
 class Case{
@@ -58,7 +55,17 @@ abstract class Monstre {
 
 }
 
+class Pieger {
 
+}
+
+interface Piege {
++activate(Entitee):void
+}
+
+
+Pieger <|-- Case
+Piege <|.. Pieger
 Monstre <|-- Entitee
 Case <|-- Chemin
 Case <|-- Mur  
