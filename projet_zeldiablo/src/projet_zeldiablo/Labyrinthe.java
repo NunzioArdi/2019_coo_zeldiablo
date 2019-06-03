@@ -72,7 +72,7 @@ public class Labyrinthe {
 	 */
 	public boolean estDisponible(int x, int y) {
 		for (Case c : this.cases) {
-			if (c.getX() == x && c.getY() == y && c instanceof Traversable) {
+			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
 				for (Monstre m : this.monstres) {
 					if(m.getX() == x && m.getY() == y) {
 						return false;

@@ -6,7 +6,7 @@ package projet_zeldiablo;
  * @author CONTE Nunzio
  * @version 1.0
  */
-public class Chemin extends Case implements Traversable {
+public class Chemin extends Case {
 
 	/**
 	 * Constructeur de Case.
