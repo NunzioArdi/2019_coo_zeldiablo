@@ -12,17 +12,36 @@ public class Aventurier extends Entitee {
 	/**
 	 * Constructeur.
 	 * 
-	 * @param pv  la vie de départ
+	 * @param pv
+	 *            la vie de départ
 	 */
 	public Aventurier(int pv) {
 		super(pv);
 	}
 
 	@Override
-	public void seDeplacer(int x, int y) {
-		Labyrinthe lb = new Labyrinthe(this);
-		if (lb.estDisponible(x, y)) {
-			setPos(x, y);
+	public void seDeplacer(char c) {
+		switch (c) {
+		case 'N':
+			if (super.lab.estDisponible(super.posX, super.posY + 1)) {
+				this.setPos(super.posX, super.posY + 1);
+			}
+			break;
+		case 'S':
+			if (super.lab.estDisponible(super.posX, super.posY - 1)) {
+				this.setPos(super.posX, super.posY - 1);
+			}
+			break;
+		case 'E':
+			if (super.lab.estDisponible(super.posX + 1, super.posY)) {
+				this.setPos(super.posX + 1, super.posY);
+			}
+			break;
+		case 'W':
+			if (super.lab.estDisponible(super.posX - 1, super.posY)) {
+				this.setPos(super.posX - 1, super.posY);
+			}
+			break;
 		}
 	}
 }

@@ -12,13 +12,13 @@ public abstract class Entitee {
 	private int pv;
 
 	/** La position en abscisse. */
-	private int posX;
+	protected int posX;
 
 	/** La position en abscisse. */
-	private int posY;
+	protected int posY;
 
 	/** Le labyrinthe dans lequel se trouve l'entitée */
-	private Labyrinthe lab;
+	protected Labyrinthe lab;
 
 	/**
 	 * Constructeur.
@@ -39,7 +39,7 @@ public abstract class Entitee {
 	 * @param x l'abscisse de la position désirée.
 	 * @param y l'ordonnée de la position désirée.
 	 */
-	public abstract void seDeplacer(int x, int y);
+	public abstract void seDeplacer(char c);
 
 	/**
 	 * Définit la position de l'entité.
