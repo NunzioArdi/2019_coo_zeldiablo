@@ -40,7 +40,7 @@ public class Labyrinthe {
 					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4) {
 						this.cases.add(new Chemin(i, j));
 					} else {
-					this.cases.add(new Mur(i, j));
+						this.cases.add(new Mur(i, j));
 					}
 				} else {
 					this.cases.add(new Chemin(i, j));
@@ -90,5 +90,14 @@ public class Labyrinthe {
 	 */
 	public ArrayList<Case> getCase() {
 		return this.cases;
+	}
+
+	/**
+	 * Retourne l'aventurier du labyrinthe
+	 * 
+	 * @return l'aventurier
+	 */
+	public Aventurier getHero() {
+		return this.hero;
 	}
 }
