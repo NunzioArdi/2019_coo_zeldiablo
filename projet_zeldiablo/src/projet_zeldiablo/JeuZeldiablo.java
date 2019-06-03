@@ -47,6 +47,7 @@ public class JeuZeldiablo implements Jeu {
 		}
 	}
 
+
 	@Override
 	public boolean etreFini() {
 		// TODO Auto-generated method stub

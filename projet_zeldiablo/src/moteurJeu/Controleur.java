@@ -19,7 +19,7 @@ public class Controleur implements KeyListener {
 	 * commande a retourner la difference avec la commandeencours vient du fait
 	 * qu'on veut memoriser une touche appuyee
 	 */
-	private  Commande commandeARetourner;
+	private Commande commandeARetourner;
 
 	/**
 	 * construction du controleur par defaut le controleur n'a pas de commande
@@ -30,8 +30,7 @@ public class Controleur implements KeyListener {
 	}
 
 	/**
-	 * quand on demande les commandes, le controleur retourne la commande en
-	 * cours
+	 * quand on demande les commandes, le controleur retourne la commande en cours
 	 * 
 	 * @return commande faite par le joueur
 	 */
@@ -46,8 +45,8 @@ public class Controleur implements KeyListener {
 	 * met a jour les commandes en fonctions des touches appuyees
 	 */
 	public void keyPressed(KeyEvent e) {
-		String s="";
-		s+=e.getKeyChar();
+		String s = "";
+		s += e.getKeyChar();
 		s.toLowerCase();
 		switch (s) {
 		// si on appuie sur 'q',commande joueur est gauche
@@ -71,10 +70,9 @@ public class Controleur implements KeyListener {
 			this.commandeARetourner.bas = true;
 			break;
 		case " ":
-			this.commandeEnCours.attaque=true;
-			this.commandeARetourner.attaque=true;
+			this.commandeEnCours.attaque = true;
+			this.commandeARetourner.attaque = true;
 		}
-
 	}
 
 	@Override
@@ -82,19 +80,33 @@ public class Controleur implements KeyListener {
 	 * met a jour les commandes quand le joueur relache une touche
 	 */
 	public void keyReleased(KeyEvent e) {
-		switch (e.getKeyChar()) {
-		case 'q':
+		String s = "";
+		s += e.getKeyChar();
+		s.toLowerCase();
+		switch (s) {
+		// si on appuie sur 'q',commande joueur est gauche
+		case "q":
 			this.commandeEnCours.gauche = false;
+			this.commandeARetourner.gauche = false;
 			break;
-		case 'd':
+		// si on appuie sur 'd',commande joueur est droite
+		case "d":
 			this.commandeEnCours.droite = false;
+			this.commandeARetourner.droite = false;
 			break;
-		case 'z':
+		// si on appuie sur 'z',commande joueur est haut
+		case "z":
 			this.commandeEnCours.haut = false;
+			this.commandeARetourner.attaque = false;
 			break;
-		case 's':
+		// si on appuie sur 's',commande joueur est bas
+		case "s":
 			this.commandeEnCours.bas = false;
+			this.commandeARetourner.bas = false;
 			break;
+		case " ":
+			this.commandeEnCours.attaque = false;
+			this.commandeARetourner.attaque = false;
 		}
 
 	}

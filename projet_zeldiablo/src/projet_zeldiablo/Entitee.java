@@ -84,6 +84,10 @@ public abstract class Entitee {
 	
 	public void subirDegat(int deg) {
 		this.pv-=deg;
+		if (this.pv<=0) {
+			this.pv=0;
+			this.traversable=true;
+		}
 	}
 	
 }
