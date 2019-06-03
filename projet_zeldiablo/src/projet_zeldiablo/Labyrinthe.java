@@ -126,7 +126,7 @@ public class Labyrinthe {
 		return this.monstres;
 	}
 
-	public void estPiger(int x, int y, Entitee e) {
+	public void estPieger(int x, int y, Entitee e) {
 		for(Case c: this.cases ) {
 			if(c.getX() == x && c.getY() == y && c instanceof Piegee) {
 				Piege p = (Piege) c;
