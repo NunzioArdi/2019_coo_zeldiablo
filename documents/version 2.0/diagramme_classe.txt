@@ -5,7 +5,6 @@ class Aventurier{
 }
 
 class Labyrinthe{
--hero: Aventurier
 +Labyrinthe(a: Aventurier)
 +estDisponible(x int, y: int): boolean
 +getCase(x: int, y: int)
@@ -46,14 +45,14 @@ abstract class Entitee{
 -posY: int
 +Entitee(vie: int)
 + {abstract} seDeplacer(dir: String, l:Labyrinthe) : void
--setPos(x: int , y: int) : void
++setPos(x: int , y: int) : void
 }
 
 Case <|-- Chemin
 Case <|-- Mur  
 Traversable  <|..  Chemin
 Labyrinthe "1" --> "*" Case : -cases
-Labyrinthe "1" --> "1" Aventurier : -heros
+Labyrinthe "1" --> "1" Aventurier : -hero
 Entitee <|-- Aventurier
 JeuZeldiablo "1" --> "*" Labyrinthe : -lab
 JeuZeldiablo "1" --> "*" Aventurier : -hero
