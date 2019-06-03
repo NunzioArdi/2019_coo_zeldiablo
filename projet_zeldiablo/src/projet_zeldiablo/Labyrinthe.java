@@ -26,13 +26,14 @@ public class Labyrinthe {
 	 * @param h l'aventurier
 	 */
 	public Labyrinthe(Aventurier h) throws AventurierException {
-		//test aventurier
+		// test aventurier
 		if (h == null) {
 			throw new AventurierException("Aventurier null");
 		}
 		this.hero = h;
-		
-		//construction labyrinthe
+
+		// construction labyrinthe
+		this.cases=new ArrayList<Case>();
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
@@ -44,8 +45,8 @@ public class Labyrinthe {
 				}
 			}
 		}
-		
-		//initalisation de l'aventurier
+
+		// initalisation de l'aventurier
 		this.hero.setLabyrinthe(this);
 		this.hero.setPos(1, 1);
 	}
@@ -64,5 +65,20 @@ public class Labyrinthe {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Retourne la case du labyrinthe au coordonnée donnée.
+	 * 
+	 * @param x l'abscisse de la case
+	 * @param y l'ordonnée de la case
+	 * @return la case
+	 */
+	public Case getCase(int x, int y) {
+		for (Case tmp : this.cases) {
+			if (tmp.getX() == x && tmp.getY() == y)
+				return tmp;
+		}
+		return null;
 	}
 }
