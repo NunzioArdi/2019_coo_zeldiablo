@@ -19,6 +19,8 @@ public class Labyrinthe {
 	/** la liste des cases composant le labyrinthe. */
 	private ArrayList<Case> cases;
 
+	private ArrayList<Monstre> monstres;
+
 	/**
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
 	 * pouvoir joué. Le labyrinthe est entouré d'un mur sauf aux 4 points cardinaux.
@@ -47,6 +49,15 @@ public class Labyrinthe {
 				}
 			}
 		}
+
+		// initialisation des monstres (2 monstres placé pour l'instant arbitrairement)
+		this.monstres = new ArrayList<Monstre>();
+		Goblin g1 = new Goblin(5);
+		g1.setPos(3, 3);
+		Goblin g2 = new Goblin(2);
+		g2.setPos(7, 7);
+		this.monstres.add(g1);
+		this.monstres.add(g2);
 
 		// initalisation de l'aventurier
 		this.hero.setPos(1, 1);
@@ -99,5 +110,14 @@ public class Labyrinthe {
 	 */
 	public Aventurier getHero() {
 		return this.hero;
+	}
+
+	/**
+	 * Retourne la liste des monstres du labyrinthe.
+	 * 
+	 * @return le labyrinthe
+	 */
+	public ArrayList<Monstre> getMonstres() {
+		return this.monstres;
 	}
 }
