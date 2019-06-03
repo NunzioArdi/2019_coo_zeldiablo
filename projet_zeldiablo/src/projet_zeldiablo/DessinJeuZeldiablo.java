@@ -27,6 +27,10 @@ public class DessinJeuZeldiablo implements DessinJeu {
 			}
 			g.fillRect(c.getX()*TAILLE, c.getY()*TAILLE, TAILLE, TAILLE);
 		}
+		for (Monstre m : this.jzd.getLab().getMonstres()) {
+			g.setColor(Color.RED);
+			g.fillOval(m.getX()*TAILLE, m.getY()*TAILLE, TAILLE, TAILLE);
+		}
 		g.setColor(Color.GREEN);
 		g.fillRect(this.jzd.getHero().getX()*TAILLE, this.jzd.getHero().getY()*TAILLE, TAILLE, TAILLE);
 	}
