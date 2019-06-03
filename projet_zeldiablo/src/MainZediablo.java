@@ -14,7 +14,7 @@ public class MainZediablo {
 		m.lancerJeu(1000, 1000);
 		Scanner sc=new Scanner(System.in);
 		while (!jzd.etreFini()) {
-			;
+			
 		}
 	}
 

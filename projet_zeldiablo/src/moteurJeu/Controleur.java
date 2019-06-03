@@ -46,28 +46,33 @@ public class Controleur implements KeyListener {
 	 * met a jour les commandes en fonctions des touches appuyees
 	 */
 	public void keyPressed(KeyEvent e) {
-
-		switch (e.getKeyChar()) {
+		String s="";
+		s+=e.getKeyChar();
+		s.toLowerCase();
+		switch (s) {
 		// si on appuie sur 'q',commande joueur est gauche
-		case 'q':
+		case "q":
 			this.commandeEnCours.gauche = true;
 			this.commandeARetourner.gauche = true;
 			break;
 		// si on appuie sur 'd',commande joueur est droite
-		case 'd':
+		case "d":
 			this.commandeEnCours.droite = true;
 			this.commandeARetourner.droite = true;
 			break;
 		// si on appuie sur 'z',commande joueur est haut
-		case 'z':
+		case "z":
 			this.commandeEnCours.haut = true;
 			this.commandeARetourner.haut = true;
 			break;
 		// si on appuie sur 's',commande joueur est bas
-		case 's':
+		case "s":
 			this.commandeEnCours.bas = true;
 			this.commandeARetourner.bas = true;
 			break;
+		case " ":
+			this.commandeEnCours.attaque=true;
+			this.commandeARetourner.attaque=true;
 		}
 
 	}

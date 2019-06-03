@@ -16,6 +16,9 @@ public abstract class Entitee {
 
 	/** La position en abscisse. */
 	protected int posY;
+	
+	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche)*/
+	protected int direction;
 
 	/**
 	 * Constructeur.
