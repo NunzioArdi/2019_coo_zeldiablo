@@ -45,7 +45,11 @@ public class Labyrinthe {
 						this.cases.add(new Mur(i, j));
 					}
 				} else {
-					this.cases.add(new Chemin(i, j));
+					if (i==2 && j==2) {
+						this.cases.add(new Piege(i, j));
+					} else {
+						this.cases.add(new Chemin(i, j));
+					}
 				}
 			}
 		}
@@ -132,6 +136,7 @@ public class Labyrinthe {
 	public void estPieger(int x, int y, Entitee e) {
 		for(Case c: this.cases ) {
 			if(c.getX() == x && c.getY() == y && c instanceof Piegee) {
+				System.out.println("a");
 				Piege p = (Piege) c;
 				p.activer(e);
 			}
