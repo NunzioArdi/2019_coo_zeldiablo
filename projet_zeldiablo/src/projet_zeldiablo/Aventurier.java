@@ -20,25 +20,25 @@ public class Aventurier extends Entitee {
 	}
 
 	@Override
-	public void seDeplacer(char c) {
+	public void seDeplacer(char c, Labyrinthe l) {
 		switch (c) {
 		case 'N':
-			if (super.lab.estDisponible(super.posX, super.posY - 1)) {
+			if (l.estDisponible(super.posX, super.posY - 1)) {
 				this.setPos(super.posX, super.posY - 1);
 			}
 			break;
 		case 'S':
-			if (super.lab.estDisponible(super.posX, super.posY + 1)) {
+			if (l.estDisponible(super.posX, super.posY + 1)) {
 				this.setPos(super.posX, super.posY + 1);
 			}
 			break;
 		case 'E':
-			if (super.lab.estDisponible(super.posX + 1, super.posY)) {
+			if (l.estDisponible(super.posX + 1, super.posY)) {
 				this.setPos(super.posX + 1, super.posY);
 			}
 			break;
 		case 'W':
-			if (super.lab.estDisponible(super.posX - 1, super.posY)) {
+			if (l.estDisponible(super.posX - 1, super.posY)) {
 				this.setPos(super.posX - 1, super.posY);
 			}
 			break;

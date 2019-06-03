@@ -37,9 +37,11 @@ public class Labyrinthe {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
-					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4)
+					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4) {
 						this.cases.add(new Chemin(i, j));
+					} else {
 					this.cases.add(new Mur(i, j));
+					}
 				} else {
 					this.cases.add(new Chemin(i, j));
 				}
@@ -47,7 +49,6 @@ public class Labyrinthe {
 		}
 
 		// initalisation de l'aventurier
-		this.hero.setLabyrinthe(this);
 		this.hero.setPos(1, 1);
 	}
 

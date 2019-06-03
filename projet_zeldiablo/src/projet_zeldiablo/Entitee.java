@@ -17,9 +17,6 @@ public abstract class Entitee {
 	/** La position en abscisse. */
 	protected int posY;
 
-	/** Le labyrinthe dans lequel se trouve l'entitée */
-	protected Labyrinthe lab;
-
 	/**
 	 * Constructeur.
 	 * 
@@ -39,7 +36,7 @@ public abstract class Entitee {
 	 * @param x l'abscisse de la position désirée.
 	 * @param y l'ordonnée de la position désirée.
 	 */
-	public abstract void seDeplacer(char c);
+	public abstract void seDeplacer(char c, Labyrinthe l);
 
 	/**
 	 * Définit la position de l'entité.
@@ -59,15 +56,6 @@ public abstract class Entitee {
 		} else {
 			this.posY = py;
 		}
-	}
-
-	/**
-	 * Définit le labyrinthe dans laquelle se trouvera l'entitée.
-	 * 
-	 * @param lb le labyrinthe.
-	 */
-	public void setLabyrinthe(Labyrinthe lb) {
-		this.lab = lb;
 	}
 	
 	public int getX() {
