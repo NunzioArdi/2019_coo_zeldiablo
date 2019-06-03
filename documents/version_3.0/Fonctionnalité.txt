@@ -1,0 +1,27 @@
+*fonctionnalités
+
+- fonctionnalite 1 :[Création des Monstre]
+- responsable: Nunzio
+- diag de sequence: 
+- initialisation des monstre 
+- contrainte: Ils ne peuvent pas traverser les murs et ne traverse pas les autres entitées.
+
+
+- fonctionnalite 2 : [attaque des entités]
+- responsable: Killian
+- diag de sequence: 
+- Les monstre et le hero peuvents s'attaquer
+- contranite: les entitées attaquer perdent de la vie, 
+	      si la vie est a 0 il meur, 
+	      si un monstre meur il disparai, 
+	      si le hero meur la partie est fini.
+
+- fonctionnalite 1 :[Création de cases piegé]
+- responsable: Pierre
+- diag de sequence: 
+- initialisation de cases qui font des degat aux entitées si elle s'activent 
+- contrainte: Les case s'activent si une entitée passe dessus et lui inflige des degats
+
+
+
+
