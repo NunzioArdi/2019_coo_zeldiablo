@@ -13,6 +13,9 @@ public class Case {
 	/** Coordonnée en ordonnée de la case */
 	private int y;
 
+	/** Indique si la case est traversable*/
+	protected boolean traversable;
+	
 	/**
 	 * Constructeur de Case.
 	 * 
@@ -22,6 +25,7 @@ public class Case {
 	public Case(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.traversable=true;
 	}
 
 	/**
@@ -40,5 +44,13 @@ public class Case {
 	 */
 	public int getY() {
 		return this.y;
+	}
+	
+	/**
+	 * Retourne l'attribut traversable
+	 * @return true si traversable
+	 */
+	public boolean estTraversable() {
+		return this.traversable;
 	}
 }
