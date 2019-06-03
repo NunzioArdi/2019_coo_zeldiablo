@@ -56,9 +56,9 @@ public class Labyrinthe {
 
 		// initialisation des monstres (3 monstres placé pour l'instant arbitrairement)
 		this.monstres = new ArrayList<Monstre>();
-		Goblin g1 = new Goblin(5);
+		Goblin g1 = new Goblin(7);
 		g1.setPos(3, 3);
-		Goblin g2 = new Goblin(2);
+		Goblin g2 = new Goblin(5);
 		g2.setPos(7, 7);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
