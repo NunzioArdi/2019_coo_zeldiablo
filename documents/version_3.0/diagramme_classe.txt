@@ -9,6 +9,9 @@ class Labyrinthe{
 +Labyrinthe(a: Aventurier)
 +estDisponible(x int, y: int): boolean
 +getCase(x: int, y: int)
++getCase():ArrayList<Case>
++getMonstres():ArrayList<Monstre>
++getHero(): Aventurier
 }
 
 class Case{

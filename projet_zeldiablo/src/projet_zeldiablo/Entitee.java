@@ -66,4 +66,12 @@ public abstract class Entitee {
 		return this.posY;
 	}
 	
+	public void attaquer(int x, int y, Labyrinthe l) {
+		
+	}
+	
+	public void subirDegat(int deg) {
+		this.pv-=deg;
+	}
+	
 }
