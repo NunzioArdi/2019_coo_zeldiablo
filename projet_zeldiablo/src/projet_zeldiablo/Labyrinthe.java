@@ -2,6 +2,8 @@ package projet_zeldiablo;
 
 import java.util.ArrayList;
 
+import exception.AventurierException;
+
 /**
  * Classe représentant le labyrinthe. Il est composé de cases et d'entitées.
  * 
@@ -23,8 +25,14 @@ public class Labyrinthe {
 	 * 
 	 * @param h l'aventurier
 	 */
-	public Labyrinthe(Aventurier h) {
+	public Labyrinthe(Aventurier h) throws AventurierException {
+		//test aventurier
+		if (h == null) {
+			throw new AventurierException("Aventurier null");
+		}
 		this.hero = h;
+		
+		//construction labyrinthe
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
@@ -36,6 +44,8 @@ public class Labyrinthe {
 				}
 			}
 		}
+		
+		//initalisation de l'aventurier
 		this.hero.setLabyrinthe(this);
 		this.hero.setPos(1, 1);
 	}
