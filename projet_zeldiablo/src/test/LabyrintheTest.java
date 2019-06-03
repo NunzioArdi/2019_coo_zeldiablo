@@ -89,6 +89,5 @@ public class LabyrintheTest {
 
 		assertEquals("le mur ne dois pas être accessible", false, lab.estDisponible(0, 0));
 		assertEquals("le chemin d'oit être accessible", true, lab.estDisponible(2, 2));
-		
 	}
 }

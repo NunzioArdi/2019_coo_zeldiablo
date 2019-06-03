@@ -33,7 +33,7 @@ public class Labyrinthe {
 		this.hero = h;
 
 		// construction labyrinthe
-		this.cases=new ArrayList<Case>();
+		this.cases = new ArrayList<Case>();
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
@@ -81,8 +81,13 @@ public class Labyrinthe {
 		}
 		return null;
 	}
-	
-	public ArrayList<Case> getCase(){
+
+	/**
+	 * Retourne la liste des cases du labyrinthe.
+	 * 
+	 * @return toute les cases du labyrinthe.
+	 */
+	public ArrayList<Case> getCase() {
 		return this.cases;
 	}
 }
