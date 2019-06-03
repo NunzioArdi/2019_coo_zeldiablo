@@ -1,0 +1,55 @@
+@startuml
+title Initialisation du labyrinthe
+
+participant  "main" as m
+participant  "av: Aventurier" as a
+participant  "lab: Labyrinthe" as l
+participant  "cases: ArrayList" as cases
+participant  "mur: Mur" as mur
+participant  "chemin: Case" as chemin
+participant  "c: Case" as c
+
+create m
+activate m
+
+create a
+m -> a : new Aventurier(5)
+
+create l
+m -> l : new Labyrinthe(av)
+activate l
+
+loop i,j
+
+	alt i==0 ou i==9 ou j==0 ou j==10
+	create mur
+	l -> mur : new Mur(i,j)
+	activate mur
+	l <-- mur : c
+	deactivate mur
+else
+	create chemin
+	l -> chemin : new Chemin(i,j)
+	activate chemin
+	l <-- chemin : c
+	deactivate chemin
+end
+	
+	l -> cases : add(c)
+	activate cases
+	l <-- cases 
+	deactivate cases
+end
+
+l -> a : setPos(1,1)
+activate a
+l <-- a
+deactivate a
+
+
+m <-- l
+deactivate l
+
+deactivate m
+
+@enduml

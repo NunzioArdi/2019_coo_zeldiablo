@@ -1,0 +1,51 @@
+@startuml
+class Aventurier{
++Aventurier(vie: int)
++seDeplacer(dir: String) : void
+}
+
+class Labyrinthe{
+-hero: Aventurier
++Labyrinthe(a: Aventurier)
++estDisponible(x int, y: int): boolean
++getCase(x: int, y: int)
+}
+
+class Case{
+- x: int
+- y: int
++Case(x: int, y: int)
++getX(): int
++getY(): int
+}
+
+class Chemin{
++Chemin(x: int, y: int)
+}
+
+class Mur{
++Mur(x: int, y: int)
+}
+
+interface Traversable{
+}
+
+abstract class Entitee{
+-pv: int
+-posX: int
+-posY: int
+-lab: Labyrinthe
++Entitee(vie: int)
++ {abstract} seDeplacer(dir: String) : void
++setLabyrinthe(lab: Labyrinthe) : void
+-setPos(x: int , y: int) : void
+}
+
+Case <|-- Chemin
+Case <|-- Mur  
+Traversable  <|..  Chemin
+Labyrinthe "1" --> "*" Case : -cases
+Labyrinthe "1" --> "1" Aventurier : -heros
+Aventurier "1" --> Labyrinthe : -lab
+Entitee <|-- Aventurier
+@enduml
