@@ -26,28 +26,28 @@ public class Aventurier extends Entitee {
 			this.direction=0;
 			if (l.estDisponible(super.posX, super.posY - 1)) {
 				this.setPos(super.posX, super.posY - 1);
-				l.estPiger(posX, posY-1, this);
+				l.estPieger(posX, posY-1, this);
 			}
 			break;
 		case 'S':
 			this.direction=2;
 			if (l.estDisponible(super.posX, super.posY + 1)) {
 				this.setPos(super.posX, super.posY + 1);
-				l.estPiger(posX, posY+1, this);
+				l.estPieger(posX, posY+1, this);
 			}
 			break;
 		case 'E':
 			this.direction=1;
 			if (l.estDisponible(super.posX + 1, super.posY)) {
 				this.setPos(super.posX + 1, super.posY);
-				l.estPiger(posX+1, posY, this);
+				l.estPieger(posX+1, posY, this);
 			}
 			break;
 		case 'W':
 			this.direction=3;
 			if (l.estDisponible(super.posX - 1, super.posY)) {
 				this.setPos(super.posX - 1, super.posY);
-				l.estPiger(posX-1, posY, this);
+				l.estPieger(posX-1, posY, this);
 			}
 			break;
 		}

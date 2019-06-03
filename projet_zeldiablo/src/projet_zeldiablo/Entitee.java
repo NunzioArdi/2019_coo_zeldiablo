@@ -19,6 +19,8 @@ public abstract class Entitee {
 	
 	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche) */
 	protected int direction;
+	
+	protected boolean traversable;
 
 	/**
 	 * Constructeur.
@@ -31,6 +33,7 @@ public abstract class Entitee {
 		} else {
 			this.pv = vie;
 		}
+		this.traversable=false;
 	}
 
 	/**
@@ -73,10 +76,18 @@ public abstract class Entitee {
 		return this.pv;
 	}
 	
+	public boolean estTraversable() {
+		return this.traversable;
+	}
+	
 	public abstract void attaquer(int x, int y, Labyrinthe l);
 	
 	public void subirDegat(int deg) {
 		this.pv-=deg;
+		if (this.pv<=0) {
+			this.pv=0;
+			this.traversable=true;
+		}
 	}
 	
 }
