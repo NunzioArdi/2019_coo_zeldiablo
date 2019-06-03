@@ -50,13 +50,16 @@ public class Labyrinthe {
 			}
 		}
 
-		// initialisation des monstres (2 monstres placé pour l'instant arbitrairement)
+		// initialisation des monstres (3 monstres placé pour l'instant arbitrairement)
 		this.monstres = new ArrayList<Monstre>();
 		Goblin g1 = new Goblin(5);
 		g1.setPos(3, 3);
 		Goblin g2 = new Goblin(2);
 		g2.setPos(7, 7);
+		Fantome f1 = new Fantome(2);
+		f1.setPos(2, 7);
 		this.monstres.add(g1);
+		this.monstres.add(f1);
 		this.monstres.add(g2);
 
 		// initalisation de l'aventurier
@@ -74,7 +77,7 @@ public class Labyrinthe {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
 				for (Monstre m : this.monstres) {
-					if(m.getX() == x && m.getY() == y) {
+					if(m.getX() == x && m.getY() == y && !m.estTraversable()) {
 						return false;
 					}
 				}
