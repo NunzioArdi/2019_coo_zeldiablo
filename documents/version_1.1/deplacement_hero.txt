@@ -1,0 +1,24 @@
+@startuml
+title Deplacement du héro
+
+participant "main" as main
+participant "av: Aventurier" as a
+participant "laby: Labyrinthe" as l
+
+main -> a : seDeplacer("N")
+activate a
+
+a -> a : getPos()
+
+a -> l : estDisponible (3, 2)
+activate l
+a <-- l : boolean
+deactivate l
+
+alt (rep==true)
+	a -> a : setPos 
+end
+main <- a : rep
+deactivate a
+
+@enduml

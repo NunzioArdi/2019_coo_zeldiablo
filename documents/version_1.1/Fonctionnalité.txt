@@ -1,0 +1,18 @@
+*fonctionnalités
+
+- fonctionnalite 1 :[Création du labyrinthe]
+- responsable: Killian
+- diag de sequence: initialisation_labyrinthe.png
+- initialisation du labyrinthe
+- contrainte: le labyrinthe doit posseder des cases, 
+	      les bordure du labyrinthe sont des murs 
+	      et un hero est placer a l'entré du labyrinthe
+
+
+- fonctionnalite 2 : [Création du Héro]
+- responsable: Pierre
+- diag de sequence: deplacement_hero.png
+- initialisation du héro
+- contranite: le hero peut se deplacer, il ne peut pas traverser les murs
+
+
