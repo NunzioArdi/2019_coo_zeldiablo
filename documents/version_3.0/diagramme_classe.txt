@@ -1,0 +1,70 @@
+@startuml
+class Aventurier{
++Aventurier(vie: int)
++seDeplacer(dir: String, l: Labyrinthe) : void
+}
+
+class Labyrinthe{
+-hero: Aventurier
++Labyrinthe(a: Aventurier)
++estDisponible(x int, y: int): boolean
++getCase(x: int, y: int)
+}
+
+class Case{
+- x: int
+- y: int
++Case(x: int, y: int)
++getX(): int
++getY(): int
+}
+
+class Chemin{
++Chemin(x: int, y: int)
+}
+
+class Mur{
++Mur(x: int, y: int)
+}
+
+interface Traversable{
+}
+
+
+
+class JeuZeldiablo {
+
+}
+
+class DessinJeuZeldiablo {
+
+}
+
+abstract class Entitee{
+-pv: int
+-posX: int
+-posY: int
++Entitee(vie: int)
++ {abstract} seDeplacer(dir: String, l:Labyrinthe) : void
++setPos(x: int , y: int) : void
++attaquer(x: int, y: int, l:Labyrinthe) : void
++subirDegat(deg:int)
+}
+
+abstract class Monstre {
+
+}
+
+
+Monstre <|-- Entitee
+Case <|-- Chemin
+Case <|-- Mur  
+Traversable  <|..  Chemin
+Labyrinthe "1" --> "*" Case : -cases
+Labyrinthe "1" --> "1" Aventurier : -heros
+Labyrinthe "1" --> "*" Monstre : -monstres
+Entitee <|-- Aventurier
+JeuZeldiablo "1" --> "*" Labyrinthe : -lab
+JeuZeldiablo "1" --> "*" Aventurier : -hero
+DessinJeuZeldiablo "1" --> "*" JeuZeldiablo : -jeu
+@enduml
