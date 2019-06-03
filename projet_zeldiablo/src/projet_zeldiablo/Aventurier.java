@@ -25,21 +25,25 @@ public class Aventurier extends Entitee {
 		case 'N':
 			if (l.estDisponible(super.posX, super.posY - 1)) {
 				this.setPos(super.posX, super.posY - 1);
+				l.estPiger(posX, posY-1, this);
 			}
 			break;
 		case 'S':
 			if (l.estDisponible(super.posX, super.posY + 1)) {
 				this.setPos(super.posX, super.posY + 1);
+				l.estPiger(posX, posY+1, this);
 			}
 			break;
 		case 'E':
 			if (l.estDisponible(super.posX + 1, super.posY)) {
 				this.setPos(super.posX + 1, super.posY);
+				l.estPiger(posX+1, posY, this);
 			}
 			break;
 		case 'W':
 			if (l.estDisponible(super.posX - 1, super.posY)) {
 				this.setPos(super.posX - 1, super.posY);
+				l.estPiger(posX-1, posY, this);
 			}
 			break;
 		}

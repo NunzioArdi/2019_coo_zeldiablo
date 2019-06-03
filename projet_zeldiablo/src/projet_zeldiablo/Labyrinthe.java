@@ -120,4 +120,13 @@ public class Labyrinthe {
 	public ArrayList<Monstre> getMonstres() {
 		return this.monstres;
 	}
+
+	public void estPiger(int x, int y, Entitee e) {
+		for(Case c: this.cases ) {
+			if(c.getX() == x && c.getY() == y && c instanceof Piegee) {
+				Piege p = (Piege) c;
+				p.activer(e);
+			}
+		}
+	}
 }
