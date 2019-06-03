@@ -81,4 +81,8 @@ public class Labyrinthe {
 		}
 		return null;
 	}
+	
+	public ArrayList<Case> getCase(){
+		return this.cases;
+	}
 }
