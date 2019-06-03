@@ -1,0 +1,38 @@
+@startuml
+title Initialisation des Monstres dans le labyrinthe
+
+participant  "main" as main
+participant  "av: Aventurier" as a
+participant  "lab: Labyrinthe" as l
+participant  "mons: Monstre" as mons
+participant  "monstres: ArrayList" as ml
+
+create main
+activate main
+
+create a
+main -> a : new Aventurier(5)
+
+create l
+main -> l : new Labyrinthe(av)
+activate l
+
+create mons
+l -> mons : new Monstre(5)
+l <-- mons : mons
+
+create ml
+l -> ml : new ArrayList()
+
+l -> ml : add(mons)
+activate ml 
+l <-- ml
+deactivate ml
+
+
+main <-- l
+deactivate l
+
+deactivate main
+
+@enduml
