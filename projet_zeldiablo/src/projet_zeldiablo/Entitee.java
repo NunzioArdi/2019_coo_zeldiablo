@@ -17,7 +17,7 @@ public abstract class Entitee {
 	/** La position en abscisse. */
 	protected int posY;
 	
-	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche)*/
+	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche) */
 	protected int direction;
 
 	/**
@@ -67,6 +67,10 @@ public abstract class Entitee {
 	
 	public int getY() {
 		return this.posY;
+	}
+	
+	public int getPV() {
+		return this.pv;
 	}
 	
 	public abstract void attaquer(int x, int y, Labyrinthe l);

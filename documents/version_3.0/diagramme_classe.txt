@@ -52,26 +52,21 @@ abstract class Entitee{
 }
 
 abstract class Monstre {
-+Monstre(vie: int)
-}
-
-class Goblin {
-+Goblin(vie: int)
-+seDeplacer(dir: String, l: Labyrinthe)
-}
-
-class Pieger {
 
 }
 
-interface Piege {
+class Piege {
+
+}
+
+interface Piegee {
 +activate(Entitee):void
 }
 
 
-Pieger <|-- Case
-Piege <|.. Pieger
-Monstre <|-- Entitee
+Case <|-- Piege
+Piegee <|.. Piege
+Entitee <|-- Monstre
 Case <|-- Chemin
 Case <|-- Mur  
 Traversable  <|..  Chemin
@@ -82,5 +77,4 @@ Entitee <|-- Aventurier
 JeuZeldiablo "1" --> "*" Labyrinthe : -lab
 JeuZeldiablo "1" --> "*" Aventurier : -hero
 DessinJeuZeldiablo "1" --> "*" JeuZeldiablo : -jeu
-Monstre <|-- Goblin
 @enduml

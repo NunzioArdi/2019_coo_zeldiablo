@@ -3,7 +3,7 @@
 main -> entite : attaquer(x, y, lab)
 activate entite
 loop monstro.x==x && monstro.y=y
-entite -> lab : getMonstre()
+entite -> lab : getMonstres()
 activate lab
 entite <- lab : monstro
 deactivate lab

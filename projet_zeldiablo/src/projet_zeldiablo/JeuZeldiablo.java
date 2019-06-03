@@ -32,6 +32,7 @@ public class JeuZeldiablo implements Jeu {
 			switch(this.lab.getHero().direction) {
 			case 0:
 				this.lab.getHero().attaquer(this.lab.getHero().getX(), this.lab.getHero().getY()-1, this.lab);
+				System.out.println("aah");
 				break;
 			case 1:
 				this.lab.getHero().attaquer(this.lab.getHero().getX()+1, this.lab.getHero().getY(), this.lab);

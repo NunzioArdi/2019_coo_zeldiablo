@@ -134,4 +134,15 @@ public class Labyrinthe {
 			}
 		}
 	}
+	
+	public void verifierMort() {
+		int i=0;
+		for (Monstre m : this.monstres) {
+			if (m.getPV()<=0) {
+				this.monstres.remove(i);
+			} else {
+				i++;
+			}
+		}
+	}
 }
