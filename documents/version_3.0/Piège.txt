@@ -1,0 +1,27 @@
+@startuml
+
+participant	"entitee: Entitee" as e
+participant	"lab: Labyrinthe" as l
+participant	"piege: Piege" as p
+
+
+
+e -> e : seDeplacer(int,int,Labyrinthe)
+activate e
+e -> l : estPieger(e)
+activate l
+l -> p : activer(e)
+activate p
+p -> e : subirDegat(int)
+activate e
+p <-- e
+deactivate e
+l <-- p
+deactivate p
+e <-- l
+deactivate l
+e <-- e
+deactivate e
+ 
+
+@enduml

@@ -52,7 +52,12 @@ abstract class Entitee{
 }
 
 abstract class Monstre {
++Monstre(vie: int)
+}
 
+class Goblin {
++Goblin(vie: int)
++seDeplacer(dir: String, l: Labyrinthe)
 }
 
 class Pieger {
@@ -77,4 +82,5 @@ Entitee <|-- Aventurier
 JeuZeldiablo "1" --> "*" Labyrinthe : -lab
 JeuZeldiablo "1" --> "*" Aventurier : -hero
 DessinJeuZeldiablo "1" --> "*" JeuZeldiablo : -jeu
+Monstre <|-- Goblin
 @enduml

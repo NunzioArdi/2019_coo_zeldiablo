@@ -28,7 +28,22 @@ public class JeuZeldiablo implements Jeu {
 		if (commandeUser.droite) {
 			this.hero.seDeplacer('E', this.lab);
 		}
-		
+		if (commandeUser.attaque) {
+			switch(this.lab.getHero().direction) {
+			case 0:
+				this.lab.getHero().attaquer(this.lab.getHero().getX(), this.lab.getHero().getY()-1, this.lab);
+				break;
+			case 1:
+				this.lab.getHero().attaquer(this.lab.getHero().getX()+1, this.lab.getHero().getY(), this.lab);
+				break;
+			case 2:
+				this.lab.getHero().attaquer(this.lab.getHero().getX(), this.lab.getHero().getY()+1, this.lab);
+				break;
+			case 3:
+				this.lab.getHero().attaquer(this.lab.getHero().getX()-1, this.lab.getHero().getY(), this.lab);
+				break;
+			}
+		}
 	}
 
 	@Override
