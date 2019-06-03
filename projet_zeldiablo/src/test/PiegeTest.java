@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exception.AventurierException;
-import oracle.jrockit.jfr.ActiveRecordingEvent;
 import projet_zeldiablo.Aventurier;
 import projet_zeldiablo.Case;
 import projet_zeldiablo.Labyrinthe;
