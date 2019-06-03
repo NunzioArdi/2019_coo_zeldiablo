@@ -44,4 +44,13 @@ public class Aventurier extends Entitee {
 			break;
 		}
 	}
+
+	@Override
+	public void attaquer(int x, int y, Labyrinthe l) {
+		for (Monstre m : l.getMonstres()) {
+			if (m.getX()==x && m.getY()==y) {
+				m.subirDegat(5);
+			}
+		}
+	}
 }
