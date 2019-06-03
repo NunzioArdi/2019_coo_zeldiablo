@@ -57,7 +57,7 @@ public abstract class Entitee {
 		if (py < 0) {
 			this.posY = 1;
 		} else {
-			this.posY = px;
+			this.posY = py;
 		}
 	}
 
@@ -69,4 +69,13 @@ public abstract class Entitee {
 	public void setLabyrinthe(Labyrinthe lb) {
 		this.lab = lb;
 	}
+	
+	public int getX() {
+		return this.posX;
+	}
+	
+	public int getY() {
+		return this.posY;
+	}
+	
 }
