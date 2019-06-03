@@ -72,7 +72,7 @@ public class LabyrintheTest {
 
 	/**
 	 * Test si les coordonnée sont disponible. Test les cas suitvant : coorodnnée <0
-	 * ou >9, coordonnée d'un mur, coordonnée d'un chemin
+	 * ou >9, coordonnée d'un mur, coordonnée d'un chemin, coordonnée sur une entité
 	 * 
 	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
@@ -89,5 +89,8 @@ public class LabyrintheTest {
 
 		assertEquals("le mur ne dois pas être accessible", false, lab.estDisponible(0, 0));
 		assertEquals("le chemin d'oit être accessible", true, lab.estDisponible(2, 2));
+		
+		assertEquals("Le goblin n'est pas traversable", false, lab.estDisponible(2, 7));
+		assertEquals("le fantome est traversable", true, lab.estDisponible(7, 7));
 	}
 }
