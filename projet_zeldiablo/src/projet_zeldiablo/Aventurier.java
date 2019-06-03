@@ -23,13 +23,13 @@ public class Aventurier extends Entitee {
 	public void seDeplacer(char c) {
 		switch (c) {
 		case 'N':
-			if (super.lab.estDisponible(super.posX, super.posY + 1)) {
-				this.setPos(super.posX, super.posY + 1);
+			if (super.lab.estDisponible(super.posX, super.posY - 1)) {
+				this.setPos(super.posX, super.posY - 1);
 			}
 			break;
 		case 'S':
-			if (super.lab.estDisponible(super.posX, super.posY - 1)) {
-				this.setPos(super.posX, super.posY - 1);
+			if (super.lab.estDisponible(super.posX, super.posY + 1)) {
+				this.setPos(super.posX, super.posY + 1);
 			}
 			break;
 		case 'E':
