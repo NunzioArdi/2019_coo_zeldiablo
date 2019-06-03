@@ -136,7 +136,6 @@ public class Labyrinthe {
 	public void estPieger(int x, int y, Entitee e) {
 		for(Case c: this.cases ) {
 			if(c.getX() == x && c.getY() == y && c instanceof Piegee) {
-				System.out.println("a");
 				Piege p = (Piege) c;
 				p.activer(e);
 			}

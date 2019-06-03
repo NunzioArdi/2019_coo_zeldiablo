@@ -14,16 +14,10 @@ public class PiegeTest {
 
 	@Test
 	public void testPiegeActivee() throws AventurierException {
-		int pv = 2;
-		int x = 2;
-		int y = 2;
-		Aventurier a = new Aventurier(pv);
-		Labyrinthe l = new Labyrinthe(a);
-		Piege p = new Piege(x, y);
-		l.estPieger(x, y, a);
+		Aventurier a = new Aventurier(2);
+		Piege p = new Piege(0, 0);
 		p.activer(a);
-		assertEquals("Il devrai rester 1 pv", 1, pv);
+		assertEquals("Il devrai rester 1 pv", 1, a.getPV());
 	}
-
 }
 
