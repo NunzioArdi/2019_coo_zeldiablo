@@ -6,6 +6,11 @@ import java.awt.image.BufferedImage;
 
 import moteurJeu.DessinJeu;
 
+/**
+ * 
+ * @author schuler24u
+ *
+ */
 public class DessinJeuZeldiablo implements DessinJeu {
 	
 	public static final int TAILLE=100;
@@ -23,7 +28,11 @@ public class DessinJeuZeldiablo implements DessinJeu {
 			if (c instanceof Mur) {
 				g.setColor(Color.BLACK);
 			} else {
-				g.setColor(Color.WHITE);
+				if (c instanceof Piege) {
+					g.setColor(Color.MAGENTA);
+				} else {
+					g.setColor(Color.WHITE);
+				}
 			}
 			g.fillRect(c.getX()*TAILLE, c.getY()*TAILLE, TAILLE, TAILLE);
 		}
@@ -34,6 +43,9 @@ public class DessinJeuZeldiablo implements DessinJeu {
 			}
 		}
 		g.setColor(Color.GREEN);
+		if (this.jzd.getHero().getPV()==0) {
+			g.setColor(Color.GRAY);
+		}
 		g.fillRect(this.jzd.getHero().getX()*TAILLE, this.jzd.getHero().getY()*TAILLE, TAILLE, TAILLE);
 	}
 
