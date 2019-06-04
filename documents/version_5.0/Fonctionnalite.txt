@@ -1,0 +1,23 @@
+*fonctionnalités
+
+- fonctionnalite 1 :[ajout de plusieur etages]
+- responsable: Nunzio
+- diag de sequence:
+- le labyrinthe sear composer de plusieur etages
+- contrainte: Le personnage pourra naviguer dans les etages
+
+
+- fonctionnalite 2 : [deverouillage]
+- responsable: Killian
+- diag de sequence:
+- Les salles devron ce deverouiller apres que les monstre soient tué
+- contranite: tout les monstre doivent etre mort 
+
+- fonctionnalite 3 : [Moteur graphique avancer]
+- responsable: Pierre
+- diag de sequence: 
+- Mise en place des sprite
+- contranite: 
+
+
+
