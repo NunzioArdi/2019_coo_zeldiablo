@@ -1,0 +1,44 @@
+@startuml
+
+
+title Passage à l'étage suivant
+
+participant	"main" as m
+participant	"jeux: JeuZeldiablo" as jeu
+participant	"listLab ArrayList<Labyrinthe>" as ll
+participant	"lab: Labyrinthe" as l
+
+
+m -> jeu: evolue()
+
+activate jeu
+
+jeu -> jeu: getEtage()
+activate jeu #DarkSalmon
+jeu <-- jeu: int etage
+deactivate jeu
+
+jeu -> ll: get(etage)
+activate ll
+jeu <-- ll: Labyrinthe actuelle
+deactivate ll
+
+jeu -> l: estFin()
+activate l
+jeu <-- l: boolean
+deactivate l
+
+alt estFin==true
+jeu -> jeu: etageSuivant()
+activate jeu #DarkSalmon
+jeu <-- jeu:
+deactivate jeu
+end
+
+m <-- jeu
+deactivate jeu
+
+caption figure 2 MultiEtage
+
+
+@enduml

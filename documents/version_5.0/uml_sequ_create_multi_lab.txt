@@ -1,0 +1,30 @@
+@startuml
+
+title création d'un labyrinthe à plusieurs étages
+
+participant	"jeux: JeuZeldiablo" as main
+participant	"hero: Aventurier" as h
+participant	"listLab ArrayList<Labyrinthe>" as ll
+participant	"lab: Labyrinthe" as l
+
+activate main
+create h
+main -> h: new Aventurier(5)
+create ll
+main -> ll: new ArrayList<Labyrinthe>
+activate ll
+loop i<5
+
+create l
+ll -> l: new Labyrinthe(hero)
+ll -> l: add(lab)
+activate l
+ll <-- l
+deactivate l
+end
+
+main <-- ll
+deactivate ll
+
+caption figure 1 MultiEtage
+@enduml
