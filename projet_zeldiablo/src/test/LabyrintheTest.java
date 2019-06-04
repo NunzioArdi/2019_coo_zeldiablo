@@ -58,7 +58,7 @@ public class LabyrintheTest {
 	}
 
 	/**
-	 * Test si l'aventurier être bien positionnée en 1,1 au départ.
+	 * Test si l'aventurier être bien positionnée en 0,4 au départ.
 	 * 
 	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
@@ -66,8 +66,8 @@ public class LabyrintheTest {
 	public void testConstructeurInitialisationAventurier() throws AventurierException {
 		Aventurier a = new Aventurier(1);
 		Labyrinthe lab = new Labyrinthe(a);
-		assertEquals("l'abscisse devrait être à 1", 1, a.getX());
-		assertEquals("l'ordonnée devrait être à 1", 1, a.getY());
+		assertEquals("l'abscisse devrait être à 1", 0, a.getX());
+		assertEquals("l'ordonnée devrait être à 1", 4, a.getY());
 	}
 
 	/**
