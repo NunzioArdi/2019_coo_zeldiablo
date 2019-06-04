@@ -11,14 +11,14 @@
 - fonctionnalite 2 : [IA monstre deplacement]
 - responsable: Killian
 - diag de sequence: 
-- Les monstre s deplace et attaque aleatoirement
+- Les monstre se deplace et attaque aleatoirement
 - contranite: Les monstre se deplace de façon aleatoire,
 	      les monstre attaque le heros quand ils le croisent. 
 
 - fonctionnalite 2 : [IA monstre attaque]
 - responsable: Nunzio
 - diag de sequence: 
-- Les monstre s deplace et attaque aleatoirement
+- Les monstre attaque aleatoirement
 - contranite: Les monstre attaque le heros quand ils le croisent. 
 
 
