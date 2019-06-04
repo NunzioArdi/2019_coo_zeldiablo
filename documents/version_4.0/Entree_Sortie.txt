@@ -1,7 +1,6 @@
 @startuml
 participant	"main: Main" as m
-participant	"entitee: Entitee" as e
-participant	"entree: Entree" as start
+participant	"hero: Aventurier" as e
 participant	"lab: Labyrinthe" as l
 
 m -> e : seDeplacer(int,int)
