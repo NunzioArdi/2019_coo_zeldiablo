@@ -54,6 +54,11 @@ public class Case {
 		return this.traversable;
 	}
 	
+	/**
+	 * Verifie si la case passee en parametre possede les meme coordonnees
+	 * @param c
+	 * @return booleen true si les coordonnee sont les memes
+	 */
 	public boolean equalsTo(Case c) {
 		return (c.getX()==this.x && c.getY()==y);
 	}
