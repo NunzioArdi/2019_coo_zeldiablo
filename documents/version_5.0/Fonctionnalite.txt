@@ -18,7 +18,7 @@
 	      la sortie fonctionne si aucun monstre n'est present dans le labyrinthe
 	      la sortie fonctionne si tout les monstres on été tuer	
 
-- fonctionnalite 3 : [Moteur graphique avancer]
+- fonctionnalite 3 : [Moteur graphique avancer] - Pas terminé
 - responsable: Pierre
 - diag de sequence: 
 - Mise en place des sprite
