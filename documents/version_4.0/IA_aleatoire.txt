@@ -1,10 +1,10 @@
 @startuml
 jeu -> monstro : decider()
 activate monstro
-monstro -> monstro : seDeplacer(aleatoire)
-activate monstro
-monstro <-- monstro
+jeu <-- monstro : aleat
 deactivate monstro
+jeu -> monstro : seDeplacer(aleat, lab)
+activate monstro
 jeu <-- monstro 
 deactivate monstro
 
