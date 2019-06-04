@@ -19,12 +19,4 @@ public class Goblin extends Monstre {
 	public Goblin(int vie) {
 		super(vie);
 	}
-
-	@Override
-	public void attaquer(int x, int y, Labyrinthe l) {
-		if (l.getHero().getX()==x && l.getHero().getY()==y) {
-			l.getHero().subirDegat(1);
-		}
-	}
-
 }

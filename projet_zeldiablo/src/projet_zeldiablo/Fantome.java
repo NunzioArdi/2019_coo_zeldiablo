@@ -16,9 +16,4 @@ public class Fantome extends Monstre {
 		super(vie);
 		this.traversable=true;
 	}
-
-	@Override
-	public void attaquer(int x, int y, Labyrinthe l) {
-		//TODO ne peut pas attaquer pour l'instant
-	}
 }
