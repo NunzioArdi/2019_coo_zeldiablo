@@ -21,11 +21,6 @@ public class Goblin extends Monstre {
 	}
 
 	@Override
-	public void seDeplacer(char c, Labyrinthe l) {
-		//TODO ne se deplace pour l'instant pas
-	}
-
-	@Override
 	public void attaquer(int x, int y, Labyrinthe l) {
 		if (l.getHero().getX()==x && l.getHero().getY()==y) {
 			l.getHero().subirDegat(1);
