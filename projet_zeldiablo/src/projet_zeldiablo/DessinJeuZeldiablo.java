@@ -32,6 +32,9 @@ public class DessinJeuZeldiablo implements DessinJeu {
 					g.setColor(Color.MAGENTA);
 				} else {
 					g.setColor(Color.WHITE);
+					if (c.getSortie()) {
+						g.setColor(Color.CYAN);
+					}
 				}
 			}
 			g.fillRect(c.getX()*TAILLE, c.getY()*TAILLE, TAILLE, TAILLE);

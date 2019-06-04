@@ -34,23 +34,36 @@ public class Labyrinthe {
 			throw new AventurierException("Aventurier null");
 		}
 		this.hero = h;
+		
+		int k=-1;
 
 		// construction labyrinthe
 		this.cases = new ArrayList<Case>();
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
-					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4) {
-						this.cases.add(new Chemin(i, j));
-						this.cases.get(i+j-2).setSortie();
+					if (i == 0 && j == 4) {
+						this.cases.add(new Chemin(i, j));	
+						k++;
+						// initalisation de l'aventurier
+						this.hero.setPos(i, j);
 					} else {
-						this.cases.add(new Mur(i, j));
+						if (i == 9 && j == 4) {
+							this.cases.add(new Chemin(i, j));
+							k++;
+							this.cases.get(k).setSortie(true);
+						} else {
+							this.cases.add(new Mur(i, j));
+							k++;
+						}
 					}
 				} else {
 					if (i==2 && j==2) {
 						this.cases.add(new Piege(i, j));
+						k++;
 					} else {
 						this.cases.add(new Chemin(i, j));
+						k++;
 					}
 				}
 			}
@@ -68,8 +81,7 @@ public class Labyrinthe {
 		this.monstres.add(f1);
 		this.monstres.add(g2);
 
-		// initalisation de l'aventurier
-		this.hero.setPos(1, 1);
+		
 	}
 
 	/**

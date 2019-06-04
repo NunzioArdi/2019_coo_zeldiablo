@@ -69,7 +69,7 @@ public class Case {
 		return this.sortie;
 	}
 	
-	public boolean setSortie() {
-		return this.sortie = true;
+	public void setSortie(boolean b) {
+		this.sortie = b;
 	}
 }

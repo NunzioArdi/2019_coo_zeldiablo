@@ -26,6 +26,7 @@ public class Aventurier extends Entitee {
 			this.direction=0;
 			if (l.estDisponible(super.posX, super.posY - 1)) {
 				l.estPieger(posX, posY-1, this);
+				l.estSortie(posX, posY-1);
 				this.setPos(super.posX, super.posY - 1);
 			}
 			break;
@@ -33,6 +34,7 @@ public class Aventurier extends Entitee {
 			this.direction=2;
 			if (l.estDisponible(super.posX, super.posY + 1)) {
 				l.estPieger(posX, posY+1, this);
+				l.estSortie(posX, posY+1);
 				this.setPos(super.posX, super.posY + 1);	
 			}
 			break;
@@ -40,6 +42,7 @@ public class Aventurier extends Entitee {
 			this.direction=1;
 			if (l.estDisponible(super.posX + 1, super.posY)) {
 				l.estPieger(posX+1, posY, this);
+				l.estSortie(posX+1, posY);
 				this.setPos(super.posX + 1, super.posY);	
 			}
 			break;
@@ -47,6 +50,7 @@ public class Aventurier extends Entitee {
 			this.direction=3;
 			if (l.estDisponible(super.posX - 1, super.posY)) {
 				l.estPieger(posX-1, posY, this);
+				l.estSortie(posX-1, posY);
 				this.setPos(super.posX - 1, super.posY);	
 			}
 			break;

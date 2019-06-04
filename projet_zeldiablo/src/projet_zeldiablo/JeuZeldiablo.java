@@ -66,7 +66,7 @@ public class JeuZeldiablo implements Jeu {
 
 	@Override
 	public boolean etreFini() {
-		if (this.hero.getPV() == 0) {
+		if (this.lab.getFin() || this.lab.getHero().getPV()==0) {
 			return true;
 		}
 		return false;
