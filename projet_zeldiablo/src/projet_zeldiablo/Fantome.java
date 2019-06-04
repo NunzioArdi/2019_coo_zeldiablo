@@ -2,8 +2,8 @@ package projet_zeldiablo;
 
 /**
  * Monstre de type fantome. Il est traversable.
- * @author Utilisateur
- *
+ * 
+ * @author CONTE Nunzio
  */
 public class Fantome extends Monstre {
 
@@ -14,6 +14,6 @@ public class Fantome extends Monstre {
 	 */
 	public Fantome(int vie) {
 		super(vie);
-		this.traversable=true;
+		this.traversable = true;
 	}
 }

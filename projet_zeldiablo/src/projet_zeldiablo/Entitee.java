@@ -5,7 +5,8 @@ package projet_zeldiablo;
  * points de vie et une position dans le labyrnthe.
  * 
  * @author CORNETTE Pierre
- * @version 1.0
+ * @author CONTE Nunzio
+ * @author SCHULER Killian
  */
 public abstract class Entitee {
 	/** Les points de vie de l'entitée. */
@@ -16,10 +17,13 @@ public abstract class Entitee {
 
 	/** La position en abscisse. */
 	protected int posY;
-	
-	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche) */
+
+	/**
+	 * La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas,
+	 * 3=gauche)
+	 */
 	protected int direction;
-	
+
 	/** Indique si l'entitee peut etre traverser par d'autres entitees */
 	protected boolean traversable;
 
@@ -34,11 +38,12 @@ public abstract class Entitee {
 		} else {
 			this.pv = vie;
 		}
-		this.traversable=false;
+		this.traversable = false;
 	}
 
 	/**
 	 * Essaye de deplacer l'entite dans une direction donnee
+	 * 
 	 * @param c direction vers laquelle se deplacer ('N', 'S', 'E', 'W')
 	 * @param l labyrinthe ou a lieu le deplacement
 	 */
@@ -63,41 +68,62 @@ public abstract class Entitee {
 			this.posY = py;
 		}
 	}
-	
+
+	/**
+	 * Returne l'abscisse de l'entité.
+	 * 
+	 * @return abscisse.
+	 */
 	public int getX() {
 		return this.posX;
 	}
-	
+
+	/**
+	 * Returne l'ordonnée de l'entité.
+	 * 
+	 * @return ordonnée.
+	 */
 	public int getY() {
 		return this.posY;
 	}
-	
+
+	/**
+	 * Returne les Points de vie de l'entité.
+	 * 
+	 * @return la vie.
+	 */
 	public int getPV() {
 		return this.pv;
 	}
-	
+
+	/**
+	 * Indique si l'entité est traversable.
+	 * 
+	 * @return true si traversable
+	 */
 	public boolean estTraversable() {
 		return this.traversable;
 	}
-	
+
 	/**
 	 * Attaque la case aux coordonnees passee en parametre
+	 * 
 	 * @param x abscisse de l'attaque
 	 * @param y ordonnee de l'attaque
 	 * @param l labyrinthe ou a lieu l'attaque
 	 */
 	public abstract void attaquer(int x, int y, Labyrinthe l);
-	
+
 	/**
 	 * Inflige des degats a l'entitee
+	 * 
 	 * @param deg entier indiquant le nombre de pv a deduire
 	 */
 	public void subirDegat(int deg) {
-		this.pv-=deg;
-		if (this.pv<=0) {
-			this.pv=0;
-			this.traversable=true;
+		this.pv -= deg;
+		if (this.pv <= 0) {
+			this.pv = 0;
+			this.traversable = true;
 		}
 	}
-	
 }

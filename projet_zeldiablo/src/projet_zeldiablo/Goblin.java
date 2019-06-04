@@ -7,7 +7,6 @@ package projet_zeldiablo;
  * Monstre de type Goblin
  * 
  * @author Conte Nunzio
- *
  */
 public class Goblin extends Monstre {
 

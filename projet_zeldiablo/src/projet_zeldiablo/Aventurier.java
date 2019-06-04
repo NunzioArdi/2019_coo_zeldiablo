@@ -12,8 +12,7 @@ public class Aventurier extends Entitee {
 	/**
 	 * Constructeur.
 	 * 
-	 * @param pv
-	 *            la vie de départ
+	 * @param pv la vie de départ
 	 */
 	public Aventurier(int pv) {
 		super(pv);
@@ -23,35 +22,35 @@ public class Aventurier extends Entitee {
 	public void seDeplacer(char c, Labyrinthe l) {
 		switch (c) {
 		case 'N':
-			this.direction=0;
+			this.direction = 0;
 			if (l.estDisponible(super.posX, super.posY - 1)) {
-				l.estPieger(posX, posY-1, this);
-				l.estSortie(posX, posY-1);
+				l.estPieger(posX, posY - 1, this);
+				l.estSortie(posX, posY - 1);
 				this.setPos(super.posX, super.posY - 1);
 			}
 			break;
 		case 'S':
-			this.direction=2;
+			this.direction = 2;
 			if (l.estDisponible(super.posX, super.posY + 1)) {
-				l.estPieger(posX, posY+1, this);
-				l.estSortie(posX, posY+1);
-				this.setPos(super.posX, super.posY + 1);	
+				l.estPieger(posX, posY + 1, this);
+				l.estSortie(posX, posY + 1);
+				this.setPos(super.posX, super.posY + 1);
 			}
 			break;
 		case 'E':
-			this.direction=1;
+			this.direction = 1;
 			if (l.estDisponible(super.posX + 1, super.posY)) {
-				l.estPieger(posX+1, posY, this);
-				l.estSortie(posX+1, posY);
-				this.setPos(super.posX + 1, super.posY);	
+				l.estPieger(posX + 1, posY, this);
+				l.estSortie(posX + 1, posY);
+				this.setPos(super.posX + 1, super.posY);
 			}
 			break;
 		case 'W':
-			this.direction=3;
+			this.direction = 3;
 			if (l.estDisponible(super.posX - 1, super.posY)) {
-				l.estPieger(posX-1, posY, this);
-				l.estSortie(posX-1, posY);
-				this.setPos(super.posX - 1, super.posY);	
+				l.estPieger(posX - 1, posY, this);
+				l.estSortie(posX - 1, posY);
+				this.setPos(super.posX - 1, super.posY);
 			}
 			break;
 		}
@@ -60,7 +59,7 @@ public class Aventurier extends Entitee {
 	@Override
 	public void attaquer(int x, int y, Labyrinthe l) {
 		for (Monstre m : l.getMonstres()) {
-			if (m.getX()==x && m.getY()==y) {
+			if (m.getX() == x && m.getY() == y) {
 				m.subirDegat(5);
 			}
 		}

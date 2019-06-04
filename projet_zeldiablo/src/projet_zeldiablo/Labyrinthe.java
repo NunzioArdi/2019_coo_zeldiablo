@@ -7,9 +7,9 @@ import exception.AventurierException;
 /**
  * Classe représentant le labyrinthe. Il est composé de cases et d'entitées.
  * 
- * @author SCHULLER Killian
- * @version 1.0
- *
+ * @author SCHULER Killian
+ * @author CONTE Nunzio
+ * @author CORNETTE PIERRE
  */
 public class Labyrinthe {
 
@@ -19,7 +19,11 @@ public class Labyrinthe {
 	/** la liste des cases composant le labyrinthe. */
 	private ArrayList<Case> cases;
 
+	/** La liste des monstres du labyrinthe */
 	private ArrayList<Monstre> monstres;
+	
+	
+	/** indique si le labyrinthe est terminer */
 	private boolean fin;
 
 	/**
@@ -34,8 +38,8 @@ public class Labyrinthe {
 			throw new AventurierException("Aventurier null");
 		}
 		this.hero = h;
-		
-		int k=-1;
+
+		int k = -1;
 
 		// construction labyrinthe
 		this.cases = new ArrayList<Case>();
@@ -43,7 +47,7 @@ public class Labyrinthe {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4) {
-						this.cases.add(new Chemin(i, j));	
+						this.cases.add(new Chemin(i, j));
 						k++;
 						// initalisation de l'aventurier
 						this.hero.setPos(i, j);
@@ -58,7 +62,7 @@ public class Labyrinthe {
 						}
 					}
 				} else {
-					if (i==2 && j==2) {
+					if (i == 2 && j == 2) {
 						this.cases.add(new Piege(i, j));
 						k++;
 					} else {
@@ -77,11 +81,10 @@ public class Labyrinthe {
 		g2.setPos(7, 7);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
-		//this.monstres.add(g1);
-		//this.monstres.add(f1);
+		// this.monstres.add(g1);
+		// this.monstres.add(f1);
 		this.monstres.add(g2);
 
-		
 	}
 
 	/**
@@ -95,15 +98,15 @@ public class Labyrinthe {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
 				for (Monstre m : this.monstres) {
-					if(m.getX() == x && m.getY() == y && !m.estTraversable()) {
+					if (m.getX() == x && m.getY() == y && !m.estTraversable()) {
 						return false;
 					}
 				}
-				if (this.hero.getX()==x && this.hero.getY()==y) {
-						return false;
+				if (this.hero.getX() == x && this.hero.getY() == y) {
+					return false;
 				} else {
-				return true;
-			} 
+					return true;
+				}
 			}
 		}
 		return false;
@@ -151,20 +154,36 @@ public class Labyrinthe {
 		return this.monstres;
 	}
 
+	/**
+	 * Méthode testant si l'entité est sur une piège. Si c'est le cas, le piège
+	 * s'active sur l'entité.
+	 * 
+	 * @param x abscisse de la case à tester.
+	 * @param y ordonnée de la case à tester.
+	 * 
+	 * @param e l'entité qui est sur la case à tester.
+	 */
 	public void estPieger(int x, int y, Entitee e) {
-		for(Case c: this.cases ) {
-			if(c.getX() == x && c.getY() == y && c instanceof Piegee) {
+		for (Case c : this.cases) {
+			if (c.getX() == x && c.getY() == y && c instanceof Piegee) {
 				Piege p = (Piege) c;
 				p.activer(e);
 			}
 		}
 	}
 
+	/**
+	 * Méthode testant si l'aventurier peut sortir du labyrinthe. Il doit avoir tué
+	 * tous les monstres et on test si l'aventurier est sur la case de sortie.
+	 * 
+	 * @param x l'absicsse de la case à tester.
+	 * @param y l'ordonnée de la case à tester.
+	 */
 	public void estSortie(int x, int y) {
-		boolean vide=true;
+		boolean vide = true;
 		for (Monstre m : this.monstres) {
-			if (m.getPV()>0) {
-				vide=false;
+			if (m.getPV() > 0) {
+				vide = false;
 			}
 		}
 		if (vide) {
@@ -172,10 +191,15 @@ public class Labyrinthe {
 				if (c.equalsTo(new Case(x, y)) && c.getSortie() == true) {
 					fin = true;
 				}
-			} 
+			}
 		}
 	}
-	
+
+	/**
+	 * Retourne si se labyrinthe est terminer.
+	 * 
+	 * @return true si terminer.
+	 */
 	public boolean getFin() {
 		return this.fin;
 	}

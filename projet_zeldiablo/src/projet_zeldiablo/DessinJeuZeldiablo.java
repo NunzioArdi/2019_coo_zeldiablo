@@ -7,16 +7,25 @@ import java.awt.image.BufferedImage;
 import moteurJeu.DessinJeu;
 
 /**
+ * CLasse qui affiche le jeu.
  * 
- * @author schuler24u
- *
+ * @author SCHULER Killian
  */
 public class DessinJeuZeldiablo implements DessinJeu {
 
+	/**
+	 * Taille des élément à afficher.
+	 */
 	public static final int TAILLE = 30;
 
+	/** Le jeu */
 	private JeuZeldiablo jzd;
 
+	/**
+	 * Constructeur.
+	 * 
+	 * @param j le jeu
+	 */
 	public DessinJeuZeldiablo(JeuZeldiablo j) {
 		this.jzd = j;
 	}

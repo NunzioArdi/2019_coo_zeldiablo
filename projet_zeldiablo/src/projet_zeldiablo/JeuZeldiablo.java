@@ -1,19 +1,36 @@
 package projet_zeldiablo;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import exception.AventurierException;
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
 
+/**
+ * Classe représentant le jeu.
+ * 
+ * @author SCHULLER Killian
+ * @author CONTE Nunzio
+ * @author CORNETTE Pierre
+ */
 public class JeuZeldiablo implements Jeu {
 
+	/** La liste des labyrinthes correspondant aux différents étages */
 	private ArrayList<Labyrinthe> lab;
+	
+	/** l'aventurier de la perie */
 	private Aventurier hero;
+
+	/** Indique l'étage actuelle */
 	private int etage = 0;
+	
+	/** Indique si la partie est terminé. */
 	private boolean fin;
 
+	/**
+	 * Constructeur du jeu.
+	 * 
+	 * @throws AventurierException erreur aventurier
+	 */
 	public JeuZeldiablo() throws AventurierException {
 		this.hero = new Aventurier(10);
 		this.lab = new ArrayList<Labyrinthe>();
@@ -51,6 +68,8 @@ public class JeuZeldiablo implements Jeu {
 				break;
 			}
 		}
+
+		// attaque des monstre
 		for (Monstre m : this.getEtage().getMonstres()) {
 			char c = m.decider();
 			m.seDeplacer(c, this.getEtage());
@@ -70,6 +89,7 @@ public class JeuZeldiablo implements Jeu {
 			}
 		}
 
+		// permet d'allez à l'étage suivant
 		if (!fin && this.getEtage().getFin() == true) {
 			this.etageSuivant();
 			this.hero.setPos(0, 4);
@@ -84,16 +104,29 @@ public class JeuZeldiablo implements Jeu {
 		return false;
 	}
 
+	/**
+	 * Retourne l'aventurier
+	 * 
+	 * @return le hero
+	 */
 	public Aventurier getHero() {
 		return hero;
 	}
 
+	/**
+	 * Retourne le labyrinthe de l'étage actuelle.
+	 * 
+	 * @return l'étage en cour.
+	 */
 	public Labyrinthe getEtage() {
 		return this.lab.get(etage);
 	}
 
+	/**
+	 * Méthode servant à passé à l'étage suivant.
+	 */
 	private void etageSuivant() {
-		if (this.etage == this.lab.size()-1) {
+		if (this.etage == this.lab.size() - 1) {
 			this.fin = true;
 		} else
 			this.etage++;
