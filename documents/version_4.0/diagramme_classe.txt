@@ -1,7 +1,8 @@
 @startuml
 class Aventurier{
 +Aventurier(vie: int)
-+seDeplacer(dir: String, l: Labyrinthe) : void
++seDeplacer(c: char, l: Labyrinthe)
++attaquer(x: int, y: int, l:Labyrinthe)
 }
 
 class Labyrinthe{
@@ -11,16 +12,22 @@ class Labyrinthe{
 +estSortie(x: int, y: int)
 +Labyrinthe(a: Aventurier)
 +estDisponible(x int, y: int): boolean
-+getCase(x: int, y: int)
++getCase(x: int, y: int): Case
++getCase(): ArrayList<Case>S
++estPieger(x: int, y: int, e: Entite)
++getMonstre(): ArrayList<Monstre>
 }
 
 class Case{
--sortie: Boolean
+-traversable: boolean
+-sortie: boolean
 - x: int
 - y: int
 +Case(x: int, y: int)
 +getX(): int
 +getY(): int
++estTraversable(): boolean
++equalsTo(c: Case)
 }
 
 class Chemin{
@@ -31,54 +38,77 @@ class Mur{
 +Mur(x: int, y: int)
 }
 
-interface Traversable{
-}
-
-
-
 class JeuZeldiablo {
-
++JeuZeldiablo()
++evoluer(commandeUser: Commande)
++etreFini(): boolean
++getLab(): Labyrinthe
++getHero(): Aventurier
 }
 
 class DessinJeuZeldiablo {
++{static} TAILLE: int
++DessinJeuZeldiablo(j: JeuZeldiablo)
++dessiner(image: BufferedImage)
+}
 
+interface DessinJeu {
++ {abstract} dessiner(image: BufferedImage)
 }
 
 abstract class Entitee{
 -pv: int
 -posX: int
 -posY: int
+-direction: int
+-traversable: boolean
 +Entitee(vie: int)
-+ {abstract} seDeplacer(dir: String, l:Labyrinthe) : void
++ {abstract} seDeplacer(c: char, l:Labyrinthe)
 +setPos(x: int , y: int) : void
-+attaquer(x: int, y: int, l:Labyrinthe) : void
++ {abstract} attaquer(x: int, y: int, l:Labyrinthe)
 +subirDegat(deg:int)
++getX(): int 
++getY(): int
++getPV(): int
++estTraversable(): boolean
 }
 
 abstract class Monstre {
-
++Monstre(vie: int)
++decider(): char
++seDeplacer(c: char, l:Labyrinthe)
 }
 
 class Piege {
-
++Piege(x: int, y:int)
++activer(e: Entitee)
 }
 
 interface Piegee {
-+activate(Entitee):void
++activate(e: Entitee):void
 }
 
+class Goblin {
++Goblin(vie: int)
+}
+
+class Fantome {
++Fantome(vie: int)
+}
 
 Case <|-- Piege
 Piegee <|.. Piege
 Entitee <|-- Monstre
 Case <|-- Chemin
-Case <|-- Mur  
-Traversable  <|..  Chemin
+Case <|-- Mur
+Monstre <|-- Goblin 
+Monstre <|-- Fantome  
 Labyrinthe "1" --> "*" Case : -cases
 Labyrinthe "1" --> "1" Aventurier : -heros
 Labyrinthe "1" --> "*" Monstre : -monstres
 Entitee <|-- Aventurier
-JeuZeldiablo "1" --> "*" Labyrinthe : -lab
-JeuZeldiablo "1" --> "*" Aventurier : -hero
+JeuZeldiablo "1" --> "*" Labyrinthe : -lab: Labyrinthe
+JeuZeldiablo "1" --> "*" Aventurier : -hero: Aventurier
 DessinJeuZeldiablo "1" --> "*" JeuZeldiablo : -jeu
+DessinJeu <|.. DessinJeuZeldiablo 
 @enduml
