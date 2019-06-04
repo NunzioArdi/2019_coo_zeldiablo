@@ -77,8 +77,8 @@ public class Labyrinthe {
 		g2.setPos(7, 7);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
-		this.monstres.add(g1);
-		this.monstres.add(f1);
+		//this.monstres.add(g1);
+		//this.monstres.add(f1);
 		this.monstres.add(g2);
 
 		

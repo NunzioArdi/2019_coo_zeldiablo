@@ -24,7 +24,7 @@ public class DessinJeuZeldiablo implements DessinJeu {
 	@Override
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		for (Case c : this.jzd.getLab().getCase()) {
+		for (Case c : this.jzd.getEtage().getCase()) {
 			if (c instanceof Mur) {
 				g.setColor(Color.BLACK);
 			} else {
@@ -39,7 +39,7 @@ public class DessinJeuZeldiablo implements DessinJeu {
 			}
 			g.fillRect(c.getX() * TAILLE, c.getY() * TAILLE, TAILLE, TAILLE);
 		}
-		for (Monstre m : this.jzd.getLab().getMonstres()) {
+		for (Monstre m : this.jzd.getEtage().getMonstres()) {
 			if (m.getPV() > 0) {
 				g.setColor(Color.RED);
 				g.fillOval(m.getX() * TAILLE, m.getY() * TAILLE, TAILLE, TAILLE);
