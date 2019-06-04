@@ -3,8 +3,11 @@
 - fonctionnalite 1 :[ajout de plusieur etages]
 - responsable: Nunzio
 - diag de sequence:
-- le labyrinthe sear composer de plusieur etages
-- contrainte: Le personnage pourra naviguer dans les etages
+- le labyrinthe sera composer de plusieurs etages
+- contrainte: le nouveau labyrinthe se lance quand :
+							tout les ennemis sont vaincu
+							le hero se deplace sur la case de sortie
+	      le hero est alors placer a l'entree du nouveau labyrinthe
 
 
 - fonctionnalite 2 : [deverouillage]
