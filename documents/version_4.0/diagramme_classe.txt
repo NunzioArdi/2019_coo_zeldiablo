@@ -90,12 +90,10 @@ interface Piegee {
 
 class Goblin {
 +Goblin(vie: int)
-+attaquer(x: int, y: int, lab: Labyrinthe)
 }
 
 class Fantome {
 +Fantome(vie: int)
-+attaquer(x: int, y: int, lab: Labyrinthe)
 }
 
 Case <|-- Piege
