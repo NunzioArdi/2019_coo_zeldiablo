@@ -1,0 +1,35 @@
+@startuml
+participant	"main: Main" as m
+participant	"hero: Aventurier" as e
+participant	"lab: Labyrinthe" as l
+participant "monstres: ArrayList<Monstre>" as mo
+participant "monstro: Monstre" as momo
+
+m -> e : seDeplacer(int,int)
+activate e
+e -> l : estSorti(int,int)
+activate l
+loop i
+l -> mo : get(i)
+activate mo
+l <-- mo : momo
+deactivate mo
+l -> momo : getPv()
+activate momo
+l <-- momo : pv
+deactivate momo
+alt pv==0
+l -> l : setFini(true)
+activate l
+l <-- l
+deactivate l
+end
+end
+e <-- l
+deactivate l
+m <-- e
+deactivate e
+deactivate m
+
+
+@enduml

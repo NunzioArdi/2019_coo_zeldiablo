@@ -9,15 +9,17 @@
 
 - fonctionnalite 2 : [deverouillage]
 - responsable: Killian
-- diag de sequence:
+- diag de sequence: deverouillage.png
 - Les salles devron ce deverouiller apres que les monstre soient tué
-- contranite: tout les monstre doivent etre mort 
+- contrainte: la sortie ne declenche pas la fin si il reste des monstre
+	      la sortie fonctionne si aucun monstre n'est present dans le labyrinthe
+	      la sortie fonctionne si tout les monstres on été tuer	
 
 - fonctionnalite 3 : [Moteur graphique avancer]
 - responsable: Pierre
 - diag de sequence: 
 - Mise en place des sprite
-- contranite: 
+- contrainte: 
 
 
 
