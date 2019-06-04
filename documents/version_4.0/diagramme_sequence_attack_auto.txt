@@ -1,0 +1,37 @@
+@startuml
+title Attaque automatique des monstres
+
+participant	"jeu: JeuZeldiablo" as main
+participant	"lab: Labyrinthe" as l
+participant	"mons: Monstre"   as m
+participant	"av: Aventurier"  as a
+
+main -> m: attaquee(2,3,lab)
+activate main
+activate m
+
+m -> l: getHero()
+activate l
+m <-- l: Aventurier
+deactivate l
+
+m -> a: getX()
+activate a
+m <-- a: x
+deactivate a
+
+m -> a: getY()
+activate a
+m <-- a: y
+deactivate a
+
+alt x==2 et y==3
+	m -> a: subirDegats(5)
+	activate a
+	m <-- a
+	deactivate a
+end
+main <-- m
+deactivate m
+deactivate main
+@enduml
