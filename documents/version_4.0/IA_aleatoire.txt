@@ -1,0 +1,12 @@
+@startuml
+jeu -> monstro : decider()
+activate monstro
+monstro -> monstro : seDeplacer(aleatoire)
+activate monstro
+monstro <-- monstro
+deactivate monstro
+jeu <-- monstro 
+deactivate monstro
+
+
+@enduml
