@@ -141,6 +141,14 @@ public class Labyrinthe {
 			}
 		}
 	}
+
+	public void estSortie(int x, int y) {
+		
+	}
 	
+	public Boolean sortieEstActiver() {
+		return null;
+		
+	}
 	
 }

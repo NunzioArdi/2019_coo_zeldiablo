@@ -5,7 +5,7 @@ participant	"lab: Labyrinthe" as l
 
 m -> e : seDeplacer(int,int)
 activate e
-e -> l : estSorti()
+e -> l : estSorti(int,int)
 activate l
 l -> l :  sortieEstActiver()
 activate l
