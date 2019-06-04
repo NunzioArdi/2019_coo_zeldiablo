@@ -53,4 +53,8 @@ public class Case {
 	public boolean estTraversable() {
 		return this.traversable;
 	}
+	
+	public boolean equalsTo(Case c) {
+		return (c.getX()==this.x && c.getY()==y);
+	}
 }
