@@ -16,49 +16,6 @@ public class EntiteeTest {
 	}
 	
 	@Test
-	public void test_seDeplacer_Chemin() throws AventurierException {
-		Aventurier a=new Aventurier(10);
-		Labyrinthe l=new Labyrinthe(a);
-		a.seDeplacer('E', l);
-		assertEquals("la coordonnee devrait etre 1", 1, a.getX());
-		assertEquals("la coordonnee devrait etre 4", 4, a.getY());
-	}
-	
-	@Test
-	public void test_seDeplacer_Mur() throws AventurierException {
-		Aventurier a=new Aventurier(10);
-		Labyrinthe l=new Labyrinthe(a);
-		a.seDeplacer('N', l);
-		assertEquals("la coordonnee devrait etre 0", 0, a.getX());
-		assertEquals("la coordonnee devrait etre 4", 4, a.getY());
-	}
-	
-	@Test
-	public void test_seDeplacer_Monstre() throws AventurierException {
-		Aventurier a=new Aventurier(10);
-		Labyrinthe l=new Labyrinthe(a);
-		a.seDeplacer('E', l);
-		a.seDeplacer('E', l);
-		a.seDeplacer('E', l);
-		a.seDeplacer('N', l);
-		assertEquals("la coordonnee devrait etre 1", 3, a.getX());
-		assertEquals("la coordonnee devrait etre 4", 4, a.getY());
-	}
-	
-	@Test
-	public void test_seDeplacer_Monstre_Traversable() throws AventurierException {
-		Aventurier a=new Aventurier(10);
-		Labyrinthe l=new Labyrinthe(a);
-		a.seDeplacer('E', l);
-		a.seDeplacer('E', l);
-		a.seDeplacer('S', l);
-		a.seDeplacer('S', l);
-		a.seDeplacer('S', l);
-		assertEquals("la coordonnee devrait etre 1", 2, a.getX());
-		assertEquals("la coordonnee devrait etre 4", 7, a.getY());
-	}
-	
-	@Test
 	public void test_attaquer_vide() throws AventurierException {
 		Aventurier a=new Aventurier(10);
 		Labyrinthe l=new Labyrinthe(a);

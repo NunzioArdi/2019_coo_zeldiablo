@@ -3,17 +3,16 @@
  */
 package test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import exception.AventurierException;
 import projet_zeldiablo.Aventurier;
+import projet_zeldiablo.Case;
 import projet_zeldiablo.Chemin;
 import projet_zeldiablo.Labyrinthe;
-import projet_zeldiablo.Monstre;
 import projet_zeldiablo.Mur;
-import projet_zeldiablo.Piege;
 
 /**
  * @author Utilisateur
@@ -24,8 +23,7 @@ public class LabyrintheTest {
 	/**
 	 * Test le constructeur avec un Aventurier null;
 	 * 
-	 * @throws AventurierException
-	 *             exception levé si l'aventurier est null
+	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
 	@Test(expected = AventurierException.class)
 	public void testConstructeurNull() throws AventurierException {
@@ -37,8 +35,7 @@ public class LabyrintheTest {
 	 * Test le constructeur si les cases générées forme bien un caré de 10*10 avec
 	 * des cases de type mur entourant se carré
 	 * 
-	 * @throws AventurierException
-	 *             exception levé si l'aventurier est null
+	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
 	@Test
 	public void testConstructeurCase() throws AventurierException {
@@ -46,47 +43,38 @@ public class LabyrintheTest {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (i == 0 || j == 0 || i == 9 || j == 9) {
-					if (i == 0 && j == 4 || i == 9 && j == 4) {
+					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4)
 						assertEquals("La case " + i + " " + j + " doit être un chemin", true,
 								lab.getCase(i, j) instanceof Chemin);
-					} else {
+					else
 						assertEquals("La case " + i + " " + j + " doit être un mur", true,
 								lab.getCase(i, j) instanceof Mur);
-					}
 
-				} else {
-					if (i == 2 && j == 2) {
-						assertEquals("La case " + i + " " + j + " doit être un chemin", true,
-								lab.getCase(i, j) instanceof Piege);
-					} else {
-						assertEquals("La case " + i + " " + j + " doit être un chemin", true,
-								lab.getCase(i, j) instanceof Chemin);
-					}
-				}
+				} else
+					assertEquals("La case " + i + " " + j + " doit être un chemin", true,
+							lab.getCase(i, j) instanceof Chemin);
 			}
 		}
 	}
 
 	/**
-	 * Test si l'aventurier être bien positionnée en 0,4 au départ.
+	 * Test si l'aventurier être bien positionnée en 1,1 au départ.
 	 * 
-	 * @throws AventurierException
-	 *             exception levé si l'aventurier est null
+	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
 	@Test
 	public void testConstructeurInitialisationAventurier() throws AventurierException {
 		Aventurier a = new Aventurier(1);
 		Labyrinthe lab = new Labyrinthe(a);
-		assertEquals("l'abscisse devrait être à 1", 0, a.getX());
-		assertEquals("l'ordonnée devrait être à 1", 4, a.getY());
+		assertEquals("l'abscisse devrait être à 1", 1, a.getX());
+		assertEquals("l'ordonnée devrait être à 1", 1, a.getY());
 	}
 
 	/**
 	 * Test si les coordonnée sont disponible. Test les cas suitvant : coorodnnée <0
 	 * ou >9, coordonnée d'un mur, coordonnée d'un chemin, coordonnée sur une entité
 	 * 
-	 * @throws AventurierException
-	 *             exception levé si l'aventurier est null
+	 * @throws AventurierException exception levé si l'aventurier est null
 	 */
 	public void testEstDisponible() throws AventurierException {
 		Aventurier a = new Aventurier(1);
@@ -97,44 +85,12 @@ public class LabyrintheTest {
 
 		assertEquals("x=-1 n'existe pas", false, lab.estDisponible(-1, 2));
 		assertEquals("y=-1 n'existe pas", false, lab.estDisponible(2, -1));
+		
 
 		assertEquals("le mur ne dois pas être accessible", false, lab.estDisponible(0, 0));
 		assertEquals("le chemin d'oit être accessible", true, lab.estDisponible(2, 2));
-
+		
 		assertEquals("Le goblin n'est pas traversable", false, lab.estDisponible(2, 7));
 		assertEquals("le fantome est traversable", true, lab.estDisponible(7, 7));
-	}
-
-	public void test_estSortie_MonstrePresent() throws AventurierException {
-		Aventurier a = new Aventurier(1);
-		Labyrinthe lab = new Labyrinthe(a);
-		lab.estSortie(9, 4);
-		assertEquals("fini devrait etre false", false, lab.getFin());
-	}
-
-	public void test_estSortie_MonstreMorts() throws AventurierException {
-		Aventurier a = new Aventurier(1);
-		Labyrinthe lab = new Labyrinthe(a);
-		for (Monstre m : lab.getMonstres()) {
-			m.subirDegat(100);
-		}
-		lab.estSortie(9, 4);
-		assertEquals("fini devrait etre true", true, lab.getFin());
-	}
-
-	public void test_estSortie_AucunMonstre() throws AventurierException {
-		Aventurier a = new Aventurier(1);
-		Labyrinthe lab = new Labyrinthe(a);
-		lab.getMonstres().clear();
-		lab.estSortie(9, 4);
-		assertEquals("fini devrait etre true", true, lab.getFin());
-	}
-
-	public void test_estSortie_MauvaiseCase() throws AventurierException {
-		Aventurier a = new Aventurier(1);
-		Labyrinthe lab = new Labyrinthe(a);
-		lab.getMonstres().clear();
-		lab.estSortie(9, 5);
-		assertEquals("fini devrait etre false", false, lab.getFin());
 	}
 }

@@ -1,29 +1,28 @@
 package projet_zeldiablo;
 
 import java.util.ArrayList;
+
+import com.sun.glass.events.KeyEvent;
+
 import exception.AventurierException;
 import moteurJeu.Commande;
 import moteurJeu.Jeu;
+import moteurJeu.moteur.CClavier;
+import moteurJeu.moteur.CSouris;
+import moteurJeu.moteur.JeuAbstract;
 
-/**
- * Classe représentant le jeu.
- * 
- * @author SCHULLER Killian
- * @author CONTE Nunzio
- * @author CORNETTE Pierre
- */
-public class JeuZeldiablo implements Jeu {
+public class JeuZeldiablo implements JeuAbstract {
 
-	/** La liste des labyrinthes correspondant aux différents étages */
+	/** La liste des labyrinthes correspondant aux diffï¿½rents ï¿½tages */
 	private ArrayList<Labyrinthe> lab;
-	
+
 	/** l'aventurier de la perie */
 	private Aventurier hero;
 
-	/** Indique l'étage actuelle */
+	/** Indique l'ï¿½tage actuelle */
 	private int etage = 0;
-	
-	/** Indique si la partie est terminé. */
+
+	/** Indique si la partie est terminï¿½. */
 	private boolean fin;
 
 	/**
@@ -36,64 +35,6 @@ public class JeuZeldiablo implements Jeu {
 		this.lab = new ArrayList<Labyrinthe>();
 		for (int i = 0; i < 2; i++)
 			this.lab.add(new Labyrinthe(this.hero));
-	}
-
-	@Override
-	public void evoluer(Commande commandeUser) {
-		if (commandeUser.haut) {
-			this.hero.seDeplacer('N', this.getEtage());
-		}
-		if (commandeUser.bas) {
-			this.hero.seDeplacer('S', this.getEtage());
-		}
-		if (commandeUser.gauche) {
-			this.hero.seDeplacer('W', this.getEtage());
-		}
-		if (commandeUser.droite) {
-			this.hero.seDeplacer('E', this.getEtage());
-		}
-		if (commandeUser.attaque) {
-			switch (this.getEtage().getHero().direction) {
-			case 0:
-				this.hero.attaquer(this.hero.getX(), this.hero.getY() - 1, this.getEtage());
-				break;
-			case 1:
-				this.hero.attaquer(this.hero.getX() + 1, this.getEtage().getHero().getY(), this.getEtage());
-				break;
-			case 2:
-				this.hero.attaquer(this.hero.getX(), this.hero.getY() + 1, this.getEtage());
-				break;
-			case 3:
-				this.hero.attaquer(this.hero.getX() - 1, this.hero.getY(), this.getEtage());
-				break;
-			}
-		}
-
-		// attaque des monstre
-		for (Monstre m : this.getEtage().getMonstres()) {
-			char c = m.decider();
-			m.seDeplacer(c, this.getEtage());
-			switch (m.direction) {
-			case 0:
-				m.attaquer(m.getX(), m.getY() - 1, this.getEtage());
-				break;
-			case 1:
-				m.attaquer(m.getX() + 1, m.getY(), this.getEtage());
-				break;
-			case 2:
-				m.attaquer(m.getX(), m.getY() + 1, this.getEtage());
-				break;
-			case 3:
-				m.attaquer(m.getX() - 1, m.getY(), this.getEtage());
-				break;
-			}
-		}
-
-		// permet d'allez à l'étage suivant
-		if (!fin && this.getEtage().getFin() == true) {
-			this.etageSuivant();
-			this.hero.setPos(0, 4);
-		}
 	}
 
 	@Override
@@ -114,21 +55,63 @@ public class JeuZeldiablo implements Jeu {
 	}
 
 	/**
-	 * Retourne le labyrinthe de l'étage actuelle.
+	 * Retourne le labyrinthe de l'ï¿½tage actuelle.
 	 * 
-	 * @return l'étage en cour.
+	 * @return l'ï¿½tage en cour.
 	 */
 	public Labyrinthe getEtage() {
 		return this.lab.get(etage);
 	}
 
 	/**
-	 * Méthode servant à passé à l'étage suivant.
+	 * Mï¿½thode servant ï¿½ passï¿½ ï¿½ l'ï¿½tage suivant.
 	 */
 	private void etageSuivant() {
 		if (this.etage == this.lab.size() - 1) {
 			this.fin = true;
 		} else
 			this.etage++;
+	}
+
+	@Override
+	public String evoluer(CClavier clavier, CSouris souris) {
+		if (clavier.isPressed(KeyEvent.VK_Z) || clavier.isPressed(KeyEvent.VK_UP)) {
+			this.hero.seDeplacer('N', this.getEtage());
+		}
+		if (clavier.isPressed(KeyEvent.VK_S) || clavier.isPressed(KeyEvent.VK_DOWN)) {
+			this.hero.seDeplacer('S', this.getEtage());
+		}
+		if (clavier.isPressed(KeyEvent.VK_Q) || clavier.isPressed(KeyEvent.VK_LEFT)) {
+			this.hero.seDeplacer('W', this.getEtage());
+		}
+		if (clavier.isPressed(KeyEvent.VK_D) || clavier.isPressed(KeyEvent.VK_RIGHT)) {
+			this.hero.seDeplacer('E', this.getEtage());
+		}
+		if (clavier.isPressed(KeyEvent.VK_SPACE) || souris.isPressed()) {
+			switch (this.hero.direction) {
+			case 0:
+				this.hero.attaquer(this.hero.getX(), this.hero.getY() - 1, this.getEtage());
+				break;
+			case 1:
+				this.hero.attaquer(this.hero.getX() + 1, this.hero.getY(), this.getEtage());
+				break;
+			case 2:
+				this.hero.attaquer(this.hero.getX(), this.hero.getY() + 1, this.getEtage());
+				break;
+			case 3:
+				this.hero.attaquer(this.hero.getX() - 1, this.hero.getY(), this.getEtage());
+				break;
+			}
+		}
+		for (Monstre m : this.getEtage().getMonstres()) {
+			char c = m.decider();
+			m.seDeplacer(c, this.getEtage());
+		}
+		// permet d'allez ï¿½ l'ï¿½tage suivant
+		if (!fin && this.getEtage().getFin() == true) {
+			this.etageSuivant();
+			this.hero.setPos(0, 4);
+		}
+		return null;
 	}
 }
