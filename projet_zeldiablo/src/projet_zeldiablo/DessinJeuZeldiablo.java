@@ -12,18 +12,18 @@ import moteurJeu.DessinJeu;
  *
  */
 public class DessinJeuZeldiablo implements DessinJeu {
-	
-	public static final int TAILLE=30;
-	
+
+	public static final int TAILLE = 30;
+
 	private JeuZeldiablo jzd;
-	
+
 	public DessinJeuZeldiablo(JeuZeldiablo j) {
-		this.jzd=j;
+		this.jzd = j;
 	}
 
 	@Override
 	public void dessiner(BufferedImage image) {
-		Graphics2D g=(Graphics2D) image.getGraphics();
+		Graphics2D g = (Graphics2D) image.getGraphics();
 		for (Case c : this.jzd.getLab().getCase()) {
 			if (c instanceof Mur) {
 				g.setColor(Color.BLACK);
@@ -34,19 +34,18 @@ public class DessinJeuZeldiablo implements DessinJeu {
 					g.setColor(Color.WHITE);
 				}
 			}
-			g.fillRect(c.getX()*TAILLE, c.getY()*TAILLE, TAILLE, TAILLE);
+			g.fillRect(c.getX() * TAILLE, c.getY() * TAILLE, TAILLE, TAILLE);
 		}
 		for (Monstre m : this.jzd.getLab().getMonstres()) {
-			if (m.getPV()>0) {
+			if (m.getPV() > 0) {
 				g.setColor(Color.RED);
 				g.fillOval(m.getX() * TAILLE, m.getY() * TAILLE, TAILLE, TAILLE);
 			}
 		}
 		g.setColor(Color.GREEN);
-		if (this.jzd.getHero().getPV()==0) {
+		if (this.jzd.getHero().getPV() == 0) {
 			g.setColor(Color.GRAY);
 		}
-		g.fillRect(this.jzd.getHero().getX()*TAILLE, this.jzd.getHero().getY()*TAILLE, TAILLE, TAILLE);
-	}
-
+		g.fillRect(this.jzd.getHero().getX() * TAILLE, this.jzd.getHero().getY() * TAILLE, TAILLE, TAILLE);
+	}	
 }
