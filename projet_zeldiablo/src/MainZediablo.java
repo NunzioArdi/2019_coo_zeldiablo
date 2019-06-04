@@ -11,7 +11,7 @@ public class MainZediablo {
 		JeuZeldiablo jzd=new JeuZeldiablo();
 		DessinJeuZeldiablo djzd=new DessinJeuZeldiablo(jzd);
 		MoteurGraphique m=new MoteurGraphique(jzd, djzd);
-		m.lancerJeu(1000, 1000);
+		m.lancerJeu(300, 300);
 		Scanner sc=new Scanner(System.in);
 		while (!jzd.etreFini()) {
 			

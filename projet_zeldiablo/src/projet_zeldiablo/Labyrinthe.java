@@ -20,6 +20,7 @@ public class Labyrinthe {
 	private ArrayList<Case> cases;
 
 	private ArrayList<Monstre> monstres;
+	private boolean fin;
 
 	/**
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
@@ -41,6 +42,7 @@ public class Labyrinthe {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4 || i == 4 && j == 0 || i == 4 && j == 9 || i == 9 && j == 4) {
 						this.cases.add(new Chemin(i, j));
+						this.cases.get(i+j-2).setSortie();
 					} else {
 						this.cases.add(new Mur(i, j));
 					}
@@ -143,12 +145,14 @@ public class Labyrinthe {
 	}
 
 	public void estSortie(int x, int y) {
-		
+		for(Case c: this.cases) {
+			if(c.equalsTo(new Case(x,y)) && c.getSortie() == true){
+				fin = true;
+			}
+		}
 	}
 	
-	public Boolean sortieEstActiver() {
-		return null;
-		
+	public boolean getFin() {
+		return this.fin;
 	}
-	
 }
