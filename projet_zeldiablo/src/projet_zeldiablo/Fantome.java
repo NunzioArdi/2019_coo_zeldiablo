@@ -18,11 +18,6 @@ public class Fantome extends Monstre {
 	}
 
 	@Override
-	public void seDeplacer(char c, Labyrinthe l) {
-		//TODO ne se deplace pour l'instant pas
-	}
-
-	@Override
 	public void attaquer(int x, int y, Labyrinthe l) {
 		//TODO ne peut pas attaquer pour l'instant
 	}

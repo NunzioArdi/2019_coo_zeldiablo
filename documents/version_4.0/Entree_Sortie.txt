@@ -1,0 +1,22 @@
+@startuml
+participant	"main: Main" as m
+participant	"entitee: Entitee" as e
+participant	"entree: Entree" as start
+participant	"lab: Labyrinthe" as l
+
+m -> e : seDeplacer(int,int)
+activate e
+e -> l : estSorti()
+activate l
+l -> l :  sortieEstActiver()
+activate l
+l <-- l
+deactivate l
+e <-- l
+deactivate l
+m <-- e
+deactivate e
+deactivate m
+
+
+@enduml

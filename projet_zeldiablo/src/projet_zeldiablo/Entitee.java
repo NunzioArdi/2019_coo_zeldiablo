@@ -20,6 +20,7 @@ public abstract class Entitee {
 	/** La direction vers laquelle est tournee l'entitee (0=haut, 1=droite, 2=bas, 3=gauche) */
 	protected int direction;
 	
+	/** Indique si l'entitee peut etre traverser par d'autres entitees */
 	protected boolean traversable;
 
 	/**
@@ -37,10 +38,9 @@ public abstract class Entitee {
 	}
 
 	/**
-	 * Méthode permettant à l'entitée de se déplacer dans le labyrinthe.
-	 * 
-	 * @param x l'abscisse de la position désirée.
-	 * @param y l'ordonnée de la position désirée.
+	 * Essaye de deplacer l'entite dans une direction donnee
+	 * @param c direction vers laquelle se deplacer ('N', 'S', 'E', 'W')
+	 * @param l labyrinthe ou a lieu le deplacement
 	 */
 	public abstract void seDeplacer(char c, Labyrinthe l);
 
@@ -80,8 +80,18 @@ public abstract class Entitee {
 		return this.traversable;
 	}
 	
+	/**
+	 * Attaque la case aux coordonnees passee en parametre
+	 * @param x abscisse de l'attaque
+	 * @param y ordonnee de l'attaque
+	 * @param l labyrinthe ou a lieu l'attaque
+	 */
 	public abstract void attaquer(int x, int y, Labyrinthe l);
 	
+	/**
+	 * Inflige des degats a l'entitee
+	 * @param deg entier indiquant le nombre de pv a deduire
+	 */
 	public void subirDegat(int deg) {
 		this.pv-=deg;
 		if (this.pv<=0) {

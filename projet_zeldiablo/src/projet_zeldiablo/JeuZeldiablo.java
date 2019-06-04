@@ -45,6 +45,10 @@ public class JeuZeldiablo implements Jeu {
 				break;
 			}
 		}
+		for (Monstre m : this.lab.getMonstres()) {
+			char c=m.decider();
+			m.seDeplacer(c, this.lab);
+		}
 	}
 
 	@Override
