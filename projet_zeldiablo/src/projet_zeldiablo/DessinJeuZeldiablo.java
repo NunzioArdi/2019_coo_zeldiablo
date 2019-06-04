@@ -13,7 +13,7 @@ import moteurJeu.DessinJeu;
  */
 public class DessinJeuZeldiablo implements DessinJeu {
 	
-	public static final int TAILLE=100;
+	public static final int TAILLE=30;
 	
 	private JeuZeldiablo jzd;
 	

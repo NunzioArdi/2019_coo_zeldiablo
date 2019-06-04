@@ -16,6 +16,8 @@ public class Case {
 	/** Indique si la case est traversable*/
 	protected boolean traversable;
 	
+	private boolean sortie;
+	
 	/**
 	 * Constructeur de Case.
 	 * 
@@ -61,5 +63,13 @@ public class Case {
 	 */
 	public boolean equalsTo(Case c) {
 		return (c.getX()==this.x && c.getY()==y);
+	}
+	
+	public boolean getSortie() {
+		return this.sortie;
+	}
+	
+	public boolean setSortie() {
+		return this.sortie = true;
 	}
 }
