@@ -47,6 +47,20 @@ public class JeuZeldiablo implements Jeu {
 		for (Monstre m : this.lab.getMonstres()) {
 			char c=m.decider();
 			m.seDeplacer(c, this.lab);
+			switch (m.direction) {
+			case 0:
+				m.attaquer(m.getX(), m.getY() - 1, this.lab);
+				break;
+			case 1:
+				m.attaquer(m.getX() + 1, m.getY(), this.lab);
+				break;
+			case 2:
+				m.attaquer(m.getX(), m.getY() + 1, this.lab);
+				break;
+			case 3:
+				m.attaquer(m.getX() - 1, m.getY(), this.lab);
+				break;
+			}
 		}
 	}
 
