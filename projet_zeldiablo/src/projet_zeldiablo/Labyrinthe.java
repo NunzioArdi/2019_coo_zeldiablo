@@ -99,7 +99,11 @@ public class Labyrinthe {
 						return false;
 					}
 				}
+				if (this.hero.getX()==x && this.hero.getY()==y) {
+						return false;
+				} else {
 				return true;
+			} 
 			}
 		}
 		return false;
