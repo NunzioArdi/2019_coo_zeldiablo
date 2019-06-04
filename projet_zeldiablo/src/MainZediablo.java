@@ -16,6 +16,7 @@ public class MainZediablo {
 		while (!jzd.etreFini()) {
 			
 		}
+		System.out.println("Le heros est mort, l'espoir s'est etteint avec son dernier souffle, ce monde comdamne a l'anneantissement est le resultat de votre echec");
 	}
 
 }

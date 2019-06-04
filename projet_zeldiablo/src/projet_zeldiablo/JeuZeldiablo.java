@@ -32,7 +32,6 @@ public class JeuZeldiablo implements Jeu {
 			switch (this.lab.getHero().direction) {
 			case 0:
 				this.lab.getHero().attaquer(this.lab.getHero().getX(), this.lab.getHero().getY() - 1, this.lab);
-				System.out.println("aah");
 				break;
 			case 1:
 				this.lab.getHero().attaquer(this.lab.getHero().getX() + 1, this.lab.getHero().getY(), this.lab);
@@ -54,7 +53,6 @@ public class JeuZeldiablo implements Jeu {
 	@Override
 	public boolean etreFini() {
 		if (this.hero.getPV() == 0) {
-			System.out.println("Le heros est mort, l'espoir s'est etteint avec son dernier souffle, ce monde comdamne a l'anneantissement est le resultat de votre echec");
 			return true;
 		}
 		return false;
