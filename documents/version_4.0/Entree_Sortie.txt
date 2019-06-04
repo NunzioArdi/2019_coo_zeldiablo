@@ -7,10 +7,6 @@ m -> e : seDeplacer(int,int)
 activate e
 e -> l : estSorti(int,int)
 activate l
-l -> l :  sortieEstActiver()
-activate l
-l <-- l
-deactivate l
 e <-- l
 deactivate l
 m <-- e
