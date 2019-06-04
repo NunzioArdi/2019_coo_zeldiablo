@@ -15,13 +15,12 @@ activate jeu
 
 jeu -> jeu: getEtage()
 activate jeu #DarkSalmon
-jeu <-- jeu: int etage
-deactivate jeu
-
 jeu -> ll: get(etage)
 activate ll
 jeu <-- ll: Labyrinthe actuelle
 deactivate ll
+jeu <-- jeu: Labyrinthe
+deactivate jeu
 
 jeu -> l: estFin()
 activate l
