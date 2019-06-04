@@ -161,10 +161,18 @@ public class Labyrinthe {
 	}
 
 	public void estSortie(int x, int y) {
-		for(Case c: this.cases) {
-			if(c.equalsTo(new Case(x,y)) && c.getSortie() == true){
-				fin = true;
+		boolean vide=true;
+		for (Monstre m : this.monstres) {
+			if (m.getPV()>0) {
+				vide=false;
 			}
+		}
+		if (vide) {
+			for (Case c : this.cases) {
+				if (c.equalsTo(new Case(x, y)) && c.getSortie() == true) {
+					fin = true;
+				}
+			} 
 		}
 	}
 	
