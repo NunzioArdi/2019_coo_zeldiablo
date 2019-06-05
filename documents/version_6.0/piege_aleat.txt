@@ -1,0 +1,22 @@
+@startuml
+participant	"main: Main" as m
+participant	"piege: Piege" as p
+participant	"lab: Labyrinthe" as l
+
+m -> p : placerPiege(int,int)
+activate p
+
+p -> l : estDisponible(int,int)
+activate l
+l --> p: true
+deactivate l
+
+p -> l: add(new Piege)
+activate l
+l --> p
+p --> m
+deactivate p
+deactivate l
+
+
+@enduml

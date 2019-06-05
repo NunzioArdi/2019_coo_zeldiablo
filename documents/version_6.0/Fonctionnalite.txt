@@ -17,7 +17,7 @@
 
 - fonctionnalite 3 : [placement de piege aleatoire]
 - responsable: Pierre
-- diag de sequence: 
+- diag de sequence: piege_aleat.png
 - Les piege sont placer de façon aleatore dans le labyrinthe
 - contrainte: Les pieges sont traversable
 	      les pieges ne peuvent pas etre poser a l'emplacement d'un mur
