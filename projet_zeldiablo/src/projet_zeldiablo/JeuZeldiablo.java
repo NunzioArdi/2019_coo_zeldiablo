@@ -1,8 +1,8 @@
 package projet_zeldiablo;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import com.sun.glass.events.KeyEvent;
 
 import exception.AventurierException;
 import moteurJeu.Commande;
@@ -33,7 +33,7 @@ public class JeuZeldiablo implements JeuAbstract {
 	public JeuZeldiablo() throws AventurierException {
 		this.hero = new Aventurier(10);
 		this.lab = new ArrayList<Labyrinthe>();
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 2 ; i++)
 			this.lab.add(new Labyrinthe(this.hero));
 	}
 
