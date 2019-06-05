@@ -92,27 +92,27 @@ public class JeuZeldiablo implements JeuAbstract {
 	@Override
 	public String evoluer(CClavier clavier, CSouris souris) {
 		int[] coo = new int[3];
+		boolean b = false;
 		if (clavier.isPressed(KeyEvent.VK_Z) || clavier.isPressed(KeyEvent.VK_UP)) {
 			coo = this.hero.seDeplacer('N');
-			if (this.estDisponible(coo[0], coo[1])) {
-				this.hero.setPos(coo[0], coo[1]);
-			}
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_S) || clavier.isPressed(KeyEvent.VK_DOWN)) {
 			coo = this.hero.seDeplacer('S');
-			if (this.estDisponible(coo[0], coo[1])) {
-				this.hero.setPos(coo[0], coo[1]);
-			}
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_Q) || clavier.isPressed(KeyEvent.VK_LEFT)) {
 			coo = this.hero.seDeplacer('W');
-			if (this.estDisponible(coo[0], coo[1])) {
-				this.hero.setPos(coo[0], coo[1]);
-			}
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_D) || clavier.isPressed(KeyEvent.VK_RIGHT)) {
 			coo = this.hero.seDeplacer('E');
+			b = true;
+		}
+		if (b) {
 			if (this.estDisponible(coo[0], coo[1])) {
+				this.getEtage().estSortie(coo[0], coo[1]);
+				this.getEtage().estPieger(coo[0], coo[1], this.hero);
 				this.hero.setPos(coo[0], coo[1]);
 			}
 		}
@@ -125,20 +125,22 @@ public class JeuZeldiablo implements JeuAbstract {
 			}
 		}
 		for (Monstre m : this.getEtage().getMonstres()) {
-			char c = m.decider();
-			coo = m.seDeplacer(c);
-			if (this.estDisponible(coo[0], coo[1])) {
-				m.setPos(coo[0], coo[1]);
+			if (m.getPV()>0) {
+				char c = m.decider();
+				coo = m.seDeplacer(c);
+				if (this.estDisponible(coo[0], coo[1])) {
+					m.setPos(coo[0], coo[1]);
+				}
+				coo = m.attaquer();
+				if (this.hero.getX() == coo[0] && this.hero.getY() == coo[1]) {
+					this.hero.subirDegat(coo[2]);
+				} 
 			}
-			coo = m.attaquer();
-			if (this.hero.getX() == coo[0] && this.hero.getY() == coo[1]) {
-				this.hero.subirDegat(coo[2]);
-			}
-			// permet d'allez � l'�tage suivant
-			if (!fin && this.getEtage().getFin() == true) {
-				this.etageSuivant();
-				this.hero.setPos(0, 4);
-			}
+		}
+		// permet d'allez a l'etage suivant
+		if (!fin && this.getEtage().getFin() == true) {
+			this.etageSuivant();
+			this.hero.setPos(0, 4);
 		}
 		return null;
 	}
