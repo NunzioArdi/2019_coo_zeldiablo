@@ -12,8 +12,8 @@ import javax.imageio.ImageIO;
 import moteurJeu.moteur.DessinAbstract;
 
 /**
- * 
- * @author schuler24u
+ * Classe qui permet de dessiner les elements du jeu
+ * @author SCHULER Kilian
  *
  */
 public class DessinJeuZeldiablo implements DessinAbstract {
@@ -22,6 +22,10 @@ public class DessinJeuZeldiablo implements DessinAbstract {
 
 	private JeuZeldiablo jzd;
 
+	/**
+	 * Constructeur de la classe
+	 * @param j Jeu qui prends en charge les sprites
+	 */
 	public DessinJeuZeldiablo(JeuZeldiablo j) {
 		this.jzd = j;
 
@@ -34,6 +38,10 @@ public class DessinJeuZeldiablo implements DessinAbstract {
 		Sprites.chargerImage("hero", "images\\Link_de_face.png");
 	}
 
+	/**
+	 * Methode qui permet de mettre les images
+	 * @param image BufferedImage
+	 */
 	@Override
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();

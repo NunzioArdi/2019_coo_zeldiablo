@@ -62,19 +62,19 @@ public class Labyrinthe {
 						}
 					}
 				} else {
+					//Creation des murs dans le Labyrinthe
 					if (1 <= i && i <= 2 && 2 <= j && j <= 3 || i == 2 && 5<= j  && j <= 9 
 						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
 						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
 						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
 						this.cases.add(new Mur(i,j));
 						k++;
-					} else if (i == 2 && j == 1) {
-						this.cases.add(new Piege(i, j));
-						k++;
 					} else {
 						this.cases.add(new Chemin(i, j));
 						k++;
 					}
+					//placerPiege(i, j);
+					//k += 5;
 				}
 			}
 		}
@@ -197,6 +197,25 @@ public class Labyrinthe {
 					fin = true;
 				}
 			}
+		}
+	}
+	
+	/**
+	 * Methode permettant de placer les pieges
+	 * @param x l'absicsse de la case à tester.
+	 * @param y l'ordonnée de la case à tester.
+	 */
+	public void placerPiege(int x, int y) {
+		int i = 0;
+		while(i <5) {
+			int random_x = (int) (Math.random() * 9);
+			int random_y = (int) (Math.random() * 9);
+			for(Case c : this.cases) {
+				if (this.estDisponible(c.getX(),c.getY()) == true) {
+					this.cases.add(new Piege(random_x, random_y));
+				}
+			}
+			i++;
 		}
 	}
 

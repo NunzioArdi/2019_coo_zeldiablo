@@ -11,13 +11,17 @@ public class Aventurier extends Entitee {
 
 	/**
 	 * Constructeur.
-	 * 
 	 * @param pv la vie de départ
 	 */
 	public Aventurier(int pv) {
 		super(pv);
 	}
 
+	/**
+	 * Methode qui permet a l'aventurier de se déplacer dans le labyrinthe
+	 * @param c Direction
+	 * @param l Labyrinthe ou se deplace l'aventurier
+	 */
 	@Override
 	public void seDeplacer(char c, Labyrinthe l) {
 		switch (c) {
@@ -56,6 +60,12 @@ public class Aventurier extends Entitee {
 		}
 	}
 
+	/**
+	 * Methode qui permet au heros d'attaquer les monstres
+	 * @param x Abscisse
+	 * @param y Ordonnee
+	 * @param l Labyrinthe ou l'aventurier va attaquer
+	 */
 	@Override
 	public void attaquer(int x, int y, Labyrinthe l) {
 		for (Monstre m : l.getMonstres()) {

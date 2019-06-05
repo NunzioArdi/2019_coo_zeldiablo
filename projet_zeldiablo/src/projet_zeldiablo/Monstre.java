@@ -31,6 +31,11 @@ public abstract class Monstre extends Entitee {
 		return tab[i];
 	}
 
+	/**
+	 * Methode qui permet au monstre de se déplacer dans le labyrinthe
+	 * @param c Direction
+	 * @param l Labyrinthe ou se deplace l'aventurier
+	 */
 	@Override
 	public void seDeplacer(char c, Labyrinthe l) {
 		switch (c) {
@@ -61,6 +66,12 @@ public abstract class Monstre extends Entitee {
 		}
 	}
 
+	/**
+	 * Methode qui permet au monstre d'attaquer le heros
+	 * @param x Abscisse
+	 * @param y Ordonnee
+	 * @param l Labyrinthe ou l'aventurier va attaquer
+	 */
 	@Override
 	public void attaquer(int x, int y, Labyrinthe l) {
 		if (l.getHero().getX() == x && l.getHero().getY() == y) {
