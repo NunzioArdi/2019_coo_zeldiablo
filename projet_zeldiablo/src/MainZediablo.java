@@ -1,13 +1,12 @@
 import java.util.Scanner;
 
-import exception.AventurierException;
 import moteurJeu.moteur.MoteurGraphique;
 import projet_zeldiablo.DessinJeuZeldiablo;
 import projet_zeldiablo.JeuZeldiablo;
 
 public class MainZediablo {
 
-	public static void main(String[] args) throws InterruptedException, AventurierException {
+	public static void main(String[] args) throws InterruptedException {
 		JeuZeldiablo jzd = new JeuZeldiablo();
 		DessinJeuZeldiablo djzd = new DessinJeuZeldiablo(jzd);
 		MoteurGraphique m = new MoteurGraphique(jzd, djzd);

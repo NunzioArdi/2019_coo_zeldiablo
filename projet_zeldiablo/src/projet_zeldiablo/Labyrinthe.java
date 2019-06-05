@@ -2,7 +2,6 @@ package projet_zeldiablo;
 
 import java.util.ArrayList;
 
-import exception.AventurierException;
 
 /**
  * Classe représentant le labyrinthe. Il est composé de cases et d'entitées.

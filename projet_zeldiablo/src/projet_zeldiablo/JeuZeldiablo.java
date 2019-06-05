@@ -3,7 +3,6 @@ package projet_zeldiablo;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import exception.AventurierException;
 import moteurJeu.moteur.CClavier;
 import moteurJeu.moteur.CSouris;
 import moteurJeu.moteur.JeuAbstract;
