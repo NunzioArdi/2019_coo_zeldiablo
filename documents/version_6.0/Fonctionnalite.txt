@@ -8,7 +8,7 @@
 							
 
 - fonctionnalite 2 : [Placement de mur dans le labyrinthe]
-- responsable: 
+- responsable: Theo
 - diag de sequence:
 - Le labyrinthe contien des murs qui sont des obstacles a l'interieur du labyrinthe
 - contrainte: les murs ne sont pas traversable
@@ -16,7 +16,7 @@
 	      
 
 - fonctionnalite 3 : [placement de piege aleatoire]
-- responsable: 
+- responsable: Pierre
 - diag de sequence: 
 - Les piege sont placer de façon aleatore dans le labyrinthe
 - contrainte: Les pieges sont traversable
