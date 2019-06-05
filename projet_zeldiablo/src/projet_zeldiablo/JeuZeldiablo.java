@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import com.sun.glass.events.KeyEvent;
 
 import exception.AventurierException;
-import moteurJeu.Commande;
-import moteurJeu.Jeu;
 import moteurJeu.moteur.CClavier;
 import moteurJeu.moteur.CSouris;
 import moteurJeu.moteur.JeuAbstract;

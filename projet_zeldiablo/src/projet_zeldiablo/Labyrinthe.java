@@ -21,8 +21,7 @@ public class Labyrinthe {
 
 	/** La liste des monstres du labyrinthe */
 	private ArrayList<Monstre> monstres;
-	
-	
+
 	/** indique si le labyrinthe est terminer */
 	private boolean fin;
 
