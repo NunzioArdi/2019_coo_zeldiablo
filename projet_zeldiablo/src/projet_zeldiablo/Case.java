@@ -18,6 +18,7 @@ public abstract class Case implements Dessinable {
 	/** Indique si la case est traversable*/
 	protected boolean traversable;
 	
+	/** Indique la sortie */
 	private boolean sortie;
 	
 	/**
@@ -67,10 +68,18 @@ public abstract class Case implements Dessinable {
 		return (c.getX()==this.x && c.getY()==y);
 	}
 	
+	/** 
+	 * Retourne l'attribut sortie
+	 * @return true si l'aventurier est sortie
+	 */
 	public boolean getSortie() {
 		return this.sortie;
 	}
 	
+	/**
+	 * Methode qui permet de changer la valeur de sortie
+	 * @param b Boolean
+	 */
 	public void setSortie(boolean b) {
 		this.sortie = b;
 	}

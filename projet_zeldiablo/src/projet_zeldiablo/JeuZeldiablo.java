@@ -7,18 +7,26 @@ import moteurJeu.moteur.CClavier;
 import moteurJeu.moteur.CSouris;
 import moteurJeu.moteur.JeuAbstract;
 
+/**
+ * Classe qui permet la creation du jeu
+ * @author SCHULER Killian
+ * @author CONTE Nunzio
+ * @author CORNETTE PIERRE
+ * @author SALLERIN Theo
+ *
+ */
 public class JeuZeldiablo implements JeuAbstract {
 
-	/** La liste des labyrinthes correspondant aux diff�rents �tages */
+	/** La liste des labyrinthes correspondant aux differents etages */
 	private ArrayList<Labyrinthe> lab;
 
 	/** l'aventurier de la perie */
 	private Aventurier hero;
 
-	/** Indique l'�tage actuelle */
+	/** Indique l'etage actuelle */
 	private int etage = 0;
 
-	/** Indique si la partie est termin�. */
+	/** Indique si la partie est terminee. */
 	private boolean fin;
 
 	/**
@@ -37,6 +45,10 @@ public class JeuZeldiablo implements JeuAbstract {
 		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
 	}
 
+	/**
+	 * Methode determinant si la partie est fini
+	 * @return true si la partie est fini
+	 */
 	@Override
 	public boolean etreFini() {
 		if (this.hero.getPV() == 0 || this.fin) {
@@ -55,16 +67,16 @@ public class JeuZeldiablo implements JeuAbstract {
 	}
 
 	/**
-	 * Retourne le labyrinthe de l'�tage actuelle.
+	 * Retourne le labyrinthe de l'etage actuelle.
 	 * 
-	 * @return l'�tage en cour.
+	 * @return l'etage en cours.
 	 */
 	public Labyrinthe getEtage() {
 		return this.lab.get(etage);
 	}
 
 	/**
-	 * M�thode servant � pass� � l'�tage suivant.
+	 * Methode servant a passe a l'etage suivant.
 	 */
 	private void etageSuivant() {
 		if (this.etage == this.lab.size() - 1) {

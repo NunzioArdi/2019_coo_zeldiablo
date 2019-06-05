@@ -38,4 +38,5 @@ public abstract class Monstre extends Entitee {
 //			l.getHero().subirDegat(1);
 //		}
 //	}
+
 }

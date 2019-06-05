@@ -15,7 +15,6 @@ public class Aventurier extends Entitee {
 
 	/**
 	 * Constructeur.
-	 * 
 	 * @param pv la vie de départ
 	 */
 	public Aventurier(int pv) {
