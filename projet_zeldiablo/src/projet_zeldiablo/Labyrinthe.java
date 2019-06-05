@@ -2,6 +2,7 @@ package projet_zeldiablo;
 
 import java.util.ArrayList;
 
+import exception.AventurierException;
 
 /**
  * Classe représentant le labyrinthe. Il est composé de cases et d'entitées.
@@ -20,6 +21,7 @@ public class Labyrinthe {
 	private ArrayList<Monstre> monstres;
 	
 	private int posDepX, posDepY;
+	
 	
 	/** indique si le labyrinthe est terminer */
 	private boolean fin;
@@ -102,6 +104,16 @@ public class Labyrinthe {
 		}
 		return false;
 	}
+
+	/**
+	 * Retourne la liste des cases du labyrinthe.
+	 * 
+	 * @return toute les cases du labyrinthe.
+	 */
+	public ArrayList<Case> getCase() {
+		return this.cases;
+	}
+
 
 	/**
 	 * Retourne la liste des monstres du labyrinthe.
