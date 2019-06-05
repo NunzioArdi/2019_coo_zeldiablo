@@ -13,15 +13,15 @@ import exception.AventurierException;
  */
 public class Labyrinthe {
 
-	/** L'aventurier du labyrinthe. */
-	private Aventurier hero;
 
 	/** la liste des cases composant le labyrinthe. */
 	private ArrayList<Case> cases;
 
-	/** La liste des monstres du labyrinthe */
+	/** La liste des monstres du jeu */
 	private ArrayList<Monstre> monstres;
-
+	
+	private int posDepX, posDepY;
+	
 	/** indique si le labyrinthe est terminer */
 	private boolean fin;
 
@@ -31,12 +31,7 @@ public class Labyrinthe {
 	 * 
 	 * @param h l'aventurier
 	 */
-	public Labyrinthe(Aventurier h) throws AventurierException {
-		// test aventurier
-		if (h == null) {
-			throw new AventurierException("Aventurier null");
-		}
-		this.hero = h;
+	public Labyrinthe() {
 
 		int k = -1;
 
@@ -47,9 +42,9 @@ public class Labyrinthe {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4) {
 						this.cases.add(new Chemin(i, j));
+						this.posDepX=i;
+						this.posDepY=j;
 						k++;
-						// initalisation de l'aventurier
-						this.hero.setPos(i, j);
 					} else {
 						if (i == 9 && j == 4) {
 							this.cases.add(new Chemin(i, j));
@@ -61,7 +56,13 @@ public class Labyrinthe {
 						}
 					}
 				} else {
-					if (i == 2 && j == 2) {
+					if (1 <= i && i <= 2 && 2 <= j && j <= 3 || i == 2 && 5<= j  && j <= 9 
+						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
+						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
+						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
+						this.cases.add(new Mur(i,j));
+						k++;
+					} else if (i == 2 && j == 1) {
 						this.cases.add(new Piege(i, j));
 						k++;
 					} else {
@@ -75,15 +76,16 @@ public class Labyrinthe {
 		// initialisation des monstres (3 monstres placé pour l'instant arbitrairement)
 		this.monstres = new ArrayList<Monstre>();
 		Goblin g1 = new Goblin(7);
-		g1.setPos(3, 3);
+		g1.setPos(1, 8);
 		Goblin g2 = new Goblin(5);
-		g2.setPos(7, 7);
+		g2.setPos(8, 8);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
 		// this.monstres.add(g1);
-		// this.monstres.add(f1);
+		this.monstres.add(f1);
+		f1.setPos(1, 7);
+		this.monstres.add(g1);
 		this.monstres.add(g2);
-
 	}
 
 	/**
@@ -96,16 +98,7 @@ public class Labyrinthe {
 	public boolean estDisponible(int x, int y) {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
-				for (Monstre m : this.monstres) {
-					if (m.getX() == x && m.getY() == y && !m.estTraversable()) {
-						return false;
-					}
-				}
-				if (this.hero.getX() == x && this.hero.getY() == y) {
-					return false;
-				} else {
-					return true;
-				}
+				return true;
 			}
 		}
 		return false;
@@ -135,14 +128,6 @@ public class Labyrinthe {
 		return this.cases;
 	}
 
-	/**
-	 * Retourne l'aventurier du labyrinthe
-	 * 
-	 * @return l'aventurier
-	 */
-	public Aventurier getHero() {
-		return this.hero;
-	}
 
 	/**
 	 * Retourne la liste des monstres du labyrinthe.
@@ -187,7 +172,7 @@ public class Labyrinthe {
 		}
 		if (vide) {
 			for (Case c : this.cases) {
-				if (c.equalsTo(new Case(x, y)) && c.getSortie() == true) {
+				if (c.equalsTo(new Chemin(x, y)) && c.getSortie() == true) {
 					fin = true;
 				}
 			}
@@ -201,5 +186,13 @@ public class Labyrinthe {
 	 */
 	public boolean getFin() {
 		return this.fin;
+	}
+
+	public int getPosDepX() {
+		return posDepX;
+	}
+
+	public int getPosDepY() {
+		return posDepY;
 	}
 }
