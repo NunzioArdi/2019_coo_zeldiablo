@@ -21,7 +21,6 @@ public class Labyrinthe {
 	
 	private int posDepX, posDepY;
 	
-	
 	/** indique si le labyrinthe est terminer */
 	private boolean fin;
 
