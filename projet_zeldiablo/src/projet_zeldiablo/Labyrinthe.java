@@ -2,8 +2,6 @@ package projet_zeldiablo;
 
 import java.util.ArrayList;
 
-import exception.AventurierException;
-
 /**
  * Classe représentant le labyrinthe. Il est composé de cases et d'entitées.
  * 
@@ -13,14 +11,14 @@ import exception.AventurierException;
  */
 public class Labyrinthe {
 
-	/** L'aventurier du labyrinthe. */
-	private Aventurier hero;
 
 	/** la liste des cases composant le labyrinthe. */
 	private ArrayList<Case> cases;
 
-	/** La liste des monstres du labyrinthe */
+	/** La liste des monstres du jeu */
 	private ArrayList<Monstre> monstres;
+	
+	private int posDepX, posDepY;
 	
 	
 	/** indique si le labyrinthe est terminer */
@@ -32,12 +30,7 @@ public class Labyrinthe {
 	 * 
 	 * @param h l'aventurier
 	 */
-	public Labyrinthe(Aventurier h) throws AventurierException {
-		// test aventurier
-		if (h == null) {
-			throw new AventurierException("Aventurier null");
-		}
-		this.hero = h;
+	public Labyrinthe() {
 
 		int k = -1;
 
@@ -48,9 +41,9 @@ public class Labyrinthe {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4) {
 						this.cases.add(new Chemin(i, j));
+						this.posDepX=i;
+						this.posDepY=j;
 						k++;
-						// initalisation de l'aventurier
-						this.hero.setPos(i, j);
 					} else {
 						if (i == 9 && j == 4) {
 							this.cases.add(new Chemin(i, j));
@@ -86,9 +79,11 @@ public class Labyrinthe {
 		Goblin g2 = new Goblin(5);
 		g2.setPos(8, 8);
 		Fantome f1 = new Fantome(2);
+		f1.setPos(2, 7);
+		// this.monstres.add(g1);
+		this.monstres.add(f1);
 		f1.setPos(1, 7);
 		this.monstres.add(g1);
-		// this.monstres.add(f1);
 		this.monstres.add(g2);
 	}
 
@@ -102,34 +97,10 @@ public class Labyrinthe {
 	public boolean estDisponible(int x, int y) {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
-				for (Monstre m : this.monstres) {
-					if (m.getX() == x && m.getY() == y && !m.estTraversable()) {
-						return false;
-					}
-				}
-				if (this.hero.getX() == x && this.hero.getY() == y) {
-					return false;
-				} else {
-					return true;
-				}
+				return true;
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Retourne la case du labyrinthe au coordonnée donnée.
-	 * 
-	 * @param x l'abscisse de la case
-	 * @param y l'ordonnée de la case
-	 * @return la case
-	 */
-	public Case getCase(int x, int y) {
-		for (Case tmp : this.cases) {
-			if (tmp.getX() == x && tmp.getY() == y)
-				return tmp;
-		}
-		return null;
 	}
 
 	/**
@@ -141,14 +112,6 @@ public class Labyrinthe {
 		return this.cases;
 	}
 
-	/**
-	 * Retourne l'aventurier du labyrinthe
-	 * 
-	 * @return l'aventurier
-	 */
-	public Aventurier getHero() {
-		return this.hero;
-	}
 
 	/**
 	 * Retourne la liste des monstres du labyrinthe.
@@ -193,7 +156,7 @@ public class Labyrinthe {
 		}
 		if (vide) {
 			for (Case c : this.cases) {
-				if (c.equalsTo(new Case(x, y)) && c.getSortie() == true) {
+				if (c.equalsTo(new Chemin(x, y)) && c.getSortie() == true) {
 					fin = true;
 				}
 			}
@@ -226,5 +189,13 @@ public class Labyrinthe {
 	 */
 	public boolean getFin() {
 		return this.fin;
+	}
+
+	public int getPosDepX() {
+		return posDepX;
+	}
+
+	public int getPosDepY() {
+		return posDepY;
 	}
 }

@@ -1,12 +1,14 @@
 package projet_zeldiablo;
 
+import java.awt.Graphics;
+
 /**
  * Classe repésentant les cases du labyrinthe
  * 
  * @author CONTE Nunzio
  * @version 1.0
  */
-public class Case {
+public abstract class Case implements Dessinable {
 	/** Coordonnée en absisse de la case */
 	private int x;
 
@@ -81,4 +83,6 @@ public class Case {
 	public void setSortie(boolean b) {
 		this.sortie = b;
 	}
+
+	public abstract void dessiner(Graphics g);
 }

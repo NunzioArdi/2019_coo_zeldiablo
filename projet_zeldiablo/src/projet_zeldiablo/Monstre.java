@@ -31,51 +31,12 @@ public abstract class Monstre extends Entitee {
 		return tab[i];
 	}
 
-	/**
-	 * Methode qui permet au monstre de se déplacer dans le labyrinthe
-	 * @param c Direction
-	 * @param l Labyrinthe ou se deplace l'aventurier
-	 */
-	@Override
-	public void seDeplacer(char c, Labyrinthe l) {
-		switch (c) {
-		case 'N':
-			this.direction = 0;
-			if (l.estDisponible(super.posX, super.posY - 1)) {
-				this.setPos(super.posX, super.posY - 1);
-			}
-			break;
-		case 'S':
-			this.direction = 2;
-			if (l.estDisponible(super.posX, super.posY + 1)) {
-				this.setPos(super.posX, super.posY + 1);
-			}
-			break;
-		case 'E':
-			this.direction = 1;
-			if (l.estDisponible(super.posX + 1, super.posY)) {
-				this.setPos(super.posX + 1, super.posY);
-			}
-			break;
-		case 'W':
-			this.direction = 3;
-			if (l.estDisponible(super.posX - 1, super.posY)) {
-				this.setPos(super.posX - 1, super.posY);
-			}
-			break;
-		}
-	}
 
-	/**
-	 * Methode qui permet au monstre d'attaquer le heros
-	 * @param x Abscisse
-	 * @param y Ordonnee
-	 * @param l Labyrinthe ou l'aventurier va attaquer
-	 */
-	@Override
-	public void attaquer(int x, int y, Labyrinthe l) {
-		if (l.getHero().getX() == x && l.getHero().getY() == y) {
-			l.getHero().subirDegat(1);
-		}
-	}
+//	@Override
+//	public void attaquer(int x, int y, Labyrinthe l) {
+//		if (l.getHero().getX() == x && l.getHero().getY() == y) {
+//			l.getHero().subirDegat(1);
+//		}
+//	}
+
 }

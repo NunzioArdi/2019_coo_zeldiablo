@@ -3,10 +3,6 @@ package projet_zeldiablo;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-
-import exception.AventurierException;
-import moteurJeu.Commande;
-import moteurJeu.Jeu;
 import moteurJeu.moteur.CClavier;
 import moteurJeu.moteur.CSouris;
 import moteurJeu.moteur.JeuAbstract;
@@ -36,13 +32,16 @@ public class JeuZeldiablo implements JeuAbstract {
 	/**
 	 * Constructeur du jeu.
 	 * 
-	 * @throws AventurierException erreur aventurier
+	 * @throws AventurierException
+	 *             erreur aventurier
 	 */
-	public JeuZeldiablo() throws AventurierException {
+	public JeuZeldiablo() {
 		this.hero = new Aventurier(10);
 		this.lab = new ArrayList<Labyrinthe>();
-		for (int i = 0; i < 2 ; i++)
-			this.lab.add(new Labyrinthe(this.hero));
+		for (int i = 0; i < 2; i++) {
+			this.lab.add(new Labyrinthe());
+		}
+		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
 	}
 
 	/**
@@ -85,44 +84,69 @@ public class JeuZeldiablo implements JeuAbstract {
 			this.etage++;
 	}
 
-	/**
-	 * Methode permettant aux entitees de se deplacer dans le labyrinthe
-	 * @param clavier CClavier
-	 * @param souris CSouris
-	 */
+	public boolean estDisponible(int x, int y) {
+		if (this.getEtage().estDisponible(x, y)) {
+			for (Monstre m : this.getEtage().getMonstres()) {
+				if (m.getX() == x && m.getY() == y && !m.estTraversable()) {
+					return false;
+				}
+			}
+			if (this.hero.getX() == x && this.hero.getY() == y) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public String evoluer(CClavier clavier, CSouris souris) {
+		int[] coo = new int[3];
+		boolean b = false;
 		if (clavier.isPressed(KeyEvent.VK_Z) || clavier.isPressed(KeyEvent.VK_UP)) {
-			this.hero.seDeplacer('N', this.getEtage());
+			coo = this.hero.seDeplacer('N');
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_S) || clavier.isPressed(KeyEvent.VK_DOWN)) {
-			this.hero.seDeplacer('S', this.getEtage());
+			coo = this.hero.seDeplacer('S');
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_Q) || clavier.isPressed(KeyEvent.VK_LEFT)) {
-			this.hero.seDeplacer('W', this.getEtage());
+			coo = this.hero.seDeplacer('W');
+			b = true;
 		}
 		if (clavier.isPressed(KeyEvent.VK_D) || clavier.isPressed(KeyEvent.VK_RIGHT)) {
-			this.hero.seDeplacer('E', this.getEtage());
+			coo = this.hero.seDeplacer('E');
+			b = true;
+		}
+		if (b) {
+			if (this.estDisponible(coo[0], coo[1])) {
+				this.getEtage().estSortie(coo[0], coo[1]);
+				this.getEtage().estPieger(coo[0], coo[1], this.hero);
+				this.hero.setPos(coo[0], coo[1]);
+			}
 		}
 		if (clavier.isPressed(KeyEvent.VK_SPACE) || souris.isPressed()) {
-			switch (this.hero.direction) {
-			case 0:
-				this.hero.attaquer(this.hero.getX(), this.hero.getY() - 1, this.getEtage());
-				break;
-			case 1:
-				this.hero.attaquer(this.hero.getX() + 1, this.hero.getY(), this.getEtage());
-				break;
-			case 2:
-				this.hero.attaquer(this.hero.getX(), this.hero.getY() + 1, this.getEtage());
-				break;
-			case 3:
-				this.hero.attaquer(this.hero.getX() - 1, this.hero.getY(), this.getEtage());
-				break;
+			coo = this.hero.attaquer();
+			for (Monstre m : this.getEtage().getMonstres()) {
+				if (m.getX() == coo[0] && m.getY() == coo[1]) {
+					m.subirDegat(coo[2]);
+				}
 			}
 		}
 		for (Monstre m : this.getEtage().getMonstres()) {
-			char c = m.decider();
-			m.seDeplacer(c, this.getEtage());
+			if (m.getPV()>0) {
+				char c = m.decider();
+				coo = m.seDeplacer(c);
+				if (this.estDisponible(coo[0], coo[1])) {
+					m.setPos(coo[0], coo[1]);
+				}
+				coo = m.attaquer();
+				if (this.hero.getX() == coo[0] && this.hero.getY() == coo[1]) {
+					this.hero.subirDegat(coo[2]);
+				} 
+			}
 		}
 		// permet d'allez a l'etage suivant
 		if (!fin && this.getEtage().getFin() == true) {
