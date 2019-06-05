@@ -57,7 +57,13 @@ public class Labyrinthe {
 						}
 					}
 				} else {
-					if (i == 2 && j == 2) {
+					if (1 <= i && i <= 2 && 2 <= j && j <= 3 || i == 2 && 5<= j  && j <= 9 
+						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
+						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
+						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
+						this.cases.add(new Mur(i,j));
+						k++;
+					} else if (i == 2 && j == 1) {
 						this.cases.add(new Piege(i, j));
 						k++;
 					} else {
@@ -71,15 +77,16 @@ public class Labyrinthe {
 		// initialisation des monstres (3 monstres placé pour l'instant arbitrairement)
 		this.monstres = new ArrayList<Monstre>();
 		Goblin g1 = new Goblin(7);
-		g1.setPos(3, 3);
+		g1.setPos(1, 8);
 		Goblin g2 = new Goblin(5);
-		g2.setPos(7, 7);
+		g2.setPos(8, 8);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
 		// this.monstres.add(g1);
 		this.monstres.add(f1);
+		f1.setPos(1, 7);
+		this.monstres.add(g1);
 		this.monstres.add(g2);
-
 	}
 
 	/**
