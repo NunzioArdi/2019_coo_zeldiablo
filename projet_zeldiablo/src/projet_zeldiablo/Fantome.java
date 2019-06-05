@@ -30,4 +30,12 @@ public class Fantome extends Monstre {
 		Sprites.dessiner(g, "Phantome"+count+"_0_0", this.getX() * DessinJeuZeldiablo.TAILLE, this.getY() * DessinJeuZeldiablo.TAILLE);
 		
 	}
+
+
+	@Override
+	public int[] attaquer() {
+		int[] coo=super.attaquer();
+		coo[2]=2;
+		return coo;
+	}
 }

@@ -32,4 +32,11 @@ public class Goblin extends Monstre {
 		Sprites.dessiner(g, "Goblin"+count+"_0_0", this.getX() * DessinJeuZeldiablo.TAILLE, this.getY() * DessinJeuZeldiablo.TAILLE);
 		
 	}
+	
+	@Override
+	public int[] attaquer() {
+		int[] coo=super.attaquer();
+		coo[2]=2;
+		return coo;
+	}
 }

@@ -47,7 +47,52 @@ public abstract class Entitee implements Dessinable {
 	 * @param c direction vers laquelle se deplacer ('N', 'S', 'E', 'W')
 	 * @param l labyrinthe ou a lieu le deplacement
 	 */
-	public abstract void seDeplacer(char c, Labyrinthe l);
+	public int[] seDeplacer(char c) {
+		int[] coo=new int[2];
+		switch (c) {
+		case 'N':
+			this.direction = 0;
+//			if (l.estDisponible(super.posX, super.posY - 1)) {
+//				l.estPieger(posX, posY - 1, this);
+//				l.estSortie(posX, posY - 1);
+//				this.setPos(super.posX, super.posY - 1);
+//			}
+			coo[0]=this.posX;
+			coo[1]=this.posY-1;
+			return(coo);
+		case 'S':
+			this.direction = 2;
+//			if (l.estDisponible(super.posX, super.posY + 1)) {
+//				l.estPieger(posX, posY + 1, this);
+//				l.estSortie(posX, posY + 1);
+//				this.setPos(super.posX, super.posY + 1);
+//			}
+			coo[0]=this.posX;
+			coo[1]=this.posY+1;
+			return(coo);
+		case 'E':
+			this.direction = 1;
+//			if (l.estDisponible(super.posX + 1, super.posY)) {
+//				l.estPieger(posX + 1, posY, this);
+//				l.estSortie(posX + 1, posY);
+//				this.setPos(super.posX + 1, super.posY);
+//			}
+			coo[0]=this.posX+1;
+			coo[1]=this.posY;
+			return(coo);
+		case 'W':
+			this.direction = 3;
+//			if (l.estDisponible(super.posX - 1, super.posY)) {
+//				l.estPieger(posX - 1, posY, this);
+//				l.estSortie(posX - 1, posY);
+//				this.setPos(super.posX - 1, super.posY);
+//			}
+			coo[0]=this.posX-1;
+			coo[1]=this.posY;
+			return(coo);
+		}
+		return coo;
+	}
 
 	/**
 	 * Définit la position de l'entité.
@@ -112,7 +157,29 @@ public abstract class Entitee implements Dessinable {
 	 * @param y ordonnee de l'attaque
 	 * @param l labyrinthe ou a lieu l'attaque
 	 */
-	public abstract void attaquer(int x, int y, Labyrinthe l);
+	public int[] attaquer() {
+		int[] coo=new int[3];
+		switch (this.direction) {
+		case 0:
+			coo[0]=this.getX();
+			coo[1]=this.getY()- 1;
+			break;
+		case 1:
+			coo[0]=this.getX()+1;
+			coo[1]=this.getY();
+			break;
+		case 2:
+			coo[0]=this.getX();
+			coo[1]=this.getY()+1;
+			break;
+		case 3:
+			coo[0]=this.getX()-1;
+			coo[1]=this.getY();
+			break;
+		}
+		coo[2]=5;
+		return coo;
+	}
 
 	/**
 	 * Inflige des degats a l'entitee

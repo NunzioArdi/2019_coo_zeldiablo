@@ -13,14 +13,14 @@ import exception.AventurierException;
  */
 public class Labyrinthe {
 
-	/** L'aventurier du labyrinthe. */
-	private Aventurier hero;
 
 	/** la liste des cases composant le labyrinthe. */
 	private ArrayList<Case> cases;
 
-	/** La liste des monstres du labyrinthe */
+	/** La liste des monstres du jeu */
 	private ArrayList<Monstre> monstres;
+	
+	private int posDepX, posDepY;
 	
 	
 	/** indique si le labyrinthe est terminer */
@@ -32,12 +32,7 @@ public class Labyrinthe {
 	 * 
 	 * @param h l'aventurier
 	 */
-	public Labyrinthe(Aventurier h) throws AventurierException {
-		// test aventurier
-		if (h == null) {
-			throw new AventurierException("Aventurier null");
-		}
-		this.hero = h;
+	public Labyrinthe() {
 
 		int k = -1;
 
@@ -48,9 +43,9 @@ public class Labyrinthe {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4) {
 						this.cases.add(new Chemin(i, j));
+						this.posDepX=i;
+						this.posDepY=j;
 						k++;
-						// initalisation de l'aventurier
-						this.hero.setPos(i, j);
 					} else {
 						if (i == 9 && j == 4) {
 							this.cases.add(new Chemin(i, j));
@@ -97,16 +92,7 @@ public class Labyrinthe {
 	public boolean estDisponible(int x, int y) {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c.estTraversable()) {
-				for (Monstre m : this.monstres) {
-					if (m.getX() == x && m.getY() == y && !m.estTraversable()) {
-						return false;
-					}
-				}
-				if (this.hero.getX() == x && this.hero.getY() == y) {
-					return false;
-				} else {
-					return true;
-				}
+				return true;
 			}
 		}
 		return false;
@@ -136,14 +122,6 @@ public class Labyrinthe {
 		return this.cases;
 	}
 
-	/**
-	 * Retourne l'aventurier du labyrinthe
-	 * 
-	 * @return l'aventurier
-	 */
-	public Aventurier getHero() {
-		return this.hero;
-	}
 
 	/**
 	 * Retourne la liste des monstres du labyrinthe.
@@ -202,5 +180,13 @@ public class Labyrinthe {
 	 */
 	public boolean getFin() {
 		return this.fin;
+	}
+
+	public int getPosDepX() {
+		return posDepX;
+	}
+
+	public int getPosDepY() {
+		return posDepY;
 	}
 }
