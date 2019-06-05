@@ -1,5 +1,9 @@
 package projet_zeldiablo;
 
+import java.awt.Graphics;
+
+import moteurJeu.sprite.Sprites;
+
 /**
  * Classe représentant un aventurier du labyrinthe. C'est un type d'entitée.
  * 
@@ -16,6 +20,7 @@ public class Aventurier extends Entitee {
 	 */
 	public Aventurier(int pv) {
 		super(pv);
+		Sprites.chargerImage("hero", "images\\Link_de_face.png");
 	}
 
 	@Override
@@ -63,5 +68,9 @@ public class Aventurier extends Entitee {
 				m.subirDegat(5);
 			}
 		}
+	}
+	
+	public void dessiner(Graphics g) {
+		Sprites.dessiner(g, "hero", super.getX()* DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 	}
 }

@@ -8,7 +8,7 @@ package projet_zeldiablo;
  * @author CONTE Nunzio
  * @author SCHULER Killian
  */
-public abstract class Entitee {
+public abstract class Entitee implements Dessinable {
 	/** Les points de vie de l'entitée. */
 	private int pv;
 

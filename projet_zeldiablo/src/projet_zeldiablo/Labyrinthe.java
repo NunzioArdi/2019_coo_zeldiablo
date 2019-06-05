@@ -82,7 +82,7 @@ public class Labyrinthe {
 		Fantome f1 = new Fantome(2);
 		f1.setPos(2, 7);
 		// this.monstres.add(g1);
-		// this.monstres.add(f1);
+		this.monstres.add(f1);
 		this.monstres.add(g2);
 
 	}
@@ -188,7 +188,7 @@ public class Labyrinthe {
 		}
 		if (vide) {
 			for (Case c : this.cases) {
-				if (c.equalsTo(new Case(x, y)) && c.getSortie() == true) {
+				if (c.equalsTo(new Chemin(x, y)) && c.getSortie() == true) {
 					fin = true;
 				}
 			}
