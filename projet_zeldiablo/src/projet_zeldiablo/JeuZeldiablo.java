@@ -30,8 +30,9 @@ public class JeuZeldiablo implements JeuAbstract {
 	public JeuZeldiablo() {
 		this.hero = new Aventurier(10);
 		this.lab = new ArrayList<Labyrinthe>();
-		for (int i = 0; i < 2; i++) {
-			this.lab.add(new Labyrinthe());
+		this.lab.add(new Labyrinthe());
+		for (int i = 1; i < 2; i++) {
+			this.lab.add(new LabyrintheAleat());
 		}
 		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
 	}

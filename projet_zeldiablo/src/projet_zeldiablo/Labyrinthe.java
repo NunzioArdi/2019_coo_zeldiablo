@@ -14,12 +14,12 @@ public class Labyrinthe {
 
 
 	/** la liste des cases composant le labyrinthe. */
-	private ArrayList<Case> cases;
+	protected ArrayList<Case> cases;
 
 	/** La liste des monstres du jeu */
 	private ArrayList<Monstre> monstres;
 	
-	private int posDepX, posDepY;
+	protected int posDepX, posDepY;
 	
 	
 	/** indique si le labyrinthe est terminer */
