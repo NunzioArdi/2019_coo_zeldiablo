@@ -104,31 +104,6 @@ public class Labyrinthe {
 	}
 
 	/**
-	 * Retourne la case du labyrinthe au coordonnée donnée.
-	 * 
-	 * @param x l'abscisse de la case
-	 * @param y l'ordonnée de la case
-	 * @return la case
-	 */
-	public Case getCase(int x, int y) {
-		for (Case tmp : this.cases) {
-			if (tmp.getX() == x && tmp.getY() == y)
-				return tmp;
-		}
-		return null;
-	}
-
-	/**
-	 * Retourne la liste des cases du labyrinthe.
-	 * 
-	 * @return toute les cases du labyrinthe.
-	 */
-	public ArrayList<Case> getCase() {
-		return this.cases;
-	}
-
-
-	/**
 	 * Retourne la liste des monstres du labyrinthe.
 	 * 
 	 * @return le labyrinthe
