@@ -1,0 +1,136 @@
+@startuml
+class Aventurier{
++Aventurier(vie: int)
++seDeplacer(c: char, l: Labyrinthe)
++attaquer(x: int, y: int, l:Labyrinthe)
++dessiner(Graphics g) : void
+
+}
+
+class Labyrinthe{
+-fin: Boolean
+-posDepX : int
+-posDepY : int
++Labyrinthe()
++sortieEstActiver(): Boolean
++estSortie(x: int, y: int) : void
++estDisponible(x int, y: int): boolean
++estPieger(x: int, y: int, e: Entite) : void
++getMonstre(): ArrayList<Monstre>
++getFin() : boolean
++getDepPosX() : int
++getDepPosX() : int
++getCases() : ArrayList<Case>
+}
+
+class Case{
+-traversable: boolean
+-sortie: boolean
+- x: int
+- y: int
++Case(x: int, y: int)
++getX(): int
++getY(): int
++estTraversable(): boolean
++equalsTo(c: Case)
+}
+
+class Chemin{
+{static} count: int
++Chemin(x: int, y: int)
++dessiner(Graphics g) : void
+}
+
+class Mur{
+{static} count: int
++Mur(x: int, y: int)
++dessiner(Graphics g) : void
+}
+
+interface Dessinable {
++ {abstract} dessiner(Graphics g) : void
+}
+
+class JeuZeldiablo {
++JeuZeldiablo()
++evoluer(commandeUser: Commande)
++etreFini(): boolean
++getEtage(): Labyrinthe
++getHero(): Aventurier
++estDisponible(x: int, y: int) : void
+}
+
+class DessinJeuZeldiablo {
++{static} TAILLE: int
++DessinJeuZeldiablo(j: JeuZeldiablo)
++dessiner(image: BufferedImage)
+}
+
+interface DessinJeu {
++ {abstract} dessiner(image: BufferedImage)
+}
+
+abstract class Entitee{
+-pv: int
+-posX: int
+-posY: int
+-direction: int
+-traversable: boolean
++Entitee(vie: int)
++seDeplacer(c: char) : int[]
++setPos(x: int , y: int) : void
++attaquer(x: int, y: int) : int[]
++subirDegat(deg:int)
++getX(): int 
++getY(): int
++getPV(): int
++estTraversable(): boolean
+}
+
+abstract class Monstre {
++Monstre(vie: int)
++decider(): char
++seDeplacer(c: char, l:Labyrinthe)
+}
+
+class Piege {
+{static} count: int
++Piege(x: int, y:int)
++activer(e: Entitee):void
++dessiner(Graphics g) : void
+}
+
+interface Piegee {
++ {abstract} activer(e: Entitee):void
+}
+
+class Goblin {
+{static} count: int
++Goblin(vie: int)
++attaquer(x: int, y: int) : int[]
++dessiner(Graphics g) : void
+}
+
+class Fantome {
+{static} count: int
++Fantome(vie: int)
++attaquer(x: int, y: int) : int[]
++dessiner(Graphics g) : void
+}
+
+Dessinable <|.. Entitee
+Case <|-- Piege
+Piegee <|.. Piege
+Entitee <|-- Monstre
+Case <|-- Chemin
+Case <|-- Mur
+Monstre <|-- Goblin 
+Monstre <|-- Fantome  
+Labyrinthe "1" --> "*" Case : -cases
+Labyrinthe "1" --> "*" Monstre : -monstres
+Entitee <|-- Aventurier
+JeuZeldiablo "1" --> "*" Labyrinthe : -lab: Labyrinthe
+JeuZeldiablo "1" --> "*" Aventurier : -hero: Aventurier
+DessinJeuZeldiablo "1" --> "*" JeuZeldiablo : -jeu
+DessinJeu <|.. DessinJeuZeldiablo 
+@enduml
