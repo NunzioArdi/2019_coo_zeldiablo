@@ -1,0 +1,27 @@
+*fonctionnalités
+
+- fonctionnalite 1 :[Resolution technique]
+- responsable:Killian, Nuzio
+- diag de sequence:
+- 
+- contrainte:
+							
+
+- fonctionnalite 2 : [Placement de mur dans le labyrinthe]
+- responsable: 
+- diag de sequence:
+- Le labyrinthe contien des murs qui sont des obstacles a l'interieur du labyrinthe
+- contrainte: les murs ne sont pas traversable
+	      les murs sont a des position definie
+	      
+
+- fonctionnalite 3 : [placement de piege aleatoire]
+- responsable: 
+- diag de sequence: 
+- Les piege sont placer de façon aleatore dans le labyrinthe
+- contrainte: Les pieges sont traversable
+	      les pieges ne peuvent pas etre poser a l'emplacement d'un mur
+	      Les pieges ne doivent pas etre a la sortie ou a l'entré
+
+
+
