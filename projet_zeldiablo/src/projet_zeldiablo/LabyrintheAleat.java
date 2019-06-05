@@ -2,9 +2,17 @@ package projet_zeldiablo;
 
 import java.util.ArrayList;
 
+/**
+ * Classe qui permet de genérer un labyrinthe avec des pieges places aleatoirement
+ * @author CORNETTE Pierre
+ *
+ */
 public class LabyrintheAleat extends Labyrinthe {
 	private ArrayList<Case> cases;
 
+	/**
+	 * Constructeur du labyrinthe
+	 */
 	public LabyrintheAleat() {
 		super();
 		super.getCase().clear();
@@ -39,6 +47,9 @@ public class LabyrintheAleat extends Labyrinthe {
 		this.placerPiege();
 	}
 
+	/**
+	 * Methode qui place les pieges aleatoirement
+	 */
 	public void placerPiege() {
 		int i = 0;
 		while (i < 5) {
@@ -47,7 +58,6 @@ public class LabyrintheAleat extends Labyrinthe {
 			if (super.estDisponible(random_x, random_y)) {
 				super.cases.add(new Piege(random_x, random_y));
 			}
-//			}
 			i++;
 		}
 	}
