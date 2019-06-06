@@ -36,12 +36,10 @@ public class JeuZeldiablo implements JeuAbstract {
 	 * @throws AventurierException erreur aventurier
 	 */
 	public JeuZeldiablo() {
-		this.hero = new Aventurier(10);
+		this.hero = new Aventurier(15);
 		this.lab = new ArrayList<Labyrinthe>();
 		this.lab.add(new Labyrinthe());
-		for (int i = 1; i < 2; i++) {
-			//this.lab.add(new LabyrintheAleat());
-		}
+		this.lab.add(new LabyrintheAleat());
 		this.lab.add(new LabyrintheFinal());
 		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
 	}
@@ -54,6 +52,7 @@ public class JeuZeldiablo implements JeuAbstract {
 	@Override
 	public boolean etreFini() {
 		if (this.hero.getPV() == 0 || this.fin) {
+
 			return true;
 		}
 		return false;
@@ -73,6 +72,7 @@ public class JeuZeldiablo implements JeuAbstract {
 	 * 
 	 * @return l'etage en cours.
 	 */
+
 	public Labyrinthe getEtage() {
 		return this.lab.get(etage);
 	}
@@ -84,7 +84,7 @@ public class JeuZeldiablo implements JeuAbstract {
 		if (this.etage == this.lab.size() - 1) {
 			this.fin = true;
 		} else
-			this.hero.setPV(10);
+			this.hero.setPV(15);
 			this.etage++;
 	}
 
