@@ -31,7 +31,8 @@ public class JeuZeldiablo implements JeuAbstract {
 	/**
 	 * Constructeur du jeu.
 	 * 
-	 * @throws AventurierException erreur aventurier
+	 * @throws AventurierException
+	 *             erreur aventurier
 	 */
 	public JeuZeldiablo() {
 		this.hero = new Aventurier(15);
@@ -91,8 +92,10 @@ public class JeuZeldiablo implements JeuAbstract {
 	 * Verifie si la case souhaiter n'est pas occuper par un monstre non
 	 * traversable. Appelle estDisponible du labyrinthe en cours.
 	 * 
-	 * @param x abcisse de la case.
-	 * @param y ordonnée de la case.
+	 * @param x
+	 *            abcisse de la case.
+	 * @param y
+	 *            ordonnée de la case.
 	 * 
 	 * @return true si disponible.
 	 */
@@ -178,10 +181,13 @@ public class JeuZeldiablo implements JeuAbstract {
 		// permet d'allez a l'etage suivant
 		if (!fin && this.getEtage().getFin() == true) {
 			this.etageSuivant();
-			if (this.lab.size() - 1 == this.etage)
-				this.hero.setPos(1, 4);
-			else
-				this.hero.setPos(0, 4);
+			if (!fin) {
+				if (this.lab.size() - 1 == this.etage) {
+					this.hero.setPos(1, 4);
+				} else {
+					this.hero.setPos(0, 4);
+				}
+			}
 		}
 		return null;
 	}
