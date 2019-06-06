@@ -1,14 +1,13 @@
 package projet_zeldiablo;
 
 import java.awt.Graphics;
-
 import moteurJeu.sprite.Sprites;
 
 /**
  * Classe représentant les chemins du labyrinthe qui sont un type de Case.
  * 
  * @author CONTE Nunzio
- * @version 1.0
+ * @author SCHULER Kilian
  */
 public class Chemin extends Case {
 	

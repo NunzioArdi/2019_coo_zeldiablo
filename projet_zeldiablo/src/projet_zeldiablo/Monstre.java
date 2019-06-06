@@ -30,13 +30,4 @@ public abstract class Monstre extends Entitee {
 		int i = r.nextInt(12);
 		return tab[i];
 	}
-
-
-//	@Override
-//	public void attaquer(int x, int y, Labyrinthe l) {
-//		if (l.getHero().getX() == x && l.getHero().getY() == y) {
-//			l.getHero().subirDegat(1);
-//		}
-//	}
-
 }

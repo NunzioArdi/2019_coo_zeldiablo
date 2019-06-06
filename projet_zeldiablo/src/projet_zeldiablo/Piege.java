@@ -11,8 +11,9 @@ import moteurJeu.sprite.Sprites;
  */
 public class Piege extends Case implements Piegee {
 
-	private static int count=0;
-	
+	/** Le nombre de case piégée. */
+	private static int count = 0;
+
 	/**
 	 * Constructeur du piège.
 	 * 
@@ -22,14 +23,10 @@ public class Piege extends Case implements Piegee {
 	public Piege(int x, int y) {
 		super(x, y);
 		count++;
-		Sprites.chargerImage("Piege"+count, "images\\chemin_pigee.png");
-		
+		Sprites.chargerImage("Piege" + count, "images\\chemin_pigee.png");
+
 	}
 
-	/**
-	 * Methode qui permet aux pieges de faire des degats
-	 * @param e victime du piege.
-	 */
 	@Override
 	public void activer(Entitee e) {
 		e.subirDegat(1);
@@ -37,8 +34,9 @@ public class Piege extends Case implements Piegee {
 
 	@Override
 	public void dessiner(Graphics g) {
-		Sprites.dessiner(g, "Piege"+count, this.getX() * DessinJeuZeldiablo.TAILLE, this.getY() * DessinJeuZeldiablo.TAILLE);
-		
+		Sprites.dessiner(g, "Piege" + count, this.getX() * DessinJeuZeldiablo.TAILLE,
+				this.getY() * DessinJeuZeldiablo.TAILLE);
+
 	}
 
 }

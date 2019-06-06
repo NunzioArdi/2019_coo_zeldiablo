@@ -2,7 +2,6 @@ package projet_zeldiablo;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import moteurJeu.moteur.CClavier;
 import moteurJeu.moteur.CSouris;
 import moteurJeu.moteur.JeuAbstract;
@@ -14,7 +13,6 @@ import moteurJeu.moteur.JeuAbstract;
  * @author CONTE Nunzio
  * @author CORNETTE PIERRE
  * @author SALLERIN Theo
- *
  */
 public class JeuZeldiablo implements JeuAbstract {
 
@@ -23,7 +21,7 @@ public class JeuZeldiablo implements JeuAbstract {
 
 	/** l'aventurier de la perie */
 	private Aventurier hero;
-	
+
 	/** Indique l'etage actuelle */
 	private int etage = 0;
 
@@ -68,9 +66,9 @@ public class JeuZeldiablo implements JeuAbstract {
 	}
 
 	/**
-	 * Retourne le labyrinthe de l'etage actuelle.
+	 * Retourne le labyrinthe de l'étage actuelle.
 	 * 
-	 * @return l'etage en cours.
+	 * @return l'étage en cours.
 	 */
 
 	public Labyrinthe getEtage() {
@@ -78,7 +76,7 @@ public class JeuZeldiablo implements JeuAbstract {
 	}
 
 	/**
-	 * Methode servant a passe a l'etage suivant.
+	 * Methode servant à passer à l'étage suivant.
 	 */
 	private void etageSuivant() {
 		if (this.etage == this.lab.size() - 1) {
@@ -89,6 +87,15 @@ public class JeuZeldiablo implements JeuAbstract {
 		}
 	}
 
+	/**
+	 * Verifie si la case souhaiter n'est pas occuper par un monstre non
+	 * traversable. Appelle estDisponible du labyrinthe en cours.
+	 * 
+	 * @param x abcisse de la case.
+	 * @param y ordonnée de la case.
+	 * 
+	 * @return true si disponible.
+	 */
 	public boolean estDisponible(int x, int y) {
 		if (this.getEtage().estDisponible(x, y)) {
 			for (Monstre m : this.getEtage().getMonstres()) {
@@ -147,6 +154,8 @@ public class JeuZeldiablo implements JeuAbstract {
 			}
 
 		}
+
+		// attaque des mosntres
 		for (Monstre m : this.getEtage().getMonstres()) {
 			if (m.getPV() > 0) {
 				char c = m.decider();
