@@ -1,0 +1,20 @@
+@startuml
+
+jeu -> hero : placerBombe()
+activate hero
+jeu <-- hero : int[]
+deactivate hero
+jeu -> jeu : getEtage()
+activate jeu
+jeu <-- jeu : labyrinthe1
+deactivate jeu
+jeu -> labyrinthe1 : exploserMur(x, y)
+activate labyrinthe1
+labyrinthe1 -> cases : remove(i)
+activate cases
+labyrinthe1 <-- cases
+deactivate cases
+jeu <-- labyrinthe1
+deactivate labyrinthe1
+
+@enduml
