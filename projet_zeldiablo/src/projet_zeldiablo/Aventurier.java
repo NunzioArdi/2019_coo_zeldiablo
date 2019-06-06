@@ -43,7 +43,7 @@ public class Aventurier extends Entitee {
 				10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
-				this.getPV() * 5, 10);
+				this.getPV() * 7, 10);
 		
 		g.setColor(Color.YELLOW);
 		g.setFont(new Font("Arial", Font.BOLD, 50));
