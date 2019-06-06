@@ -135,8 +135,14 @@ public abstract class Entitee implements Dessinable {
 	 * @param pv les points de vie à donnée
 	 */
 	public void donneeVie(int pv) {
-		if (pv > 0)
-			this.pv += pv;
+		if (pv > 0 && pv <= this.pvMax) {
+			if(this.pv+pv>this.pvMax) {
+				this.pv=this.pvMax;
+			}
+			else {
+				this.pv += pv;
+			}
+		}
 	}
 
 	/**
