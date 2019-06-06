@@ -132,6 +132,11 @@ public class JeuZeldiablo implements JeuAbstract {
 			coo = this.hero.seDeplacer('E');
 			b = true;
 		}
+		if (clavier.isPressed(KeyEvent.VK_F)) {
+			for (Monstre m : this.getEtage().getMonstres()) {
+				m.subirDegat(10000);
+			}
+		}
 		if (b) {
 			if (this.estDisponible(coo[0], coo[1])) {
 				this.getEtage().estSortie(coo[0], coo[1]);
