@@ -44,6 +44,7 @@ public class LabyrintheAleat extends Labyrinthe {
 			}
 
 		}
+		this.placerMur();
 		this.placerPiege();
 	}
 
@@ -59,6 +60,28 @@ public class LabyrintheAleat extends Labyrinthe {
 				super.cases.add(new Piege(random_x, random_y));
 			}
 			i++;
+		}
+	}
+	
+	/**
+	 * Methode qui place les murs aleatoirement
+	 */
+	public void placerMur() {
+		int k = 0;
+		while (k < 30) {
+			int random_x = (int) (Math.random() * 9);
+			int random_y = (int) (Math.random() * 9);
+			if( random_x != 4 && random_y == 5 || random_x != 3 && random_y <= 4 && 6 <= random_y) {
+				random_x = (int) (Math.random() * 9);
+				random_y = (int) (Math.random() * 9);
+			}
+			for(int i =  0; i < super.cases.size(); i++) {
+				if (super.cases.get(i).getX() == random_x && super.cases.get(i).getY() == random_y) {
+					super.cases.remove(i);
+					super.cases.add(new Mur(random_x, random_y));
+				}
+			}
+			k++;
 		}
 	}
 }
