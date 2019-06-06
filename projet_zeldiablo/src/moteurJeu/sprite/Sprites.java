@@ -31,6 +31,7 @@ public class Sprites {
 	 * 
 	 * <pre>
 	 * Charge completement l'image nomFichier et lui attribue le nom nom
+	 * </pre>
 	 * 
 	 * @param nom        nom de reference de l'image chargee
 	 * @param nomFichier nom du fichier à charger
@@ -58,6 +59,7 @@ public class Sprites {
 	 * <pre>
 	 * charge le morceau (x, y) -> (x+tx, y+ty) de l'image souhaitée nomFichier et
 	 * lui attribue le nom nom
+	 * </pre>
 	 * 
 	 * @param nom        nom de reference de l'image chargee
 	 * @param nomFichier nom du fichier à charger
@@ -66,7 +68,6 @@ public class Sprites {
 	 * @param tx         taille X
 	 * @param ty         taille Y
 	 *
-	 * 
 	 */
 	public static void chargerImage(String nom, String nomFichier, int dx, int dy, int tx, int ty) {
 		// verifie nom est disponible
@@ -94,6 +95,7 @@ public class Sprites {
 	 * 
 	 * <pre>
 	 * chaque sprite est sauve sous le nom "NomRacine_x_y"
+	 * </pre>
 	 * 
 	 * @param nomRacine  nomRacine de la feuille
 	 * @param nomFichier nom du fichier contenant la feuille de sprites
@@ -130,6 +132,8 @@ public class Sprites {
 	 * recupere une image chargee
 	 * 
 	 * @param nom image chargee
+	 * 
+	 * @return l'image
 	 */
 	public static Image getImage(String nom) {
 		return (images.get(nom));
@@ -138,15 +142,15 @@ public class Sprites {
 	/**
 	 * permet de dessiner l'image sur le graphics
 	 * 
-	 * @param g      graphics avec lequel dessiner
-	 * @param x      position en x
-	 * @param y      position en y
+	 * @param g graphics avec lequel dessiner
+	 * @param x position en x
+	 * @param y position en y
 	 */
 	public static void dessiner(Graphics g, String nom, int x, int y) {
 		Image image = getImage(nom);
 		if (image == null)
 			throw new Error("ressource image " + nom + " inexistante");
-		g.drawImage(image, x, y,null);
+		g.drawImage(image, x, y, null);
 	}
 
 	/**

@@ -12,7 +12,7 @@ import moteurJeu.sprite.Sprites;
  */
 public class Mur extends Case {
 
-	/** Nombre de mur*/
+	/** Nombre de mur */
 	private static int count = 0;
 
 	/**
@@ -34,6 +34,7 @@ public class Mur extends Case {
 	 * 
 	 * @param x abscisse.
 	 * @param y ordonnée.
+	 * @param b indique si explosable
 	 */
 	public Mur(int x, int y, boolean b) {
 		super(x, y);

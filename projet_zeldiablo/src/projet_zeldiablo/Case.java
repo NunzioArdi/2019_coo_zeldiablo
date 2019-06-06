@@ -67,7 +67,7 @@ public abstract class Case implements Dessinable {
 	/**
 	 * Verifie si la case passee en parametre possede les meme coordonnees
 	 * 
-	 * @param c
+	 * @param c la case à tester
 	 * @return booleen true si les coordonnee sont les memes
 	 */
 	public boolean equalsTo(Case c) {

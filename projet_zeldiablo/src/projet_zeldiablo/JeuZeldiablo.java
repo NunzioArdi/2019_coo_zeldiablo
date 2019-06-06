@@ -30,9 +30,6 @@ public class JeuZeldiablo implements JeuAbstract {
 
 	/**
 	 * Constructeur du jeu.
-	 * 
-	 * @throws AventurierException
-	 *             erreur aventurier
 	 */
 	public JeuZeldiablo() {
 		this.hero = new Aventurier(15);

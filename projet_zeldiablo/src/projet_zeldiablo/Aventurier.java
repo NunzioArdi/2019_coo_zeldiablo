@@ -11,12 +11,15 @@ import moteurJeu.sprite.Sprites;
  * 
  * @author CORNETTE Pierre
  * @author CONTE Nunzio
+ * @author SCHULER Kilian
  *
  */
 public class Aventurier extends Entitee {
 
+	/** le nombre de bombes que possède l'aventurier. */
 	private int bombes;
 
+	/** nombre de hero (pour les test) */
 	private static int count = 0;
 
 	/**
@@ -35,6 +38,7 @@ public class Aventurier extends Entitee {
 		Sprites.chargerImage("Bomb", "images\\Bomb.png");
 	}
 
+	@Override
 	public void dessiner(Graphics g) {
 		String nbBombe = "" + this.bombes;
 
@@ -115,6 +119,11 @@ public class Aventurier extends Entitee {
 		return coo;
 	}
 
+	/**
+	 * Définit le nombre de bombes de l'aventurier (pour les test).
+	 * 
+	 * @param i le nombre de bombes.
+	 */
 	public void setBombe(int i) {
 		this.bombes = i;
 	}

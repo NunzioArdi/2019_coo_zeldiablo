@@ -129,10 +129,20 @@ public abstract class Entitee implements Dessinable {
 		return this.pv;
 	}
 
-	/** Donne des points de vie à l'entité. */
+	/**
+	 * Donne des points de vie à l'entité.
+	 * 
+	 * @param pv les points de vie à donnée
+	 */
 	public void donneeVie(int pv) {
-		if (pv > 0)
-			this.pv += pv;
+		if (pv > 0 && pv <= this.pvMax) {
+			if(this.pv+pv>this.pvMax) {
+				this.pv=this.pvMax;
+			}
+			else {
+				this.pv += pv;
+			}
+		}
 	}
 
 	/**
@@ -145,11 +155,7 @@ public abstract class Entitee implements Dessinable {
 	}
 
 	/**
-	 * Attaque la case aux coordonnees passee en parametre
-	 * 
-	 * @param x abscisse de l'attaque
-	 * @param y ordonnee de l'attaque
-	 * @param l labyrinthe ou a lieu l'attaque
+	 * Méthode donnant où l'entité attaque.
 	 * 
 	 * @return tableau d'entier indiquand les coordonnées et les dégats de l'attaque
 	 */
@@ -178,7 +184,7 @@ public abstract class Entitee implements Dessinable {
 	}
 
 	/**
-	 * Inflige des degats a l'entitee
+	 * Inflige des dégats à l'entitee
 	 * 
 	 * @param deg entier indiquant le nombre de pv a deduire
 	 */

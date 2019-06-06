@@ -29,8 +29,6 @@ public class Labyrinthe {
 	/**
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
 	 * pouvoir joué. Le labyrinthe est entouré d'un mur sauf aux 4 points cardinaux.
-	 * 
-	 * @param h l'aventurier
 	 */
 	public Labyrinthe() {
 
@@ -81,7 +79,7 @@ public class Labyrinthe {
 		Fantome f1 = new Fantome(2);
 		f1.setPos(3, 7);
 		this.monstres.add(f1);
-		//this.monstres.add(g1);
+		// this.monstres.add(g1);
 		this.monstres.add(g2);
 	}
 
@@ -125,7 +123,6 @@ public class Labyrinthe {
 	 * 
 	 * @param x abscisse de la case à tester.
 	 * @param y ordonnée de la case à tester.
-	 * 
 	 * @param e l'entité qui est sur la case à tester.
 	 * 
 	 * @return boolean indiquant si la case est un piege
