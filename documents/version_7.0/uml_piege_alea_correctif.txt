@@ -1,0 +1,25 @@
+@startuml
+title Placement des pieges
+
+participant	"jeux: JeuZeldiablo" as jeu
+participant	"lab: LabyrintheAleat" as l
+participant 	"p: Piege" as p
+
+activate jeu
+create l
+jeu -> l: new LabyrintheAleat
+
+activate l
+loop i<20
+create p
+l -> p: new Piege(random_x,random_y)
+
+p -> l: add(p)
+activate p
+p <-- l
+deactivate p
+end
+
+deactivate l
+jeu <-- l
+@enduml
