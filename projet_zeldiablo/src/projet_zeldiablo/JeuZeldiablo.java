@@ -40,7 +40,7 @@ public class JeuZeldiablo implements JeuAbstract {
 		this.lab = new ArrayList<Labyrinthe>();
 		this.lab.add(new Labyrinthe());
 		for (int i = 1; i < 2; i++) {
-			//this.lab.add(new LabyrintheAleat());
+			// this.lab.add(new LabyrintheAleat());
 		}
 		this.lab.add(new LabyrintheFinal());
 		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
@@ -83,9 +83,10 @@ public class JeuZeldiablo implements JeuAbstract {
 	private void etageSuivant() {
 		if (this.etage == this.lab.size() - 1) {
 			this.fin = true;
-		} else
+		} else {
 			this.hero.setPV(10);
 			this.etage++;
+		}
 	}
 
 	public boolean estDisponible(int x, int y) {
@@ -141,10 +142,10 @@ public class JeuZeldiablo implements JeuAbstract {
 		}
 		if (clavier.isPressed(KeyEvent.VK_SPACE)) {
 			coo = this.hero.poserBombe();
-			if (coo[2]==1) {
+			if (coo[2] == 1) {
 				this.getEtage().exploserMur(coo[0], coo[1]);
 			}
-		
+
 		}
 		for (Monstre m : this.getEtage().getMonstres()) {
 			if (m.getPV() > 0) {
@@ -159,11 +160,11 @@ public class JeuZeldiablo implements JeuAbstract {
 				}
 			}
 		}
-		
+
 		// permet d'allez a l'etage suivant
 		if (!fin && this.getEtage().getFin() == true) {
 			this.etageSuivant();
-			if (this.lab.size() -1 == this.etage)
+			if (this.lab.size() - 1 == this.etage)
 				this.hero.setPos(1, 4);
 			else
 				this.hero.setPos(0, 4);
