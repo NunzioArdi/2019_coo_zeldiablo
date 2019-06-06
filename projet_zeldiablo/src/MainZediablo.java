@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 import moteurJeu.moteur.MoteurGraphique;
 import projet_zeldiablo.DessinJeuZeldiablo;
 import projet_zeldiablo.JeuZeldiablo;
@@ -13,7 +11,6 @@ public class MainZediablo {
 		System.out.println("Clique droit pour attaquer");
 		System.out.println("Espace pour utiliser des bombes");
 		m.lancerJeu(600, 600, 10);
-		Scanner sc = new Scanner(System.in);
 		while (!jzd.etreFini()) {
 
 		}
