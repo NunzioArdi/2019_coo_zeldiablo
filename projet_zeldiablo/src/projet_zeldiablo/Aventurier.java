@@ -36,21 +36,26 @@ public class Aventurier extends Entitee {
 	}
 
 	public void dessiner(Graphics g) {
-		String nbBombe  = "" + this.bombes;
+		String nbBombe = "" + this.bombes;
 
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax()* 7,
-				10);
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
+				this.getPvMax() * 7, 10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 5, 10);
-		
+
 		g.setColor(Color.YELLOW);
 		g.setFont(new Font("Arial", Font.BOLD, 50));
-		g.drawString(nbBombe, getX()+60, getY()+45);
-		
-		
-		Sprites.dessiner(g, "Bomb", super.getX() + 5, super.getY());
+		g.drawString(nbBombe, 0 + 60, 0 + 45);
+
+		if (this.getPV() == 0) {
+			g.setColor(Color.RED);
+			g.setFont(new Font("Arial", Font.BOLD, 80));
+			g.drawString("GAME OVER", getX() + 50, getY() + 300);
+		}
+
+		Sprites.dessiner(g, "Bomb", 0 + 5, 0);
 
 		switch (super.direction) {
 		case 0:
@@ -76,11 +81,11 @@ public class Aventurier extends Entitee {
 
 	}
 
-	
 	/**
 	 * méthode qui pose une bombe en fonction de la direction du personnage
 	 * 
-	 * @return tableau d'entier indiquand les coordonnées de la bombe et si elle a été posé (0=non 1=oui)
+	 * @return tableau d'entier indiquand les coordonnées de la bombe et si elle a
+	 *         été posé (0=non 1=oui)
 	 */
 	public int[] poserBombe() {
 		int[] coo = new int[3];
