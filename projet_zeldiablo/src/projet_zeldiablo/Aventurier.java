@@ -10,7 +10,7 @@ import moteurJeu.sprite.Sprites;
  * Classe représentant un aventurier du labyrinthe. C'est un type d'entitée.
  * 
  * @author CORNETTE Pierre
- * @version 1.0
+ * @author CONTE Nunzio
  *
  */
 public class Aventurier extends Entitee {

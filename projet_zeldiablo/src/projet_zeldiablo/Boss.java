@@ -6,9 +6,11 @@ import java.awt.Graphics;
 import moteurJeu.sprite.Sprites;
 
 /**
- * Le Boss final du jeuej
+ * Le Boss final du jeu.
  * 
- * @author YTP
+ * @author CONTE Nunzio
+ * @author CORNETTE Pierre
+ * @author SCHULER Kilian
  */
 public class Boss extends Monstre {
 
@@ -25,6 +27,7 @@ public class Boss extends Monstre {
 
 	@Override
 	public void dessiner(Graphics g) {
+		//Barre de vie
 		g.setColor(Color.RED);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax() * 7,
 				10);
@@ -32,7 +35,7 @@ public class Boss extends Monstre {
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 7, 10);
 		
-
+		//sprites
 		switch (super.direction) {
 		case 0:
 			Sprites.dessiner(g, "Boss_0_2", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);

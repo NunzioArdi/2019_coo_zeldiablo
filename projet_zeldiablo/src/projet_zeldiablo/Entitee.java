@@ -21,6 +21,7 @@ public abstract class Entitee implements Dessinable {
 	/** La position en abscisse. */
 	protected int posY;
 
+	/** La vie maximale que les entitée peuvent avoir. */
 	private final int MAX_VIE_ENTITEE = 50;
 
 	/**
@@ -59,41 +60,21 @@ public abstract class Entitee implements Dessinable {
 		switch (c) {
 		case 'N':
 			this.direction = 1;
-//			if (l.estDisponible(super.posX, super.posY - 1)) {
-//				l.estPieger(posX, posY - 1, this);
-//				l.estSortie(posX, posY - 1);
-//				this.setPos(super.posX, super.posY - 1);
-//			}
 			coo[0] = this.posX;
 			coo[1] = this.posY - 1;
 			return (coo);
 		case 'S':
 			this.direction = 2;
-//			if (l.estDisponible(super.posX, super.posY + 1)) {
-//				l.estPieger(posX, posY + 1, this);
-//				l.estSortie(posX, posY + 1);
-//				this.setPos(super.posX, super.posY + 1);
-//			}
 			coo[0] = this.posX;
 			coo[1] = this.posY + 1;
 			return (coo);
 		case 'E':
 			this.direction = 0;
-//			if (l.estDisponible(super.posX + 1, super.posY)) {
-//				l.estPieger(posX + 1, posY, this);
-//				l.estSortie(posX + 1, posY);
-//				this.setPos(super.posX + 1, super.posY);
-//			}
 			coo[0] = this.posX + 1;
 			coo[1] = this.posY;
 			return (coo);
 		case 'W':
 			this.direction = 3;
-//			if (l.estDisponible(super.posX - 1, super.posY)) {
-//				l.estPieger(posX - 1, posY, this);
-//				l.estSortie(posX - 1, posY);
-//				this.setPos(super.posX - 1, super.posY);
-//			}
 			coo[0] = this.posX - 1;
 			coo[1] = this.posY;
 			return (coo);
@@ -147,7 +128,7 @@ public abstract class Entitee implements Dessinable {
 	public int getPV() {
 		return this.pv;
 	}
-	
+
 	/**
 	 * Returne les Points de vie de l'entité.
 	 * 
@@ -212,6 +193,11 @@ public abstract class Entitee implements Dessinable {
 		}
 	}
 
+	/**
+	 * Retourne la vie maximum que l'entité a.
+	 * 
+	 * @return pvmax
+	 */
 	public int getPvMax() {
 		return this.pvMax;
 	}

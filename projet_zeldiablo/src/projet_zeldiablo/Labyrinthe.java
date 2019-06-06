@@ -17,7 +17,11 @@ public class Labyrinthe {
 	/** La liste des monstres du jeu */
 	protected ArrayList<Monstre> monstres;
 
-	protected int posDepX, posDepY;
+	/** La position en abscisse de départ de l'aventurier dans le labyrinthe. */
+	protected int posDepX;
+
+	/** La position en ordonnée de départ de l'aventurier dans le labyrinthe. */
+	protected int posDepY;
 
 	/** indique si le labyrinthe est terminer */
 	protected boolean fin;
@@ -26,8 +30,7 @@ public class Labyrinthe {
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
 	 * pouvoir joué. Le labyrinthe est entouré d'un mur sauf aux 4 points cardinaux.
 	 * 
-	 * @param h
-	 *            l'aventurier
+	 * @param h l'aventurier
 	 */
 	public Labyrinthe() {
 
@@ -78,17 +81,15 @@ public class Labyrinthe {
 		Fantome f1 = new Fantome(2);
 		f1.setPos(3, 7);
 		this.monstres.add(f1);
-		this.monstres.add(g1);
-		// this.monstres.add(g2);
+		//this.monstres.add(g1);
+		this.monstres.add(g2);
 	}
 
 	/**
 	 * Méthode vérifiant si une case est disponible.
 	 * 
-	 * @param x
-	 *            l'abscisse de la case ciblé.
-	 * @param y
-	 *            l'ordonnée de la case ciblé.
+	 * @param x l'abscisse de la case ciblé.
+	 * @param y l'ordonnée de la case ciblé.
 	 * @return true si la case est disponible.
 	 */
 	public boolean estDisponible(int x, int y) {
@@ -122,13 +123,10 @@ public class Labyrinthe {
 	 * Méthode testant si l'entité est sur une piège. Si c'est le cas, le piège
 	 * s'active sur l'entité.
 	 * 
-	 * @param x
-	 *            abscisse de la case à tester.
-	 * @param y
-	 *            ordonnée de la case à tester.
+	 * @param x abscisse de la case à tester.
+	 * @param y ordonnée de la case à tester.
 	 * 
-	 * @param e
-	 *            l'entité qui est sur la case à tester.
+	 * @param e l'entité qui est sur la case à tester.
 	 * 
 	 * @return boolean indiquant si la case est un piege
 	 */
@@ -147,10 +145,8 @@ public class Labyrinthe {
 	 * Méthode testant si l'aventurier peut sortir du labyrinthe. Il doit avoir tué
 	 * tous les monstres et on test si l'aventurier est sur la case de sortie.
 	 * 
-	 * @param x
-	 *            l'absicsse de la case à tester.
-	 * @param y
-	 *            l'ordonnée de la case à tester.
+	 * @param x l'absicsse de la case à tester.
+	 * @param y l'ordonnée de la case à tester.
 	 * 
 	 * @return boolean indiquant si la case a bien été exploser
 	 */
@@ -175,10 +171,8 @@ public class Labyrinthe {
 	/**
 	 * Methode permettant de placer les pieges
 	 * 
-	 * @param x
-	 *            l'absicsse de la case à tester.
-	 * @param y
-	 *            l'ordonnée de la case à tester.
+	 * @param x l'absicsse de la case à tester.
+	 * @param y l'ordonnée de la case à tester.
 	 */
 	public void placerPiege(int x, int y) {
 		int i = 0;
@@ -198,10 +192,8 @@ public class Labyrinthe {
 	 * Si les coordonnées passées en paramètres contiennent un mur explosable,
 	 * celui-ci est détruit
 	 * 
-	 * @param x
-	 *            abscisse de l'explosion
-	 * @param y
-	 *            ordonnée de l'explosion
+	 * @param x abscisse de l'explosion
+	 * @param y ordonnée de l'explosion
 	 * 
 	 * @return boolean indiquant si la case a bien été exploser
 	 */
@@ -225,10 +217,20 @@ public class Labyrinthe {
 		return this.fin;
 	}
 
+	/**
+	 * Retourne la position en abscisse de départ de l'aventurier.
+	 * 
+	 * @return depart X
+	 */
 	public int getPosDepX() {
 		return posDepX;
 	}
 
+	/**
+	 * Retourne la position en ordonnée de départ de l'aventurier.
+	 * 
+	 * @return depart Y
+	 */
 	public int getPosDepY() {
 		return posDepY;
 	}
