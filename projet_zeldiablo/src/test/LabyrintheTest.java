@@ -19,21 +19,37 @@ import projet_zeldiablo.Piege;
  */
 public class LabyrintheTest {
 	
+	/**
+	 * Test la methode est disponible dans le cas d'une case inexistente
+	 */
 	@Test
-	public void testEstDisponible(){
+	public void testEstDisponibleExistePas(){
 		Labyrinthe lab = new Labyrinthe();
-
 		assertEquals("x=10 n'existe pas", false, lab.estDisponible(10, 2));
-		assertEquals("y=10 n'existe pas", false, lab.estDisponible(2, 10));
-
-		assertEquals("x=-1 n'existe pas", false, lab.estDisponible(-1, 2));
-		assertEquals("y=-1 n'existe pas", false, lab.estDisponible(2, -1));
-		
-
+	}
+	
+	/**
+	 * Test la methode est disponible dans le cas d'un mur
+	 */
+	@Test
+	public void testEstDisponibleMur(){
+		Labyrinthe lab = new Labyrinthe();
 		assertEquals("le mur ne dois pas être accessible", false, lab.estDisponible(0, 0));
 		assertEquals("le chemin d'oit être accessible", true, lab.estDisponible(0,4));
 	}
 	
+	/**
+	 * Test la methode est disponible dans le cas d'un chemin
+	 */
+	@Test
+	public void testEstDisponible(){
+		Labyrinthe lab = new Labyrinthe();
+		assertEquals("le chemin d'oit être accessible", true, lab.estDisponible(0,4));
+	}
+	
+	/**
+	 * Test la methode estpiege si les coordonnées ne sont pas piégée
+	 */
 	@Test
 	public void testEstPiegeMauvaiseCase(){
 		Labyrinthe lab = new Labyrinthe();
@@ -43,6 +59,9 @@ public class LabyrintheTest {
 		assertEquals(false, lab.estPieger(9, 10, a));
 	}
 	
+	/**
+	 * Test la methode estpiege si les coordonnées sont piégée
+	 */
 	@Test
 	public void testEstPiege(){
 		Labyrinthe lab = new Labyrinthe();
@@ -52,6 +71,9 @@ public class LabyrintheTest {
 		assertEquals(true, lab.estPieger(10, 10, a));
 	}
 	
+	/**
+	 * Test la methode exploserMur si les coordonnées correspondent à un mur explosable
+	 */
 	@Test
 	public void testExploserMur(){
 		Labyrinthe lab = new Labyrinthe();
@@ -59,6 +81,9 @@ public class LabyrintheTest {
 			
 	}
 	
+	/**
+	 * Test la methode exploserMur si les coordonnées ne correspondent pas à un mur explosable
+	 */
 	@Test
 	public void testExploserMurDeBord(){
 		Labyrinthe lab = new Labyrinthe();
@@ -66,6 +91,9 @@ public class LabyrintheTest {
 		assertEquals(false, lab.exploserMur(10, 10));
 	}
 	
+	/**
+	 * Test la methode exploserMur si les coordonnées correspondent à un chemin
+	 */
 	@Test
 	public void testExploserChemin(){
 		Labyrinthe lab = new Labyrinthe();
