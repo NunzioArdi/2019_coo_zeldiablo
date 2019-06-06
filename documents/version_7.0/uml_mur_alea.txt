@@ -1,0 +1,25 @@
+@startuml
+title Placement des murs
+
+participant	"jeux: JeuZeldiablo" as jeu
+participant	"lab: LabyrintheAleat" as l
+participant 	"mur: Mur" as mur
+
+activate jeu
+create l
+jeu -> l: new LabyrintheAleat
+
+activate l
+loop i<20
+create mur
+
+l -> mur: new Mur(random_x,random_y)
+l -> mur: add(mur)
+activate mur
+l <-- mur
+deactivate mur
+end
+
+deactivate l
+jeu <-- l
+@enduml
