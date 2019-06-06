@@ -76,7 +76,7 @@ public class Labyrinthe {
 		this.monstres = new ArrayList<Monstre>();
 		Goblin g1 = new Goblin(7);
 		g1.setPos(1, 8);
-		Goblin g2 = new Goblin(5);
+		Goblin g2 = new Goblin(7);
 		g2.setPos(8, 8);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(3, 7);
