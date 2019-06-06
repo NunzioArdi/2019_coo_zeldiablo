@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class PanelDessin extends JPanel {
 
 	/**
-	 * 
+	 * .
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +42,7 @@ public class PanelDessin extends JPanel {
 	 *            largeur de l'image
 	 * @param height
 	 *            hauteur de l'image
+	 * @param affiche .
 	 */
 	public PanelDessin(int x, int y, DessinAbstract affiche) {
 		super();
