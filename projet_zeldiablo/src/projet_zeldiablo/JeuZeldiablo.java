@@ -23,7 +23,7 @@ public class JeuZeldiablo implements JeuAbstract {
 
 	/** l'aventurier de la perie */
 	private Aventurier hero;
-
+	
 	/** Indique l'etage actuelle */
 	private int etage = 0;
 

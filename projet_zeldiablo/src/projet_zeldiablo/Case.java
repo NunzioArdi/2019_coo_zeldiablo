@@ -21,7 +21,7 @@ public abstract class Case implements Dessinable {
 	/** Indique la sortie */
 	private boolean sortie;
 	
-	protected boolean explosable;
+	private boolean explosable;
 	
 	/**
 	 * Constructeur de Case.
@@ -33,7 +33,7 @@ public abstract class Case implements Dessinable {
 		this.x = x;
 		this.y = y;
 		this.traversable=true;
-		this.explosable=false;
+		this.setExplosable(false);
 	}
 
 	/**
@@ -88,4 +88,12 @@ public abstract class Case implements Dessinable {
 	}
 
 	public abstract void dessiner(Graphics g);
+
+	public boolean isExplosable() {
+		return explosable;
+	}
+
+	public void setExplosable(boolean explosable) {
+		this.explosable = explosable;
+	}
 }
