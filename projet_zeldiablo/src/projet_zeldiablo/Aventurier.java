@@ -66,6 +66,12 @@ public class Aventurier extends Entitee {
 
 	}
 
+	
+	/**
+	 * méthode qui pose une bombe en fonction de la direction du personnage
+	 * 
+	 * @return tableau d'entier indiquand les coordonnées de la bombe et si elle a été posé (0=non 1=oui)
+	 */
 	public int[] poserBombe() {
 		int[] coo = new int[3];
 		if (this.bombes > 0) {
