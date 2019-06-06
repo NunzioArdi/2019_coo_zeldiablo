@@ -16,13 +16,13 @@ public class Labyrinthe {
 	protected ArrayList<Case> cases;
 
 	/** La liste des monstres du jeu */
-	private ArrayList<Monstre> monstres;
+	protected ArrayList<Monstre> monstres;
 	
 	protected int posDepX, posDepY;
 	
 	
 	/** indique si le labyrinthe est terminer */
-	private boolean fin;
+	protected boolean fin;
 
 	/**
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
@@ -80,7 +80,7 @@ public class Labyrinthe {
 		g2.setPos(8, 8);
 		Fantome f1 = new Fantome(2);
 		f1.setPos(3, 7);
-		this.monstres.add(f1);
+		//this.monstres.add(f1);
 		//this.monstres.add(g1);
 		this.monstres.add(g2);
 	}
