@@ -12,6 +12,7 @@ import moteurJeu.sprite.Sprites;
  */
 public class Fantome extends Monstre {
 
+	/** Nombre de fantome. */
 	private static int count = 0;
 
 	/**
@@ -28,14 +29,15 @@ public class Fantome extends Monstre {
 
 	@Override
 	public void dessiner(Graphics g) {
-
+		// Barre de vie
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax() * 7,
-				10);
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
+				this.getPvMax() * 7, 10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 7, 10);
 
+		// Sprites
 		switch (super.direction) {
 		case 0:
 			Sprites.dessiner(g, "Phantome" + count + "_0_3", super.getX() * DessinJeuZeldiablo.TAILLE + 15,
@@ -53,11 +55,9 @@ public class Fantome extends Monstre {
 			Sprites.dessiner(g, "Phantome" + count + "_3_1", super.getX() * DessinJeuZeldiablo.TAILLE + 15,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
-
 		default:
 			break;
 		}
-
 	}
 
 	@Override

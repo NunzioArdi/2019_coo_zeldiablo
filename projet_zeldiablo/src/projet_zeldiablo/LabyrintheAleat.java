@@ -3,11 +3,13 @@ package projet_zeldiablo;
 import java.util.ArrayList;
 
 /**
- * Classe qui permet de genérer un labyrinthe avec des pieges places aleatoirement
+ * Classe qui permet de genérer un labyrinthe avec des pieges places
+ * aleatoirement
+ * 
  * @author CORNETTE Pierre
- *
  */
 public class LabyrintheAleat extends Labyrinthe {
+	
 	private ArrayList<Case> cases;
 
 	/**
@@ -56,7 +58,7 @@ public class LabyrintheAleat extends Labyrinthe {
 		while (i < 10) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
-			while(random_y == 4 && 0 <= random_x && random_x <=1) {
+			while (random_y == 4 && 0 <= random_x && random_x <= 1) {
 				random_x = (int) (Math.random() * 9);
 				random_y = (int) (Math.random() * 9);
 			}
@@ -66,7 +68,7 @@ public class LabyrintheAleat extends Labyrinthe {
 			i++;
 		}
 	}
-	
+
 	/**
 	 * Methode qui place les murs aleatoirement
 	 */
@@ -75,11 +77,11 @@ public class LabyrintheAleat extends Labyrinthe {
 		while (k < 30) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
-			while(random_y == 4 && 0 <= random_x && random_x <=1) {
+			while (random_y == 4 && 0 <= random_x && random_x <= 1) {
 				random_x = (int) (Math.random() * 9);
 				random_y = (int) (Math.random() * 9);
 			}
-			for(int i =  0; i < super.cases.size(); i++) {
+			for (int i = 0; i < super.cases.size(); i++) {
 				if (super.cases.get(i).getX() == random_x && super.cases.get(i).getY() == random_y) {
 					super.cases.remove(i);
 					super.cases.add(new Mur(random_x, random_y, true));

@@ -8,7 +8,7 @@ package projet_zeldiablo;
 public interface Piegee {
 
 	/**
-	 * Active l'effet du piege.
+	 * Methode qui permet aux pieges de faire des degats
 	 * 
 	 * @param e victime du piege.
 	 */
