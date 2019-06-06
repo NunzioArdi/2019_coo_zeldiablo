@@ -71,7 +71,7 @@ public class LabyrintheAleat extends Labyrinthe {
 		while (k < 30) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
-			if( random_x != 4 && random_y == 5 || random_x != 3 && random_y <= 4 && 6 <= random_y) {
+			while(random_y == 4 && 0 <= random_x && random_x <=9) {
 				random_x = (int) (Math.random() * 9);
 				random_y = (int) (Math.random() * 9);
 			}
