@@ -1,7 +1,5 @@
 package projet_zeldiablo;
 
-import java.util.ArrayList;
-
 /**
  * Classe qui permet de genérer un labyrinthe avec des pieges places
  * aleatoirement
@@ -9,8 +7,6 @@ import java.util.ArrayList;
  * @author CORNETTE Pierre
  */
 public class LabyrintheAleat extends Labyrinthe {
-	
-	private ArrayList<Case> cases;
 
 	/**
 	 * Constructeur du labyrinthe
