@@ -51,7 +51,7 @@ public abstract class Entitee implements Dessinable {
 		int[] coo=new int[2];
 		switch (c) {
 		case 'N':
-			this.direction = 0;
+			this.direction = 1;
 //			if (l.estDisponible(super.posX, super.posY - 1)) {
 //				l.estPieger(posX, posY - 1, this);
 //				l.estSortie(posX, posY - 1);
@@ -71,7 +71,7 @@ public abstract class Entitee implements Dessinable {
 			coo[1]=this.posY+1;
 			return(coo);
 		case 'E':
-			this.direction = 1;
+			this.direction = 0;
 //			if (l.estDisponible(super.posX + 1, super.posY)) {
 //				l.estPieger(posX + 1, posY, this);
 //				l.estSortie(posX + 1, posY);

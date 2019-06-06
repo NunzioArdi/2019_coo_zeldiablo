@@ -29,7 +29,24 @@ public class Goblin extends Monstre {
 
 	@Override
 	public void dessiner(Graphics g) {
-		Sprites.dessiner(g, "Goblin"+count+"_0_0", this.getX() * DessinJeuZeldiablo.TAILLE, this.getY() * DessinJeuZeldiablo.TAILLE);
+		switch (super.direction) {
+		case 0:
+			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 1:
+			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 2:
+			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 3:
+			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+			
+		default:
+			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		}
 		
 	}
 	
