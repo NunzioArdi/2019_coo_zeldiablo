@@ -14,13 +14,17 @@ import moteurJeu.sprite.Sprites;
  */
 public class Aventurier extends Entitee {
 
+	private int bombes;
+
 	/**
 	 * Constructeur.
 	 * 
-	 * @param pv la vie de départ
+	 * @param pv
+	 *            la vie de départ
 	 */
 	public Aventurier(int pv) {
 		super(pv);
+		this.bombes = 99;
 		Sprites.chargerImage("still_up", "images\\still_up.png");
 		Sprites.chargerImage("still_right", "images\\still_right.png");
 		Sprites.chargerImage("still_down", "images\\still_down.png");
@@ -28,6 +32,7 @@ public class Aventurier extends Entitee {
 	}
 
 	public void dessiner(Graphics g) {
+
 		g.setColor(Color.RED);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 10 * 5,
 				10);
@@ -56,5 +61,34 @@ public class Aventurier extends Entitee {
 			break;
 		}
 
+	}
+
+	public int[] poserBombe() {
+		int[] coo = new int[3];
+		if (this.bombes > 0) {
+			switch (this.direction) {
+			case 0:
+				coo[0] = this.getX() + 1;
+				coo[1] = this.getY();
+				break;
+			case 1:
+				coo[0] = this.getX();
+				coo[1] = this.getY() - 1;
+				break;
+			case 2:
+				coo[0] = this.getX();
+				coo[1] = this.getY() + 1;
+				break;
+			case 3:
+				coo[0] = this.getX() - 1;
+				coo[1] = this.getY();
+				break;
+			}
+			coo[2] = 1;
+			this.bombes--;
+		} else {
+			coo[2]=0;
+		}
+		return coo;
 	}
 }
