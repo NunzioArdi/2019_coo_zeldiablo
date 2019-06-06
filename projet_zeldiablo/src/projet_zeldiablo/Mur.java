@@ -22,7 +22,7 @@ public class Mur extends Case {
 	public Mur(int x, int y) {
 		super(x, y);
 		this.traversable=false;
-		this.explosable=false;
+		this.setExplosable(false);
 		this.count++;
 		Sprites.chargerImage("Wall"+count, "images\\Wall2.png");
 	}
@@ -36,13 +36,9 @@ public class Mur extends Case {
 	public Mur(int x, int y, boolean b) {
 		super(x, y);
 		this.traversable=false;
-		this.explosable=b;
+		this.setExplosable(b);
 		this.count++;
 		Sprites.chargerImage("Wall"+count, "images\\Wall2.png");
-	}
-	
-	public void setExplosable(boolean b) {
-		super.explosable=b;
 	}
 
 	@Override

@@ -1,0 +1,45 @@
+@startuml
+title création des labyrinthes du jeu
+
+
+participant	"main" as m
+participant	"JeuZeldiablo: j" as j
+participant	"ArrayList: listLab" as ll 
+participant	"Labyrinthe: l" as l
+participant	"LabyrintheAlea: la" as la
+participant	"LabyrintheFinal: lf" as lf
+
+
+create j
+m -> j: new JeuZeldiablo()
+create ll
+activate j
+j -> ll: new ArrayList<Labyrinthe>
+j <-- ll
+create l
+j -> l: new Labyrinthe()
+j <-- l
+
+j -> ll: add(l)
+activate ll
+j <-- ll
+deactivate ll
+create la
+j -> la: new LabyrintheAlea()
+j <-- la
+
+j -> ll: add(la)
+activate ll
+j <-- ll
+deactivate ll
+
+create lf
+j -> lf: new LabyrintheFinal()
+j <-- lf
+
+j -> ll: add(lf)
+activate ll
+j <-- ll
+deactivate ll
+
+@enduml

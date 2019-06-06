@@ -1,6 +1,7 @@
 package projet_zeldiablo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import moteurJeu.sprite.Sprites;
@@ -16,44 +17,56 @@ public class Aventurier extends Entitee {
 
 	private int bombes;
 
+	private static int count = 0;
+
 	/**
 	 * Constructeur.
 	 * 
-	 * @param pv
-	 *            la vie de départ
+	 * @param pv la vie de départ
 	 */
 	public Aventurier(int pv) {
 		super(pv);
 		this.bombes = 99;
-		Sprites.chargerImage("still_up", "images\\still_up.png");
-		Sprites.chargerImage("still_right", "images\\still_right.png");
-		Sprites.chargerImage("still_down", "images\\still_down.png");
-		Sprites.chargerImage("still_left", "images\\still_left.png");
+		count++;
+		Sprites.chargerImage("still_up" + count, "images\\still_up.png");
+		Sprites.chargerImage("still_right" + count, "images\\still_right.png");
+		Sprites.chargerImage("still_down" + count, "images\\still_down.png");
+		Sprites.chargerImage("still_left" + count, "images\\still_left.png");
+		Sprites.chargerImage("Bomb", "images\\Bomb.png");
 	}
 
 	public void dessiner(Graphics g) {
+		String nbBombe  = "" + this.bombes;
 
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 10 * 5,
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax()* 7,
 				10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 5, 10);
+		
+		g.setColor(Color.YELLOW);
+		g.setFont(new Font("Arial", Font.BOLD, 50));
+		g.drawString(nbBombe, getX()+60, getY()+45);
+		
+		
+		Sprites.dessiner(g, "Bomb", super.getX() + 5, super.getY());
+
 		switch (super.direction) {
 		case 0:
-			Sprites.dessiner(g, "still_right", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_right" + count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 1:
-			Sprites.dessiner(g, "still_up", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_up" + count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 2:
-			Sprites.dessiner(g, "still_down", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_down" + count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 3:
-			Sprites.dessiner(g, "still_left", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_left" + count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 
@@ -63,6 +76,12 @@ public class Aventurier extends Entitee {
 
 	}
 
+	
+	/**
+	 * méthode qui pose une bombe en fonction de la direction du personnage
+	 * 
+	 * @return tableau d'entier indiquand les coordonnées de la bombe et si elle a été posé (0=non 1=oui)
+	 */
 	public int[] poserBombe() {
 		int[] coo = new int[3];
 		if (this.bombes > 0) {
@@ -87,8 +106,12 @@ public class Aventurier extends Entitee {
 			coo[2] = 1;
 			this.bombes--;
 		} else {
-			coo[2]=0;
+			coo[2] = 0;
 		}
 		return coo;
+	}
+
+	public void setBombe(int i) {
+		this.bombes = i;
 	}
 }

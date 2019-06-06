@@ -11,16 +11,14 @@ import java.util.ArrayList;
  */
 public class Labyrinthe {
 
-
 	/** la liste des cases composant le labyrinthe. */
 	protected ArrayList<Case> cases;
 
 	/** La liste des monstres du jeu */
 	protected ArrayList<Monstre> monstres;
-	
+
 	protected int posDepX, posDepY;
-	
-	
+
 	/** indique si le labyrinthe est terminer */
 	protected boolean fin;
 
@@ -28,7 +26,8 @@ public class Labyrinthe {
 	 * Constructeur du labyrinthe. Il doit y avoir un aventurier dans celui-ci pour
 	 * pouvoir joué. Le labyrinthe est entouré d'un mur sauf aux 4 points cardinaux.
 	 * 
-	 * @param h l'aventurier
+	 * @param h
+	 *            l'aventurier
 	 */
 	public Labyrinthe() {
 
@@ -41,8 +40,8 @@ public class Labyrinthe {
 				if (i == 0 || i == 9 || j == 0 || j == 9) {
 					if (i == 0 && j == 4) {
 						this.cases.add(new Chemin(i, j));
-						this.posDepX=i;
-						this.posDepY=j;
+						this.posDepX = i;
+						this.posDepY = j;
 						k++;
 					} else {
 						if (i == 9 && j == 4) {
@@ -55,12 +54,12 @@ public class Labyrinthe {
 						}
 					}
 				} else {
-					//Creation des murs dans le Labyrinthe
-					if (1 <= i && i <= 2 && 2 <= j && j <= 3 || i == 2 && 5<= j  && j <= 9 
-						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
-						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
-						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
-						this.cases.add(new Mur(i,j, true));
+					// Creation des murs dans le Labyrinthe
+					if (1 <= i && i <= 2 && 2 <= j && j <= 3 || i == 2 && 5 <= j && j <= 9
+							|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
+							|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 || i == 8 && 5 <= j && j <= 7
+							|| i == 7 && 2 <= j && j <= 5) {
+						this.cases.add(new Mur(i, j, true));
 						k++;
 					} else {
 						this.cases.add(new Chemin(i, j));
@@ -86,8 +85,10 @@ public class Labyrinthe {
 	/**
 	 * Méthode vérifiant si une case est disponible.
 	 * 
-	 * @param x l'abscisse de la case ciblé.
-	 * @param y l'ordonnée de la case ciblé.
+	 * @param x
+	 *            l'abscisse de la case ciblé.
+	 * @param y
+	 *            l'ordonnée de la case ciblé.
 	 * @return true si la case est disponible.
 	 */
 	public boolean estDisponible(int x, int y) {
@@ -108,7 +109,6 @@ public class Labyrinthe {
 		return this.cases;
 	}
 
-
 	/**
 	 * Retourne la liste des monstres du labyrinthe.
 	 * 
@@ -122,28 +122,39 @@ public class Labyrinthe {
 	 * Méthode testant si l'entité est sur une piège. Si c'est le cas, le piège
 	 * s'active sur l'entité.
 	 * 
-	 * @param x abscisse de la case à tester.
-	 * @param y ordonnée de la case à tester.
+	 * @param x
+	 *            abscisse de la case à tester.
+	 * @param y
+	 *            ordonnée de la case à tester.
 	 * 
-	 * @param e l'entité qui est sur la case à tester.
+	 * @param e
+	 *            l'entité qui est sur la case à tester.
+	 * 
+	 * @return boolean indiquant si la case est un piege
 	 */
-	public void estPieger(int x, int y, Entitee e) {
+	public boolean estPieger(int x, int y, Entitee e) {
 		for (Case c : this.cases) {
 			if (c.getX() == x && c.getY() == y && c instanceof Piegee) {
 				Piege p = (Piege) c;
 				p.activer(e);
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**
 	 * Méthode testant si l'aventurier peut sortir du labyrinthe. Il doit avoir tué
 	 * tous les monstres et on test si l'aventurier est sur la case de sortie.
 	 * 
-	 * @param x l'absicsse de la case à tester.
-	 * @param y l'ordonnée de la case à tester.
+	 * @param x
+	 *            l'absicsse de la case à tester.
+	 * @param y
+	 *            l'ordonnée de la case à tester.
+	 * 
+	 * @return boolean indiquant si la case a bien été exploser
 	 */
-	public void estSortie(int x, int y) {
+	public boolean estSortie(int x, int y) {
 		boolean vide = true;
 		for (Monstre m : this.monstres) {
 			if (m.getPV() > 0) {
@@ -154,42 +165,55 @@ public class Labyrinthe {
 			for (Case c : this.cases) {
 				if (c.equalsTo(new Chemin(x, y)) && c.getSortie() == true) {
 					fin = true;
+					return true;
 				}
 			}
 		}
+		return false;
 	}
-	
+
 	/**
 	 * Methode permettant de placer les pieges
-	 * @param x l'absicsse de la case à tester.
-	 * @param y l'ordonnée de la case à tester.
+	 * 
+	 * @param x
+	 *            l'absicsse de la case à tester.
+	 * @param y
+	 *            l'ordonnée de la case à tester.
 	 */
 	public void placerPiege(int x, int y) {
 		int i = 0;
-		while(i <5) {
+		while (i < 5) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
-			for(Case c : this.cases) {
-				if (this.estDisponible(c.getX(),c.getY()) == true) {
+			for (Case c : this.cases) {
+				if (this.estDisponible(c.getX(), c.getY()) == true) {
 					this.cases.add(new Piege(random_x, random_y));
 				}
 			}
 			i++;
 		}
 	}
-	
+
 	/**
-	 * Si les coordonnées passées en paramètres contiennent un mur explosable, celui-ci est détruit
-	 * @param x abscisse de l'explosion
-	 * @param y ordonnée de l'explosion
+	 * Si les coordonnées passées en paramètres contiennent un mur explosable,
+	 * celui-ci est détruit
+	 * 
+	 * @param x
+	 *            abscisse de l'explosion
+	 * @param y
+	 *            ordonnée de l'explosion
+	 * 
+	 * @return boolean indiquant si la case a bien été exploser
 	 */
-	public void exploserMur(int x, int y) {
-		for (int i=0; i<this.cases.size()-1;i++) {
-			if (this.cases.get(i).getX()==x && this.cases.get(i).getY()==y && this.cases.get(i).explosable) {
+	public boolean exploserMur(int x, int y) {
+		for (int i = 0; i < this.cases.size() - 1; i++) {
+			if (this.cases.get(i).getX() == x && this.cases.get(i).getY() == y && this.cases.get(i).isExplosable()) {
 				this.cases.remove(i);
 				this.cases.add(new Chemin(x, y));
+				return true;
 			}
 		}
+		return false;
 	}
 
 	/**
