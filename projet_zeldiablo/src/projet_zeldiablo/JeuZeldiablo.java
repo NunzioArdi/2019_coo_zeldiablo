@@ -128,13 +128,20 @@ public class JeuZeldiablo implements JeuAbstract {
 				this.hero.setPos(coo[0], coo[1]);
 			}
 		}
-		if (clavier.isPressed(KeyEvent.VK_SPACE) || souris.isPressed()) {
+		if (souris.isPressed()) {
 			coo = this.hero.attaquer();
 			for (Monstre m : this.getEtage().getMonstres()) {
 				if (m.getX() == coo[0] && m.getY() == coo[1]) {
 					m.subirDegat(coo[2]);
 				}
 			}
+		}
+		if (clavier.isPressed(KeyEvent.VK_SPACE)) {
+			coo = this.hero.poserBombe();
+			if (coo[2]==1) {
+				this.getEtage().exploserMur(coo[0], coo[1]);
+			}
+		
 		}
 		for (Monstre m : this.getEtage().getMonstres()) {
 			if (m.getPV()>0) {

@@ -50,7 +50,7 @@ public class Labyrinthe {
 							k++;
 							this.cases.get(k).setSortie(true);
 						} else {
-							this.cases.add(new Mur(i, j));
+							this.cases.add(new Mur(i, j, false));
 							k++;
 						}
 					}
@@ -60,7 +60,7 @@ public class Labyrinthe {
 						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
 						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
 						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
-						this.cases.add(new Mur(i,j));
+						this.cases.add(new Mur(i,j, true));
 						k++;
 					} else {
 						this.cases.add(new Chemin(i, j));
@@ -177,6 +177,20 @@ public class Labyrinthe {
 				}
 			}
 			i++;
+		}
+	}
+	
+	/**
+	 * Si les coordonnées passées en paramètres contiennent un mur explosable, celui-ci est détruit
+	 * @param x abscisse de l'explosion
+	 * @param y ordonnée de l'explosion
+	 */
+	public void exploserMur(int x, int y) {
+		for (int i=0; i<this.cases.size()-1;i++) {
+			if (this.cases.get(i).getX()==x && this.cases.get(i).getY()==y && this.cases.get(i).explosable) {
+				this.cases.remove(i);
+				this.cases.add(new Chemin(x, y));
+			}
 		}
 	}
 

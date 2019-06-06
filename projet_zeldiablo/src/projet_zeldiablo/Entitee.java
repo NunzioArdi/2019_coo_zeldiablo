@@ -161,12 +161,12 @@ public abstract class Entitee implements Dessinable {
 		int[] coo=new int[3];
 		switch (this.direction) {
 		case 0:
-			coo[0]=this.getX();
-			coo[1]=this.getY()- 1;
-			break;
-		case 1:
 			coo[0]=this.getX()+1;
 			coo[1]=this.getY();
+			break;
+		case 1:
+			coo[0]=this.getX();
+			coo[1]=this.getY()-1;
 			break;
 		case 2:
 			coo[0]=this.getX();

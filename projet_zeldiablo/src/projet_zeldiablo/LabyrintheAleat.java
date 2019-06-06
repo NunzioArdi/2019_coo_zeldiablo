@@ -34,7 +34,7 @@ public class LabyrintheAleat extends Labyrinthe {
 							super.posDepY = j;
 						}
 					} else {
-						super.cases.add(new Mur(i, j));
+						super.cases.add(new Mur(i, j, false));
 						k++;
 					}
 				} else {
@@ -78,7 +78,7 @@ public class LabyrintheAleat extends Labyrinthe {
 			for(int i =  0; i < super.cases.size(); i++) {
 				if (super.cases.get(i).getX() == random_x && super.cases.get(i).getY() == random_y) {
 					super.cases.remove(i);
-					super.cases.add(new Mur(random_x, random_y));
+					super.cases.add(new Mur(random_x, random_y, true));
 				}
 			}
 			k++;
