@@ -10,17 +10,21 @@ import projet_zeldiablo.JeuZeldiablo;
 public class EntiteeTest {
 
 	
-	
+	/**
+	 * Test de la methode attaquer
+	 */
 	@Test
 	public void test_attaquer() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
-		jdz.getEtage().getMonstres().add(new Goblin(10));
 		int[] coo=jdz.getHero().attaquer();
 		assertEquals(1, coo[0]);
 		assertEquals(4, coo[1]);
 		assertEquals(5, coo[2]);
 	}
 	
+	/**
+	 * Test de la methode se deplacer si on se deplace vers le nord
+	 */
 	@Test
 	public void test_seDeplacerNord() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
@@ -30,6 +34,9 @@ public class EntiteeTest {
 		assertEquals(3, coo[1]);
 	}
 	
+	/**
+	 * Test de la methode se deplacer si on se deplace vers l'est
+	 */
 	@Test
 	public void test_seDeplacerEst() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
@@ -39,6 +46,9 @@ public class EntiteeTest {
 		assertEquals(4, coo[1]);
 	}
 	
+	/**
+	 * Test de la methode se deplacer si on se deplace vers le sud
+	 */
 	@Test
 	public void test_seDeplacerSud() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
@@ -49,6 +59,9 @@ public class EntiteeTest {
 		assertEquals(4, coo[1]);
 	}
 	
+	/**
+	 * Test de la methode se deplacer si on se deplace vers l'ouest
+	 */
 	@Test
 	public void test_seDeplacerWest() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
@@ -59,6 +72,9 @@ public class EntiteeTest {
 		assertEquals(4, coo[1]);
 	}
 	
+	/**
+	 * Test de la methode poserBombe si il reste des bombes au héro
+	 */
 	@Test
 	public void test_poserBombeResteBombe() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
@@ -68,6 +84,9 @@ public class EntiteeTest {
 		assertEquals(1, coo[2]);
 	}
 	
+	/**
+	 * Test de la methode poserBombe si il ne reste pas des bombes au héro
+	 */
 	@Test
 	public void test_poserBombePlusDeBombe() {
 		JeuZeldiablo jdz = new JeuZeldiablo();	

@@ -39,7 +39,7 @@ public class Aventurier extends Entitee {
 		String nbBombe  = "" + this.bombes;
 
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 10 * 5,
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax()* 7,
 				10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
@@ -76,6 +76,12 @@ public class Aventurier extends Entitee {
 
 	}
 
+	
+	/**
+	 * méthode qui pose une bombe en fonction de la direction du personnage
+	 * 
+	 * @return tableau d'entier indiquand les coordonnées de la bombe et si elle a été posé (0=non 1=oui)
+	 */
 	public int[] poserBombe() {
 		int[] coo = new int[3];
 		if (this.bombes > 0) {

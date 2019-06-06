@@ -52,7 +52,7 @@ public abstract class Entitee implements Dessinable {
 	 * Essaye de deplacer l'entite dans une direction donnee
 	 * 
 	 * @param c direction vers laquelle se deplacer ('N', 'S', 'E', 'W')
-	 * @param l labyrinthe ou a lieu le deplacement
+	 * @return tableau d'entier indiquand les coordonnées du déplacement
 	 */
 	public int[] seDeplacer(char c) {
 		int[] coo = new int[2];
@@ -172,6 +172,8 @@ public abstract class Entitee implements Dessinable {
 	 * @param x abscisse de l'attaque
 	 * @param y ordonnee de l'attaque
 	 * @param l labyrinthe ou a lieu l'attaque
+	 * 
+	 * @return tableau d'entier indiquand les coordonnées et les dégats de l'attaque
 	 */
 	public int[] attaquer() {
 		int[] coo = new int[3];
