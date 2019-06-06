@@ -36,6 +36,7 @@ public class Aventurier extends Entitee {
 	}
 
 	public void dessiner(Graphics g) {
+		String nbBombe  = "" + this.bombes;
 
 		g.setColor(Color.RED);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 10 * 5,
@@ -43,6 +44,10 @@ public class Aventurier extends Entitee {
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 5, 10);
+		
+		g.setColor(Color.YELLOW);
+		g.setFont(new Font("Arial", Font.BOLD, 50));
+		g.drawString(nbBombe, getX()+60, getY()+45);
 		
 		
 		Sprites.dessiner(g, "Bomb", super.getX() + 5, super.getY());
