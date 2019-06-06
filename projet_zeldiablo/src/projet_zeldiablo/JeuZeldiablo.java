@@ -9,6 +9,7 @@ import moteurJeu.moteur.JeuAbstract;
 
 /**
  * Classe qui permet la creation du jeu
+ * 
  * @author SCHULER Killian
  * @author CONTE Nunzio
  * @author CORNETTE PIERRE
@@ -32,21 +33,22 @@ public class JeuZeldiablo implements JeuAbstract {
 	/**
 	 * Constructeur du jeu.
 	 * 
-	 * @throws AventurierException
-	 *             erreur aventurier
+	 * @throws AventurierException erreur aventurier
 	 */
 	public JeuZeldiablo() {
 		this.hero = new Aventurier(10);
 		this.lab = new ArrayList<Labyrinthe>();
 		this.lab.add(new Labyrinthe());
 		for (int i = 1; i < 2; i++) {
-			this.lab.add(new LabyrintheAleat());
+			//this.lab.add(new LabyrintheAleat());
 		}
+		this.lab.add(new LabyrintheFinal());
 		this.hero.setPos(this.getEtage().getPosDepX(), this.getEtage().getPosDepY());
 	}
 
 	/**
 	 * Methode determinant si la partie est fini
+	 * 
 	 * @return true si la partie est fini
 	 */
 	@Override
@@ -144,7 +146,7 @@ public class JeuZeldiablo implements JeuAbstract {
 		
 		}
 		for (Monstre m : this.getEtage().getMonstres()) {
-			if (m.getPV()>0) {
+			if (m.getPV() > 0) {
 				char c = m.decider();
 				coo = m.seDeplacer(c);
 				if (this.estDisponible(coo[0], coo[1])) {
@@ -153,13 +155,17 @@ public class JeuZeldiablo implements JeuAbstract {
 				coo = m.attaquer();
 				if (this.hero.getX() == coo[0] && this.hero.getY() == coo[1]) {
 					this.hero.subirDegat(coo[2]);
-				} 
+				}
 			}
 		}
+		
 		// permet d'allez a l'etage suivant
 		if (!fin && this.getEtage().getFin() == true) {
 			this.etageSuivant();
-			this.hero.setPos(0, 4);
+			if (this.lab.size() -1 == this.etage)
+				this.hero.setPos(1, 4);
+			else
+				this.hero.setPos(0, 4);
 		}
 		return null;
 	}
