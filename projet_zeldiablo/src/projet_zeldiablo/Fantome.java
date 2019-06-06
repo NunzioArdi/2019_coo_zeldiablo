@@ -30,11 +30,11 @@ public class Fantome extends Monstre {
 	public void dessiner(Graphics g) {
 
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 2 * 25,
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax() * 7,
 				10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
-				this.getPV() * 25, 10);
+				this.getPV() * 7, 10);
 
 		switch (super.direction) {
 		case 0:

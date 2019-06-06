@@ -32,7 +32,7 @@ public class Goblin extends Monstre {
 	public void dessiner(Graphics g) {
 		
 		g.setColor(Color.RED);
-		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 7 * 7,
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, this.getPvMax() * 7,
 				10);
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,

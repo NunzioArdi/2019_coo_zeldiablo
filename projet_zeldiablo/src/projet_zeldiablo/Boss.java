@@ -21,7 +21,14 @@ public class Boss extends Monstre {
 
 	@Override
 	public void dessiner(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20, 7 * 7,
+				10);
+		g.setColor(Color.GREEN);
+		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
+				this.getPV() * 7, 10);
+		
 		g.setColor(Color.PINK);
-		g.fillOval(super.getX()*DessinJeuZeldiablo.TAILLE, super.getY()*DessinJeuZeldiablo.TAILLE, 42, 42);
+		g.fillOval(super.getX()*DessinJeuZeldiablo.TAILLE, super.getY()*DessinJeuZeldiablo.TAILLE, (int)Math.random()*10, (int)Math.random()*10);
 	}
 }

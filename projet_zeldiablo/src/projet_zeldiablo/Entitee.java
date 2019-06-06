@@ -9,14 +9,19 @@ package projet_zeldiablo;
  * @author SCHULER Killian
  */
 public abstract class Entitee implements Dessinable {
-	/** Les points de vie de l'entitée. */
+	/** Les points actuelle de vie de l'entitée. */
 	private int pv;
+
+	/** Les points de vie de départ de l'entitée */
+	private int pvMax;
 
 	/** La position en abscisse. */
 	protected int posX;
 
 	/** La position en abscisse. */
 	protected int posY;
+
+	private final int MAX_VIE_ENTITEE = 50;
 
 	/**
 	 * La direction vers laquelle est tournee l'entitee (0=droite,1=haut, 2=bas,
@@ -33,11 +38,13 @@ public abstract class Entitee implements Dessinable {
 	 * @param vie la vie de départ
 	 */
 	public Entitee(int vie) {
-		if (vie < 0) {
-			this.pv = 0;
-		} else {
-			this.pv = vie;
-		}
+		if (vie < 0)
+			this.pvMax = 1;
+		else if (vie > MAX_VIE_ENTITEE)
+			this.pvMax = MAX_VIE_ENTITEE;
+		else
+			this.pvMax = vie;
+		this.pv = this.pvMax;
 		this.traversable = false;
 	}
 
@@ -48,7 +55,7 @@ public abstract class Entitee implements Dessinable {
 	 * @param l labyrinthe ou a lieu le deplacement
 	 */
 	public int[] seDeplacer(char c) {
-		int[] coo=new int[2];
+		int[] coo = new int[2];
 		switch (c) {
 		case 'N':
 			this.direction = 1;
@@ -57,9 +64,9 @@ public abstract class Entitee implements Dessinable {
 //				l.estSortie(posX, posY - 1);
 //				this.setPos(super.posX, super.posY - 1);
 //			}
-			coo[0]=this.posX;
-			coo[1]=this.posY-1;
-			return(coo);
+			coo[0] = this.posX;
+			coo[1] = this.posY - 1;
+			return (coo);
 		case 'S':
 			this.direction = 2;
 //			if (l.estDisponible(super.posX, super.posY + 1)) {
@@ -67,9 +74,9 @@ public abstract class Entitee implements Dessinable {
 //				l.estSortie(posX, posY + 1);
 //				this.setPos(super.posX, super.posY + 1);
 //			}
-			coo[0]=this.posX;
-			coo[1]=this.posY+1;
-			return(coo);
+			coo[0] = this.posX;
+			coo[1] = this.posY + 1;
+			return (coo);
 		case 'E':
 			this.direction = 0;
 //			if (l.estDisponible(super.posX + 1, super.posY)) {
@@ -77,9 +84,9 @@ public abstract class Entitee implements Dessinable {
 //				l.estSortie(posX + 1, posY);
 //				this.setPos(super.posX + 1, super.posY);
 //			}
-			coo[0]=this.posX+1;
-			coo[1]=this.posY;
-			return(coo);
+			coo[0] = this.posX + 1;
+			coo[1] = this.posY;
+			return (coo);
 		case 'W':
 			this.direction = 3;
 //			if (l.estDisponible(super.posX - 1, super.posY)) {
@@ -87,9 +94,9 @@ public abstract class Entitee implements Dessinable {
 //				l.estSortie(posX - 1, posY);
 //				this.setPos(super.posX - 1, super.posY);
 //			}
-			coo[0]=this.posX-1;
-			coo[1]=this.posY;
-			return(coo);
+			coo[0] = this.posX - 1;
+			coo[1] = this.posY;
+			return (coo);
 		}
 		return coo;
 	}
@@ -158,26 +165,26 @@ public abstract class Entitee implements Dessinable {
 	 * @param l labyrinthe ou a lieu l'attaque
 	 */
 	public int[] attaquer() {
-		int[] coo=new int[3];
+		int[] coo = new int[3];
 		switch (this.direction) {
 		case 0:
-			coo[0]=this.getX()+1;
-			coo[1]=this.getY();
+			coo[0] = this.getX() + 1;
+			coo[1] = this.getY();
 			break;
 		case 1:
-			coo[0]=this.getX();
-			coo[1]=this.getY()-1;
+			coo[0] = this.getX();
+			coo[1] = this.getY() - 1;
 			break;
 		case 2:
-			coo[0]=this.getX();
-			coo[1]=this.getY()+1;
+			coo[0] = this.getX();
+			coo[1] = this.getY() + 1;
 			break;
 		case 3:
-			coo[0]=this.getX()-1;
-			coo[1]=this.getY();
+			coo[0] = this.getX() - 1;
+			coo[1] = this.getY();
 			break;
 		}
-		coo[2]=5;
+		coo[2] = 5;
 		return coo;
 	}
 
@@ -192,5 +199,9 @@ public abstract class Entitee implements Dessinable {
 			this.pv = 0;
 			this.traversable = true;
 		}
+	}
+
+	public int getPvMax() {
+		return this.pvMax;
 	}
 }
