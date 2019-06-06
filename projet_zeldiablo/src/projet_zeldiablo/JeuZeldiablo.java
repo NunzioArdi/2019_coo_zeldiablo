@@ -82,7 +82,7 @@ public class JeuZeldiablo implements JeuAbstract {
 		if (this.etage == this.lab.size() - 1) {
 			this.fin = true;
 		} else {
-			this.hero.setPV(15);
+			this.hero.donneeVie(10);
 			this.etage++;
 		}
 	}

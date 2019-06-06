@@ -129,13 +129,10 @@ public abstract class Entitee implements Dessinable {
 		return this.pv;
 	}
 
-	/**
-	 * Returne les Points de vie de l'entité.
-	 * 
-	 * @return la vie.
-	 */
-	public void setPV(int pv) {
-		this.pv = pv;
+	/** Donne des points de vie à l'entité. */
+	public void donneeVie(int pv) {
+		if (pv > 0)
+			this.pv += pv;
 	}
 
 	/**
