@@ -21,6 +21,8 @@ public abstract class Case implements Dessinable {
 	/** Indique la sortie */
 	private boolean sortie;
 	
+	protected boolean explosable;
+	
 	/**
 	 * Constructeur de Case.
 	 * 
@@ -31,6 +33,7 @@ public abstract class Case implements Dessinable {
 		this.x = x;
 		this.y = y;
 		this.traversable=true;
+		this.explosable=false;
 	}
 
 	/**

@@ -24,7 +24,10 @@ public class Mur extends Case {
 		this.traversable=false;
 		this.count++;
 		Sprites.chargerImage("Wall"+count, "images\\Wall2.png");
-		
+	}
+	
+	public void setExplosable(boolean b) {
+		super.explosable=b;
 	}
 
 	@Override

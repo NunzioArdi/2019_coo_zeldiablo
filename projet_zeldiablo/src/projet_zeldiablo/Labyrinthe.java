@@ -179,6 +179,20 @@ public class Labyrinthe {
 			i++;
 		}
 	}
+	
+	/**
+	 * Si les coordonnées passées en paramètres contiennent un mur explosable, celui-ci est détruit
+	 * @param x abscisse de l'explosion
+	 * @param y ordonnée de l'explosion
+	 */
+	public void exploserMur(int x, int y) {
+		for (int i=0; i<this.cases.size()-1;i++) {
+			if (this.cases.get(i).getX()==x && this.cases.get(i).getY()==y && this.cases.get(i).explosable) {
+				this.cases.remove(i);
+				this.cases.add(new Chemin(x, y));
+			}
+		}
+	}
 
 	/**
 	 * Retourne si se labyrinthe est terminer.
