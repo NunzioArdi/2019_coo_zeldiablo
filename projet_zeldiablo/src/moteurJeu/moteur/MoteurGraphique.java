@@ -92,12 +92,9 @@ public class MoteurGraphique {
 			duree = duree / 1000000L;
 
 			// attente dans vide
-			if (duree < 0)
-				System.out.println("trop de temps");
-			else {
+			
 				while (System.nanoTime() - beforeTime - dureeBoucle * 1000000L < 0) {
 				}
-			}
 
 			beforeTime = System.nanoTime();
 			nbIteration++;
