@@ -15,6 +15,8 @@ import moteurJeu.sprite.Sprites;
 public class Aventurier extends Entitee {
 
 	private int bombes;
+	
+	private static int count=0;
 
 	/**
 	 * Constructeur.
@@ -25,10 +27,11 @@ public class Aventurier extends Entitee {
 	public Aventurier(int pv) {
 		super(pv);
 		this.bombes = 99;
-		Sprites.chargerImage("still_up", "images\\still_up.png");
-		Sprites.chargerImage("still_right", "images\\still_right.png");
-		Sprites.chargerImage("still_down", "images\\still_down.png");
-		Sprites.chargerImage("still_left", "images\\still_left.png");
+		count++;
+		Sprites.chargerImage("still_up"+count, "images\\still_up.png");
+		Sprites.chargerImage("still_right"+count, "images\\still_right.png");
+		Sprites.chargerImage("still_down"+count, "images\\still_down.png");
+		Sprites.chargerImage("still_left"+count, "images\\still_left.png");
 	}
 
 	public void dessiner(Graphics g) {
@@ -41,19 +44,19 @@ public class Aventurier extends Entitee {
 				this.getPV() * 5, 10);
 		switch (super.direction) {
 		case 0:
-			Sprites.dessiner(g, "still_right", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_right"+count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 1:
-			Sprites.dessiner(g, "still_up", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_up"+count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 2:
-			Sprites.dessiner(g, "still_down", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_down"+count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 3:
-			Sprites.dessiner(g, "still_left", super.getX() * DessinJeuZeldiablo.TAILLE - 2,
+			Sprites.dessiner(g, "still_left"+count, super.getX() * DessinJeuZeldiablo.TAILLE - 2,
 					super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 
@@ -90,5 +93,9 @@ public class Aventurier extends Entitee {
 			coo[2]=0;
 		}
 		return coo;
+	}
+	
+	public void setBombe(int i) {
+		this.bombes=i;
 	}
 }

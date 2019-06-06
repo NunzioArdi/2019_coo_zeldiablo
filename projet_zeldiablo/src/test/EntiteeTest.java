@@ -2,22 +2,79 @@
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
 import org.junit.Test;
-import projet_zeldiablo.Aventurier;
+
+import projet_zeldiablo.Goblin;
 import projet_zeldiablo.JeuZeldiablo;
-import projet_zeldiablo.Labyrinthe;
 
 public class EntiteeTest {
 
 	
 	
 	@Test
-	public void test_attaquer_vide() {
+	public void test_attaquer() {
 		JeuZeldiablo jdz = new JeuZeldiablo();
-		jdz.getHero().attaquer();
-		assertEquals("il devrait rester 2 pv", 2, jdz.getEtage().getMonstres().get(0).getPV());
-		assertEquals("il devrait rester 7 pv", 7, jdz.getEtage().getMonstres().get(1).getPV());
-		assertEquals("il devrait rester 5 pv", 5, jdz.getEtage().getMonstres().get(2).getPV());
+		jdz.getEtage().getMonstres().add(new Goblin(10));
+		int[] coo=jdz.getHero().attaquer();
+		assertEquals(1, coo[0]);
+		assertEquals(4, coo[1]);
+		assertEquals(5, coo[2]);
 	}
+	
+	@Test
+	public void test_seDeplacerNord() {
+		JeuZeldiablo jdz = new JeuZeldiablo();
+		jdz.getEtage().getMonstres().add(new Goblin(10));
+		int[] coo=jdz.getHero().seDeplacer('N');
+		assertEquals(0, coo[0]);
+		assertEquals(3, coo[1]);
+	}
+	
+	@Test
+	public void test_seDeplacerEst() {
+		JeuZeldiablo jdz = new JeuZeldiablo();
+		jdz.getEtage().getMonstres().add(new Goblin(10));
+		int[] coo=jdz.getHero().seDeplacer('E');
+		assertEquals(1, coo[0]);
+		assertEquals(4, coo[1]);
+	}
+	
+	@Test
+	public void test_seDeplacerSud() {
+		JeuZeldiablo jdz = new JeuZeldiablo();
+		jdz.getEtage().getMonstres().add(new Goblin(10));
+		jdz.getHero().setPos(1, 3);
+		int[] coo=jdz.getHero().seDeplacer('S');
+		assertEquals(1, coo[0]);
+		assertEquals(4, coo[1]);
+	}
+	
+	@Test
+	public void test_seDeplacerWest() {
+		JeuZeldiablo jdz = new JeuZeldiablo();
+		jdz.getEtage().getMonstres().add(new Goblin(10));
+		jdz.getHero().setPos(1, 4);
+		int[] coo=jdz.getHero().seDeplacer('W');
+		assertEquals(0, coo[0]);
+		assertEquals(4, coo[1]);
+	}
+	
+	@Test
+	public void test_poserBombeResteBombe() {
+		JeuZeldiablo jdz = new JeuZeldiablo();
+		int[] coo=jdz.getHero().poserBombe();
+		assertEquals(1, coo[0]);
+		assertEquals(4, coo[1]);
+		assertEquals(1, coo[2]);
+	}
+	
+	@Test
+	public void test_poserBombePlusDeBombe() {
+		JeuZeldiablo jdz = new JeuZeldiablo();	
+		jdz.getHero().setBombe(0);
+		int[] coo=jdz.getHero().poserBombe();
+		assertEquals(0, coo[2]);
+	}
+	
+
 }
