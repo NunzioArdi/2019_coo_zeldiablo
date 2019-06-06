@@ -53,9 +53,13 @@ public class LabyrintheAleat extends Labyrinthe {
 	 */
 	public void placerPiege() {
 		int i = 0;
-		while (i < 5) {
+		while (i < 10) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
+			while(random_y == 4 && 0 <= random_x && random_x <=1) {
+				random_x = (int) (Math.random() * 9);
+				random_y = (int) (Math.random() * 9);
+			}
 			if (super.estDisponible(random_x, random_y)) {
 				super.cases.add(new Piege(random_x, random_y));
 			}
@@ -71,7 +75,7 @@ public class LabyrintheAleat extends Labyrinthe {
 		while (k < 30) {
 			int random_x = (int) (Math.random() * 9);
 			int random_y = (int) (Math.random() * 9);
-			while(random_y == 4 && 0 <= random_x && random_x <=9) {
+			while(random_y == 4 && 0 <= random_x && random_x <=1) {
 				random_x = (int) (Math.random() * 9);
 				random_y = (int) (Math.random() * 9);
 			}

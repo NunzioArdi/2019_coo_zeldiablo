@@ -10,6 +10,8 @@ public class MainZediablo {
 		JeuZeldiablo jzd = new JeuZeldiablo();
 		DessinJeuZeldiablo djzd = new DessinJeuZeldiablo(jzd);
 		MoteurGraphique m = new MoteurGraphique(jzd, djzd);
+		System.out.println("Clique droit pour attaquer");
+		System.out.println("Espace pour utiliser des bombes");
 		m.lancerJeu(600, 600, 10);
 		Scanner sc = new Scanner(System.in);
 		while (!jzd.etreFini()) {

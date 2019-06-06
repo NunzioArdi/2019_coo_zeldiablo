@@ -66,8 +66,6 @@ public class Labyrinthe {
 						this.cases.add(new Chemin(i, j));
 						k++;
 					}
-					//placerPiege(i, j);
-					//k += 5;
 				}
 			}
 		}
