@@ -1,0 +1,45 @@
+*fonctionnalités
+
+- fonctionnalite 1 :[Mis à jour des sprites en fonction de la direction]
+- responsable:Pierre
+- diag de sequence: (moteur graphique)
+- 
+- contrainte: Le sprite est tourné vers la bonne direction, il se met a jour dès que celle-ci change (et seulement si elle change)
+							
+
+- fonctionnalite 2 : [Placement de mur aléatoirement dans le labyrinthe]
+- responsable: Theo
+- diag de sequence:
+- Le labyrinthe contien des murs qui sont des obstacles a l'interieur du labyrinthe
+- contrainte: les murs ne sont pas traversable
+	      les murs sont a des position aléatoire
+		  les monstres, l'entree, la sortie et les pieges n'apparaissent pas dans les murs
+		  le hero apparait a l'entree
+		  il y a toujours un chemin permettant de sortir
+	
+
+- fonctionnalite 3 :[affichage barre de vie du héro et des monstres]
+- responsable:Pierre
+- diag de sequence: (moteur graphique)
+- 
+- contrainte: la barre s'affiche au dessus des bonnes entitées, elle s'actualise en fonction des dégats subits (vert= vie restante, rouge=vie perdue)
+	
+
+- fonctionnalite 4 : [Salle Finale et boss]
+- responsable: nunzio
+- diag de sequence: 
+- le dernier étage contient un boss et le battre met fin au jeu
+- contrainte: battre le boss met directement fin au jeu
+	          la salle est prédéfinie
+			  
+- fonctionnalite 5 :[Bombe]
+- responsable:Killian
+- diag de sequence: bombe.png
+- des bombes permettent au héro de détruire les murs
+- contrainte: stock de bombe limité (on peut pas poser plus de bombe que le stock)
+			  les murs du bord et les autres cases ne sont pas atteinte
+
+	        
+
+
+
