@@ -31,20 +31,19 @@ public class Goblin extends Monstre {
 	public void dessiner(Graphics g) {
 		switch (super.direction) {
 		case 0:
-			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			Sprites.dessiner(g, "Goblin_0_1", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 1:
-			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			Sprites.dessiner(g, "Goblin_0_2", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 2:
-			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			Sprites.dessiner(g, "Goblin_0_0", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		case 3:
-			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			Sprites.dessiner(g, "Goblin_0_3", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 			
 		default:
-			Sprites.dessiner(g, "Goblin", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
 			break;
 		}
 		
