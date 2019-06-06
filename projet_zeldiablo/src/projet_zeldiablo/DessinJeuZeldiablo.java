@@ -1,5 +1,7 @@
 package projet_zeldiablo;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -44,6 +46,11 @@ public class DessinJeuZeldiablo implements DessinAbstract {
 				}
 			}
 			this.jzd.getHero().dessiner(g);
+		}
+		if (this.jzd.etreFini() && this.jzd.getHero().getPV() > 0) {
+			g.setColor(Color.ORANGE);
+			g.setFont(new Font("Arial", Font.BOLD, 80));
+			g.drawString("Felicitations", 65, 300);
 		}
 	}
 }

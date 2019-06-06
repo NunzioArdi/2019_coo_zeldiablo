@@ -1,6 +1,7 @@
 package projet_zeldiablo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import moteurJeu.sprite.Sprites;
@@ -34,6 +35,7 @@ public class Boss extends Monstre {
 		g.setColor(Color.GREEN);
 		g.fillRect(super.getX() * DessinJeuZeldiablo.TAILLE + 5, super.getY() * DessinJeuZeldiablo.TAILLE - 20,
 				this.getPV() * 7, 10);
+		
 		
 		//sprites
 		switch (super.direction) {
