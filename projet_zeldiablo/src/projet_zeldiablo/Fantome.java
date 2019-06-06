@@ -27,7 +27,23 @@ public class Fantome extends Monstre {
 
 	@Override
 	public void dessiner(Graphics g) {
-		Sprites.dessiner(g, "Phantome"+count+"_0_0", this.getX() * DessinJeuZeldiablo.TAILLE, this.getY() * DessinJeuZeldiablo.TAILLE);
+		switch (super.direction) {
+		case 0:
+			Sprites.dessiner(g, "Phantome"+count+"_0_3", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 1:
+			Sprites.dessiner(g, "Phantome"+count+"_0_7", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 2:
+			Sprites.dessiner(g, "Phantome"+count+"_3_4", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+		case 3:
+			Sprites.dessiner(g, "Phantome"+count+"_3_1", super.getX() * DessinJeuZeldiablo.TAILLE, super.getY() * DessinJeuZeldiablo.TAILLE);
+			break;
+			
+		default:
+			break;
+		}
 		
 	}
 
