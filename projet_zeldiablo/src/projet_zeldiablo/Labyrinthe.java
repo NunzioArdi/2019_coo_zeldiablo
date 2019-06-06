@@ -50,7 +50,7 @@ public class Labyrinthe {
 							k++;
 							this.cases.get(k).setSortie(true);
 						} else {
-							this.cases.add(new Mur(i, j));
+							this.cases.add(new Mur(i, j, false));
 							k++;
 						}
 					}
@@ -60,7 +60,7 @@ public class Labyrinthe {
 						|| 4 <= i && i <= 5 && 2 <= j && j <= 3 || i == 3 && 5 <= j && j <= 6
 						|| i == 5 && 4 <= j && j <= 6 || i == 6 && 7 <= j && j <= 9 
 						|| i == 8 && 5 <= j && j <= 7 || i == 7 && 2 <= j && j <= 5) {
-						this.cases.add(new Mur(i,j));
+						this.cases.add(new Mur(i,j, true));
 						k++;
 					} else {
 						this.cases.add(new Chemin(i, j));

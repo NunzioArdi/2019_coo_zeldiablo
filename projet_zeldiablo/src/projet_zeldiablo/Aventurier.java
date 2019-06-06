@@ -23,7 +23,7 @@ public class Aventurier extends Entitee {
 	 */
 	public Aventurier(int pv) {
 		super(pv);
-		this.bombes = 10;
+		this.bombes = 99;
 		Sprites.chargerImage("still_up", "images\\still_up.png");
 		Sprites.chargerImage("still_right", "images\\still_right.png");
 		Sprites.chargerImage("still_down", "images\\still_down.png");
@@ -61,12 +61,12 @@ public class Aventurier extends Entitee {
 		if (this.bombes > 0) {
 			switch (this.direction) {
 			case 0:
-				coo[0] = this.getX();
-				coo[1] = this.getY() - 1;
-				break;
-			case 1:
 				coo[0] = this.getX() + 1;
 				coo[1] = this.getY();
+				break;
+			case 1:
+				coo[0] = this.getX();
+				coo[1] = this.getY() - 1;
 				break;
 			case 2:
 				coo[0] = this.getX();
