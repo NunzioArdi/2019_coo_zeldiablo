@@ -1,0 +1,75 @@
+@startuml
+title Placement des murs
+
+participant	"jeux: JeuZeldiablo" as jeu
+participant	"lab: LabyrintheAleat" as l
+participant	"cases: ArrayList<Case>" as lc
+participant 	"mur: Mur" as mur
+participant	"math: Maths" as m
+
+activate jeu
+create l
+jeu -> l: new LabyrintheAleat
+activate l
+
+create lc
+l -> lc: new ArrayList<Case>
+
+l -> l:placerMur()
+activate l
+loop k<30
+l -> m: Maths.random()
+activate m
+l <-- m: random_x
+deactivate m
+l -> m: Maths.random()
+activate m
+l <-- m: random_y
+deactivate m
+
+loop random_x et random_x = entrée
+l -> m: Maths.random()
+activate m
+l <-- m: random_x
+deactivate m
+
+
+loop i<nombre de case max
+alt case(i)=random_x et random_y
+l -> lc: remove(i)
+activate lc
+l <-- lc
+deactivate lc
+
+create mur
+l -> mur: new Mur(random_x,random_y)
+l -> mur: add(mur)
+activate mur
+l <-- mur
+deactivate mur
+
+l -> lc: add(mur)
+activate lc
+l <-- lc
+deactivate lc
+end
+
+
+end
+
+l -> m: Maths.random()
+activate m
+l <-- m: random_y
+deactivate m
+end 
+
+
+
+
+end
+l <-- l
+deactivate l
+deactivate l
+jeu <-- l
+deactivate jeu
+@enduml
