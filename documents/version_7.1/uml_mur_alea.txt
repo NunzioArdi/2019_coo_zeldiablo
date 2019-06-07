@@ -33,6 +33,10 @@ activate m
 l <-- m: random_x
 deactivate m
 
+l -> m: Maths.random()
+activate m
+l <-- m: random_y
+deactivate m
 
 loop i<nombre de case max
 alt case(i)=random_x et random_y
@@ -43,7 +47,6 @@ deactivate lc
 
 create mur
 l -> mur: new Mur(random_x,random_y)
-l -> mur: add(mur)
 activate mur
 l <-- mur
 deactivate mur
@@ -56,14 +59,7 @@ end
 
 
 end
-
-l -> m: Maths.random()
-activate m
-l <-- m: random_y
-deactivate m
 end 
-
-
 
 
 end
